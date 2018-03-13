@@ -19,6 +19,7 @@ public class GuideApplication {
 	public static void main(String[] args) {
 //		Document document = fetch("https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361");
 //		Set<String> brandList = fetchBrandList();
+//		List<PageInfo> results = AzureApi.search("");
 
 		SpringApplication.run(GuideApplication.class, args);
 	}
@@ -33,7 +34,7 @@ public class GuideApplication {
 	}
 
 	private static Set<String> fetchBrandList() {
-		Path path = new File("brands").toPath();
+		Path path = new File("data/brands").toPath();
 		try {
 			return Files.lines(path).collect(Collectors.toSet());
 		} catch (IOException e) {

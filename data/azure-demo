@@ -1,0 +1,620 @@
+{
+  "Demo": {
+    "_type": "SearchResponse",
+    "webPages": {
+      "webSearchUrl": "https://www.bing.com/search?q=top+laptops",
+      "totalEstimatedMatches": 153000000,
+      "value": [
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.0",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-03T11:47:00Z",
+          "about": null,
+          "name": "Best Laptops for 2018 - CNET",
+          "url": "https://www.cnet.com/topics/laptops/best-laptops/",
+          "displayUrl": "https://www.cnet.com/topics/laptops/best-laptops",
+          "snippet": "CNET editors choose the best laptops and notebooks, covering ultraportable laptops, desktop replacement laptops, thin and light laptops, and more."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.1",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-05T10:14:00Z",
+          "about": null,
+          "name": "The Best Laptops of 2018 | PCMag.com",
+          "url": "https://www.pcmag.com/article2/0,2817,2369981,00.asp",
+          "displayUrl": "https://www.pcmag.com/article2/0,2817,2369981,00.asp",
+          "snippet": "Whether you want a simple budget laptop, a productivity workhorse, or a screaming machine for gaming, there's something here for you, along with all the shopping ..."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.2",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-08T18:40:00Z",
+          "about": null,
+          "name": "Best Laptops of 2018 - Windows Laptops, Chromebooks and Macs",
+          "url": "https://www.laptopmag.com/best-laptops",
+          "displayUrl": "https://www.laptopmag.com/best-laptops",
+          "snippet": "Laptop Mag names the overall best laptop of the year, plus we choose the best laptops for gaming, business and education (as well as top picks from each brand)."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.3",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-08T08:38:00Z",
+          "about": null,
+          "name": "The best laptops of 2018: find your next laptop | TechRadar",
+          "url": "https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361",
+          "displayUrl": "https://www.techradar.com/news/mobile-computing/laptops/best...",
+          "snippet": "We've reviewed all the best models from the best brands to help you discover which is the best laptop for your own personal needs"
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.4",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-08T14:22:00Z",
+          "about": [
+            {
+              "name": "Amazon"
+            }
+          ],
+          "name": "Amazon Best Sellers: Best Laptop Computers",
+          "url": "https://www.amazon.com/Best-Sellers-Computers-Accessories-Laptop/zgbs/pc/565108",
+          "displayUrl": "https://www.amazon.com/Best-Sellers-Computers-Accessories-Laptop/...",
+          "snippet": "Discover the best Laptop Computers in Best Sellers. Find the top 100 most popular items in Amazon Computers & Accessories Best Sellers."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.5",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-05T16:58:00Z",
+          "about": null,
+          "name": "Top Laptops: Best Laptops for Your Lifestyle - Best Buy",
+          "url": "https://www.bestbuy.com/site/clp/best-buy-picks-laptops/pcmcat748302046286.c?id=pcmcat748302046286",
+          "displayUrl": "https://www.bestbuy.com/site/clp/best-buy-picks-laptops/pcmcat...",
+          "snippet": "Best Buy shares top laptop picks for your lifestyle. Compare laptop features to find the best laptop to fit your needs."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.6",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-09T00:00:00Z",
+          "about": [
+            {
+              "name": "Best Buy"
+            }
+          ],
+          "name": "Laptops & Notebook Computers - Best Buy",
+          "url": "https://www.bestbuy.com/site/computers-pcs/laptop-computers/abcat0502000.c?id=abcat0502000",
+          "displayUrl": "https://www.bestbuy.com/site/computers-pcs/laptop-computers/abcat...",
+          "snippet": "Shop Best Buy for the best laptop or notebook computer to meet your needs at home, school, or work."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.7",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-07T05:35:00Z",
+          "about": null,
+          "name": "The 5 Best Laptops We Saw at CES 2018 - time.com",
+          "url": "http://time.com/5102127/best-laptops-ces-2018-dell-lenovo/",
+          "displayUrl": "time.com/5102127/best-laptops-ces-2018-dell-lenovo",
+          "snippet": "We can't wait to get our hands on these laptops introduced at CES 2018, with models from Dell, Lenovo and more."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.8",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-09T00:17:00Z",
+          "about": null,
+          "name": "Best Laptop 2018: 13 of the best notebooks for all budgets ...",
+          "url": "http://www.trustedreviews.com/guide/best-laptops",
+          "displayUrl": "www.trustedreviews.com/guide/best-laptops",
+          "snippet": "Best laptop 2018: Reviews of the 12 best laptops you can buy today, from cheap netbooks to high-end multimedia notebooks from Lenovo, Dell, Acer and Asus."
+        },
+        {
+          "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.9",
+          "deepLinks": null,
+          "dateLastCrawled": "2018-03-07T06:49:00Z",
+          "about": [
+            {
+              "name": "Dell"
+            }
+          ],
+          "name": "Laptops: Notebooks, Laptop Computers & 2-in-1 PCs | Dell ...",
+          "url": "http://www.dell.com/en-us/shop/dell-laptops/sc/laptops",
+          "displayUrl": "www.dell.com/en-us/shop/dell-laptops/sc/laptops",
+          "snippet": "Shop new laptops, notebooks & 2-in-1 PCs from the official Dell site. Everyday, performance, ultra-thin & gaming laptops. Build and ship yours today!"
+        }
+      ]
+    },
+    "images": {
+      "id": "https://api.cognitive.microsoft.com/api/v7/#Images",
+      "readLink": "https://api.cognitive.microsoft.com/api/v7/images/search?q=top+laptops&qpvt=top+laptops",
+      "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&qpvt=top+laptops",
+      "isFamilyFriendly": true,
+      "value": [
+        {
+          "name": "Top 10 Best Laptops to Buy in 2012 | Best Notebooks",
+          "datePublished": "2012-08-31T12:00:00Z",
+          "hostPageUrl": "http://toptenplus.com/top-10-best-laptops-to-buy-in-2012/",
+          "contentSize": "96494 B",
+          "hostPageDisplayUrl": "http://toptenplus.com/top-10-best-laptops-to-buy-in-2012/",
+          "width": 1200,
+          "height": 952,
+          "thumbnail": {
+            "width": 474,
+            "height": 376
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=4D44DBEFD02EEC3AFE8424AE761CABAE596E5A39&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.ek6U6Ms96A4UHLotwwV5dQHaF4&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://toptenplus.com/wp-content/uploads/2012/08/Toshiba-Qosmio-x775-q7272.jpg"
+        },
+        {
+          "name": "The Best Laptops of 2017 | Top Ten Reviews",
+          "datePublished": "2017-05-23T17:50:00Z",
+          "hostPageUrl": "http://www.toptenreviews.com/computers/laptops/best-laptop-computers/",
+          "contentSize": "154703 B",
+          "hostPageDisplayUrl": "http://www.toptenreviews.com/computers/laptops/best-laptop-computers/",
+          "width": 1500,
+          "height": 1500,
+          "thumbnail": {
+            "width": 474,
+            "height": 474
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=62C33D445999DB853CC88871A81DC9A89184BA87&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.tiVgpdL7SYSBCjCTvM0Z7gHaHa&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://cdn.toptenreviews.com/rev/prod/67962-asus-zenbook-pro-ux501-box.jpg"
+        },
+        {
+          "name": "Top 10 Best Laptops to Buy in 2012 - Notebook PC",
+          "datePublished": "2012-08-10T12:00:00Z",
+          "hostPageUrl": "http://www.poptens.com/2012/08/10/best-laptops-2012/",
+          "contentSize": "107530 B",
+          "hostPageDisplayUrl": "http://www.poptens.com/2012/08/10/best-laptops-2012/",
+          "width": 1176,
+          "height": 822,
+          "thumbnail": {
+            "width": 474,
+            "height": 331
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=63B6B87399A5C0CC29E354AEABDEAB41BD952138&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.53HMFXPU-BoNxDwUZPSx_AHaFL&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://www.poptens.com/wp-content/uploads/2012/08/Acer-Aspire-57501.jpg"
+        },
+        {
+          "name": "Top 10 Brands of Laptops - World of Laptop",
+          "datePublished": "2017-10-10T03:00:00Z",
+          "hostPageUrl": "http://laptopworld1.blogspot.com/2015/03/top-10-brands-of-laptops.html",
+          "contentSize": "126898 B",
+          "hostPageDisplayUrl": "http://laptopworld1.blogspot.com/2015/03/top-10-brands-of-laptops.html",
+          "width": 1600,
+          "height": 1067,
+          "thumbnail": {
+            "width": 474,
+            "height": 316
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=F7A268119889C53DED77F15B63391FAA98D00332&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.eUK9rGbqWXBgjG9FiiYdWwHaE8&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://3.bp.blogspot.com/-6O6PM4qT93I/VQxavCMrEUI/AAAAAAAABRI/zGD9SpxhOT8/s1600/Samsung-laptop.jpg"
+        },
+        {
+          "name": "icreativeself | Spotlights of Cool Stuff",
+          "datePublished": "2014-11-20T12:00:00Z",
+          "hostPageUrl": "https://photospotlight.wordpress.com/author/icreativeself/",
+          "contentSize": "169750 B",
+          "hostPageDisplayUrl": "https://photospotlight.wordpress.com/author/icreativeself/",
+          "width": 1500,
+          "height": 1000,
+          "thumbnail": {
+            "width": 474,
+            "height": 316
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=C5B77B50B45131BE1AC7768F1C48394EFDB9AE02&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.KoiBymJvre29cSmSxd8n4AHaE8&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "https://photospotlight.files.wordpress.com/2014/09/best-college-laptops-acer-aspire-r7.jpg"
+        },
+        {
+          "name": "Laptop Reviews - 2017 Buying Guide and Top Picks",
+          "datePublished": "2016-09-01T02:42:00Z",
+          "hostPageUrl": "http://www.laptopmag.com/t/laptops",
+          "contentSize": "37336 B",
+          "hostPageDisplayUrl": "http://www.laptopmag.com/t/laptops",
+          "width": 775,
+          "height": 500,
+          "thumbnail": {
+            "width": 474,
+            "height": 305
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=9932DB661F8B6587E20CBBC403B8B5B6C487808A&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.t-19BcFnYtbtsdLfQdQkgQHaEx&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://www.laptopmag.com/images/uploads/ppress/41535/best_laptops.jpg"
+        },
+        {
+          "name": "Top 10 Laptops",
+          "datePublished": "2013-09-14T12:00:00Z",
+          "hostPageUrl": "http://www.machinesreview.com/2013/09/14/top-10-laptops-of-the-world/",
+          "contentSize": "188799 B",
+          "hostPageDisplayUrl": "http://www.machinesreview.com/2013/09/14/top-10-laptops-of-the-world/",
+          "width": 1000,
+          "height": 593,
+          "thumbnail": {
+            "width": 474,
+            "height": 281
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=8B6E179B9F676D20B9810936A9540652BC696688&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.U-zjQjx5_mVEOK4MCfPktAHaEZ&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://www.machinesreview.com/wp-content/uploads/2013/09/Top-10-Laptops.jpg"
+        },
+        {
+          "name": "5 Best Laptop for Video Editing 2014-2015",
+          "datePublished": "2014-09-02T16:35:00Z",
+          "hostPageUrl": "https://www.wiknix.com/5-best-laptop-for-video-editing-2014/",
+          "contentSize": "204182 B",
+          "hostPageDisplayUrl": "https://www.wiknix.com/5-best-laptop-for-video-editing-2014/",
+          "width": 1481,
+          "height": 1046,
+          "thumbnail": {
+            "width": 474,
+            "height": 334
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=D52EF6944C02FB991E805C891B5DC4F42E95E6CF&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.ICFHQ_Lr1XhNyCE57D1R1gHaFO&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://www.wiknix.com/wp-content/uploads/2014/07/Toshiba-Qosmio-X75-A7170-Laptop1-e1406694777264.jpg"
+        },
+        {
+          "name": "Best laptop 2017 | Stuff",
+          "datePublished": "2018-02-16T05:00:00Z",
+          "hostPageUrl": "http://www.stuff.tv/features/laptops-supertest-apple-macbook-pro-vs-microsoft-surface-book-vs-dell-xps-13-vs-hp-spectre",
+          "contentSize": "1625933 B",
+          "hostPageDisplayUrl": "http://www.stuff.tv/features/laptops-supertest-apple-macbook-pro-vs-microsoft-surface-book-vs-dell-xps-13-vs-hp-spectre",
+          "width": 1200,
+          "height": 900,
+          "thumbnail": {
+            "width": 474,
+            "height": 355
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=EC019F9058A9B689D8273C34380B75A92B160300&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.6twnbFIEWpzaYJR0iF-fRQHaFj&pid=Api",
+          "encodingFormat": "png",
+          "contentUrl": "https://images.cdn.stuff.tv/sites/stuff.tv/files/brands/Group_tests/laptops-supertest-2017/best_laptop_2017_main_review_stuff.png"
+        },
+        {
+          "name": "Top 10 Best Ultrabook Laptops 2013 List - Greatest Ten",
+          "datePublished": "2013-03-30T07:07:00Z",
+          "hostPageUrl": "http://greatestten.com/best-ultrabook-laptops/",
+          "contentSize": "103289 B",
+          "hostPageDisplayUrl": "http://greatestten.com/best-ultrabook-laptops/",
+          "width": 1500,
+          "height": 1032,
+          "thumbnail": {
+            "width": 474,
+            "height": 326
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=6D67E7610C36793D72AC73CA118D992BCFF36BF9&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.nrsDLp6xNF1bbGvg7UaeMQHaFG&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://greatestten.com/wp-content/uploads/2013/03/Top-10-Best-Ultrabook-Laptops.jpg"
+        },
+        {
+          "name": "Picking out a Laptop in 2015 - Dom's Tech & Computer Blog",
+          "datePublished": "2018-02-11T00:19:00Z",
+          "hostPageUrl": "http://www.domstechblog.com/picking-out-a-laptop-in-2015/",
+          "contentSize": "106491 B",
+          "hostPageDisplayUrl": "http://www.domstechblog.com/picking-out-a-laptop-in-2015/",
+          "width": 1500,
+          "height": 1030,
+          "thumbnail": {
+            "width": 474,
+            "height": 325
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=04594D28FD77540E9B781B5C94727BCB3DCBDCA2&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.tQeU7UZ7zeJ_iCU26_SWswHaFF&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://www.domstechblog.com/wp-content/uploads/2014/11/budget-laptop.jpg"
+        },
+        {
+          "name": "The 15 Best Laptops Of 2017 The Top Laptops Ranked",
+          "datePublished": "2018-02-06T09:29:00Z",
+          "hostPageUrl": "https://vocalviews.com/the-15-best-laptops-of-2017-the-top-laptops-ranked/",
+          "contentSize": "26384 B",
+          "hostPageDisplayUrl": "https://vocalviews.com/the-15-best-laptops-of-2017-the-top-laptops-ranked/",
+          "width": 1200,
+          "height": 675,
+          "thumbnail": {
+            "width": 474,
+            "height": 266
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=BE8A07B3DE7854D057954CD8DF3C047C238166AE&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.Dl5aoGAnZXWvDFa1XuI2IgHaEK&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "https://vocalviews.com/wp-content/uploads/2017/01/the-15-best-laptops-of-2017-the-top-laptops-ranked.jpg"
+        },
+        {
+          "name": "Best Laptop Brands",
+          "datePublished": "2016-01-28T06:07:00Z",
+          "hostPageUrl": "http://gadgetreview.com/best-laptop-brands?es_c=10165&es_t=1453920260",
+          "contentSize": "81292 B",
+          "hostPageDisplayUrl": "http://gadgetreview.com/best-laptop-brands?es_c=10165&es_t=1453920260",
+          "width": 1200,
+          "height": 780,
+          "thumbnail": {
+            "width": 310,
+            "height": 201
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=0937FAEFDB297EBAF7E064455A4D332CCC2F1DFB&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.751zL97CBIqqlBpCLwj1GwHaE0&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://www.gadgetreview.com/wp-content/uploads/2015/12/Dell-Best-Laptop-Brands.jpg"
+        },
+        {
+          "name": "Best Gaming Laptops: Holiday 2017",
+          "datePublished": "2017-11-25T03:59:00Z",
+          "hostPageUrl": "https://www.anandtech.com/show/12058/best-gaming-laptops",
+          "contentSize": "173478 B",
+          "hostPageDisplayUrl": "https://www.anandtech.com/show/12058/best-gaming-laptops",
+          "width": 1275,
+          "height": 1080,
+          "thumbnail": {
+            "width": 474,
+            "height": 401
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=51F495F3B5D0D40225457FAB38A67E4B6CEBBE85&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.1GrVNRyOBIiG7vQ5o6pV7wHaGR&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "https://images.anandtech.com/doci/12058/mythlogic-7.jpg"
+        },
+        {
+          "name": "Best PC laptops of 2015: 2-in-1s, Ultrabooks, budget PCs ...",
+          "datePublished": "2016-01-28T14:52:00Z",
+          "hostPageUrl": "http://www.itworld.com/article/3025704/hardware/the-best-pc-laptops-of-the-year.html",
+          "contentSize": "207894 B",
+          "hostPageDisplayUrl": "http://www.itworld.com/article/3025704/hardware/the-best-pc-laptops-of-the-year.html",
+          "width": 961,
+          "height": 642,
+          "thumbnail": {
+            "width": 474,
+            "height": 316
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=D094BF2FA0C008EF6A8DA8568A35C64ABF79B89B&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.Z9vgnAzqP27PCObO1j9Q1QHaE8&pid=Api",
+          "encodingFormat": "png",
+          "contentUrl": "https://cms-images.idgesg.net/images/article/2015/01/xps-13-5-100539022-orig.png"
+        },
+        {
+          "name": "The Best Laptops of 2017 | PCMag.com",
+          "datePublished": "2017-07-20T21:23:00Z",
+          "hostPageUrl": "https://www.pcmag.com/article2/0,2817,2369981,00.asp",
+          "contentSize": "39247 B",
+          "hostPageDisplayUrl": "https://www.pcmag.com/article2/0,2817,2369981,00.asp",
+          "width": 740,
+          "height": 416,
+          "thumbnail": {
+            "width": 474,
+            "height": 266
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=374D79D817D20973DFA4BEFAC5094DB2AC11F184&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.toFVWApFygft1bQe2ZD2tAHaEK&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "https://assets.pcmag.com/media/images/524897-the-best-laptops-of-2016-november-2016-update-asus-zenbook-3.jpg?thumb=y&width=740&height=416"
+        },
+        {
+          "name": "Top 10 Best Laptops in 2017 You Can Buy Right Now",
+          "datePublished": "2017-04-30T12:00:00Z",
+          "hostPageUrl": "http://www.nextgeekers.com/2017/04/30/top-10-best-laptops-in-2017-you-can-buy-right-now/",
+          "contentSize": "198026 B",
+          "hostPageDisplayUrl": "http://www.nextgeekers.com/2017/04/30/top-10-best-laptops-in-2017-you-can-buy-right-now/",
+          "width": 1512,
+          "height": 1080,
+          "thumbnail": {
+            "width": 474,
+            "height": 338
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=D465A1952B98EAC0DED696CB8C516438C786D475&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.MNWyFr0yIx8lIkkwf13fUAHaFS&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "https://www.nextgeekers.com/wp-content/uploads/2017/04/Best-Laptops-in-2017-Asus-ZenBook-UX305.jpg"
+        },
+        {
+          "name": "Top 10 Best Cheap Gaming Laptops - Top10Great",
+          "datePublished": "2016-11-07T07:34:00Z",
+          "hostPageUrl": "http://top10great.com/top-10-best-cheap-gaming-laptops/",
+          "contentSize": "144114 B",
+          "hostPageDisplayUrl": "http://top10great.com/top-10-best-cheap-gaming-laptops/",
+          "width": 1500,
+          "height": 979,
+          "thumbnail": {
+            "width": 474,
+            "height": 309
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=126C789C1E1AD5B530D9CC59B80E5833866225E2&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.kCsAbEdnkf8k_n4jpWVJuQHaE1&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://top10great.com/wp-content/uploads/2016/11/10-HP-15-ay011nr-Gaming-Laptop.jpg"
+        },
+        {
+          "name": "Top 10 Best Selling Laptop in India 2017 - Top Laptops ...",
+          "datePublished": "2013-03-24T16:41:00Z",
+          "hostPageUrl": "http://www.redicals.com/best-laptop-in-india.html",
+          "contentSize": "127053 B",
+          "hostPageDisplayUrl": "http://www.redicals.com/best-laptop-in-india.html",
+          "width": 900,
+          "height": 900,
+          "thumbnail": {
+            "width": 474,
+            "height": 474
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=9A7D73076D4319046E9E44C2F6BD5BBD17806AFD&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.MRnZ9qhK2htxS0K8PKWoawHaHa&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://www.redicals.com/wp-content/uploads/2013/03/ASUS-lappi.jpg"
+        },
+        {
+          "name": "Top 10 Laptop 2011 | REALITYPOD",
+          "datePublished": "2011-07-31T03:06:00Z",
+          "hostPageUrl": "http://realitypod.com/2011/07/top-10-laptop-2011/",
+          "contentSize": "131794 B",
+          "hostPageDisplayUrl": "http://realitypod.com/2011/07/top-10-laptop-2011/",
+          "width": 1024,
+          "height": 791,
+          "thumbnail": {
+            "width": 474,
+            "height": 366
+          },
+          "webSearchUrl": "https://www.bing.com/images/search?q=top+laptops&id=04467A89B7ECDC1EBA4CBDBEA9A2F072B3B59432&FORM=IQFRBA",
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=OIP.slLc9UkaLaLV0V6p91tR8wHaFu&pid=Api",
+          "encodingFormat": "jpeg",
+          "contentUrl": "http://realitypod.com/wp-content/uploads/2011/07/notebook_samsung_sf510_1d.jpg"
+        }
+      ],
+      "displayShoppingSourcesBadges": false,
+      "displayRecipeSourcesBadges": false
+    },
+    "news": null,
+    "relatedSearches": {
+      "id": "https://api.cognitive.microsoft.com/api/v7/#RelatedSearches",
+      "value": [
+        {
+          "text": "top laptop games free download",
+          "displayText": "top laptop games free download",
+          "webSearchUrl": "https://www.bing.com/search?q=top+laptop+games+free+download"
+        },
+        {
+          "text": "top laptops reviews",
+          "displayText": "top laptops reviews",
+          "webSearchUrl": "https://www.bing.com/search?q=top+laptops+reviews"
+        },
+        {
+          "text": "best laptop buys",
+          "displayText": "best laptop buys",
+          "webSearchUrl": "https://www.bing.com/search?q=best+laptop+buys"
+        },
+        {
+          "text": "top laptops for students",
+          "displayText": "top laptops for students",
+          "webSearchUrl": "https://www.bing.com/search?q=top+laptops+for+students"
+        },
+        {
+          "text": "best laptop for the money",
+          "displayText": "best laptop for the money",
+          "webSearchUrl": "https://www.bing.com/search?q=best+laptop+for+the+money"
+        },
+        {
+          "text": "top laptops brands",
+          "displayText": "top laptops brands",
+          "webSearchUrl": "https://www.bing.com/search?q=top+laptops+brands"
+        },
+        {
+          "text": "best personal laptop",
+          "displayText": "best personal laptop",
+          "webSearchUrl": "https://www.bing.com/search?q=best+personal+laptop"
+        },
+        {
+          "text": "top laptop deals today",
+          "displayText": "top laptop deals today",
+          "webSearchUrl": "https://www.bing.com/search?q=top+laptop+deals+today"
+        }
+      ]
+    },
+    "videos": null,
+    "rankingResponse": {
+      "mainline": {
+        "items": [
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.0"
+            },
+            "resultIndex": 0
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.1"
+            },
+            "resultIndex": 1
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.2"
+            },
+            "resultIndex": 2
+          },
+          {
+            "answerType": "Images",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#Images"
+            },
+            "resultIndex": 0
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.3"
+            },
+            "resultIndex": 3
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.4"
+            },
+            "resultIndex": 4
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.5"
+            },
+            "resultIndex": 5
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.6"
+            },
+            "resultIndex": 6
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.7"
+            },
+            "resultIndex": 7
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.8"
+            },
+            "resultIndex": 8
+          },
+          {
+            "answerType": "WebPages",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.9"
+            },
+            "resultIndex": 9
+          }
+        ]
+      },
+      "sidebar": {
+        "items": [
+          {
+            "answerType": "RelatedSearches",
+            "value": {
+              "id": "https://api.cognitive.microsoft.com/api/v7/#RelatedSearches"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "RawJson": "{\r\n  \"_type\": \"SearchResponse\",\r\n  \"webPages\": {\r\n    \"webSearchUrl\": \"https://www.bing.com/search?q=top+laptops\",\r\n    \"totalEstimatedMatches\": 153000000,\r\n    \"value\": [\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.0\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-03T11:47:00Z\",\r\n        \"about\": null,\r\n        \"name\": \"Best Laptops for 2018 - CNET\",\r\n        \"url\": \"https://www.cnet.com/topics/laptops/best-laptops/\",\r\n        \"displayUrl\": \"https://www.cnet.com/topics/laptops/best-laptops\",\r\n        \"snippet\": \"CNET editors choose the best laptops and notebooks, covering ultraportable laptops, desktop replacement laptops, thin and light laptops, and more.\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.1\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-05T10:14:00Z\",\r\n        \"about\": null,\r\n        \"name\": \"The Best Laptops of 2018 | PCMag.com\",\r\n        \"url\": \"https://www.pcmag.com/article2/0,2817,2369981,00.asp\",\r\n        \"displayUrl\": \"https://www.pcmag.com/article2/0,2817,2369981,00.asp\",\r\n        \"snippet\": \"Whether you want a simple budget laptop, a productivity workhorse, or a screaming machine for gaming, there's something here for you, along with all the shopping ...\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.2\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-08T18:40:00Z\",\r\n        \"about\": null,\r\n        \"name\": \"Best Laptops of 2018 - Windows Laptops, Chromebooks and Macs\",\r\n        \"url\": \"https://www.laptopmag.com/best-laptops\",\r\n        \"displayUrl\": \"https://www.laptopmag.com/best-laptops\",\r\n        \"snippet\": \"Laptop Mag names the overall best laptop of the year, plus we choose the best laptops for gaming, business and education (as well as top picks from each brand).\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.3\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-08T08:38:00Z\",\r\n        \"about\": null,\r\n        \"name\": \"The best laptops of 2018: find your next laptop | TechRadar\",\r\n        \"url\": \"https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361\",\r\n        \"displayUrl\": \"https://www.techradar.com/news/mobile-computing/laptops/best...\",\r\n        \"snippet\": \"We've reviewed all the best models from the best brands to help you discover which is the best laptop for your own personal needs\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.4\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-08T14:22:00Z\",\r\n        \"about\": [\r\n          {\r\n            \"name\": \"Amazon\"\r\n          }\r\n        ],\r\n        \"name\": \"Amazon Best Sellers: Best Laptop Computers\",\r\n        \"url\": \"https://www.amazon.com/Best-Sellers-Computers-Accessories-Laptop/zgbs/pc/565108\",\r\n        \"displayUrl\": \"https://www.amazon.com/Best-Sellers-Computers-Accessories-Laptop/...\",\r\n        \"snippet\": \"Discover the best Laptop Computers in Best Sellers. Find the top 100 most popular items in Amazon Computers & Accessories Best Sellers.\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.5\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-05T16:58:00Z\",\r\n        \"about\": null,\r\n        \"name\": \"Top Laptops: Best Laptops for Your Lifestyle - Best Buy\",\r\n        \"url\": \"https://www.bestbuy.com/site/clp/best-buy-picks-laptops/pcmcat748302046286.c?id=pcmcat748302046286\",\r\n        \"displayUrl\": \"https://www.bestbuy.com/site/clp/best-buy-picks-laptops/pcmcat...\",\r\n        \"snippet\": \"Best Buy shares top laptop picks for your lifestyle. Compare laptop features to find the best laptop to fit your needs.\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.6\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-09T00:00:00Z\",\r\n        \"about\": [\r\n          {\r\n            \"name\": \"Best Buy\"\r\n          }\r\n        ],\r\n        \"name\": \"Laptops & Notebook Computers - Best Buy\",\r\n        \"url\": \"https://www.bestbuy.com/site/computers-pcs/laptop-computers/abcat0502000.c?id=abcat0502000\",\r\n        \"displayUrl\": \"https://www.bestbuy.com/site/computers-pcs/laptop-computers/abcat...\",\r\n        \"snippet\": \"Shop Best Buy for the best laptop or notebook computer to meet your needs at home, school, or work.\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.7\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-07T05:35:00Z\",\r\n        \"about\": null,\r\n        \"name\": \"The 5 Best Laptops We Saw at CES 2018 - time.com\",\r\n        \"url\": \"http://time.com/5102127/best-laptops-ces-2018-dell-lenovo/\",\r\n        \"displayUrl\": \"time.com/5102127/best-laptops-ces-2018-dell-lenovo\",\r\n        \"snippet\": \"We can't wait to get our hands on these laptops introduced at CES 2018, with models from Dell, Lenovo and more.\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.8\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-09T00:17:00Z\",\r\n        \"about\": null,\r\n        \"name\": \"Best Laptop 2018: 13 of the best notebooks for all budgets ...\",\r\n        \"url\": \"http://www.trustedreviews.com/guide/best-laptops\",\r\n        \"displayUrl\": \"www.trustedreviews.com/guide/best-laptops\",\r\n        \"snippet\": \"Best laptop 2018: Reviews of the 12 best laptops you can buy today, from cheap netbooks to high-end multimedia notebooks from Lenovo, Dell, Acer and Asus.\"\r\n      },\r\n      {\r\n        \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.9\",\r\n        \"deepLinks\": null,\r\n        \"dateLastCrawled\": \"2018-03-07T06:49:00Z\",\r\n        \"about\": [\r\n          {\r\n            \"name\": \"Dell\"\r\n          }\r\n        ],\r\n        \"name\": \"Laptops: Notebooks, Laptop Computers & 2-in-1 PCs | Dell ...\",\r\n        \"url\": \"http://www.dell.com/en-us/shop/dell-laptops/sc/laptops\",\r\n        \"displayUrl\": \"www.dell.com/en-us/shop/dell-laptops/sc/laptops\",\r\n        \"snippet\": \"Shop new laptops, notebooks & 2-in-1 PCs from the official Dell site. Everyday, performance, ultra-thin & gaming laptops. Build and ship yours today!\"\r\n      }\r\n    ]\r\n  },\r\n  \"images\": {\r\n    \"id\": \"https://api.cognitive.microsoft.com/api/v7/#Images\",\r\n    \"readLink\": \"https://api.cognitive.microsoft.com/api/v7/images/search?q=top+laptops&qpvt=top+laptops\",\r\n    \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&qpvt=top+laptops\",\r\n    \"isFamilyFriendly\": true,\r\n    \"value\": [\r\n      {\r\n        \"name\": \"Top 10 Best Laptops to Buy in 2012 | Best Notebooks\",\r\n        \"datePublished\": \"2012-08-31T12:00:00Z\",\r\n        \"hostPageUrl\": \"http://toptenplus.com/top-10-best-laptops-to-buy-in-2012/\",\r\n        \"contentSize\": \"96494 B\",\r\n        \"hostPageDisplayUrl\": \"http://toptenplus.com/top-10-best-laptops-to-buy-in-2012/\",\r\n        \"width\": 1200,\r\n        \"height\": 952,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 376\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=4D44DBEFD02EEC3AFE8424AE761CABAE596E5A39&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.ek6U6Ms96A4UHLotwwV5dQHaF4&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://toptenplus.com/wp-content/uploads/2012/08/Toshiba-Qosmio-x775-q7272.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"The Best Laptops of 2017 | Top Ten Reviews\",\r\n        \"datePublished\": \"2017-05-23T17:50:00Z\",\r\n        \"hostPageUrl\": \"http://www.toptenreviews.com/computers/laptops/best-laptop-computers/\",\r\n        \"contentSize\": \"154703 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.toptenreviews.com/computers/laptops/best-laptop-computers/\",\r\n        \"width\": 1500,\r\n        \"height\": 1500,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 474\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=62C33D445999DB853CC88871A81DC9A89184BA87&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.tiVgpdL7SYSBCjCTvM0Z7gHaHa&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://cdn.toptenreviews.com/rev/prod/67962-asus-zenbook-pro-ux501-box.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Best Laptops to Buy in 2012 - Notebook PC\",\r\n        \"datePublished\": \"2012-08-10T12:00:00Z\",\r\n        \"hostPageUrl\": \"http://www.poptens.com/2012/08/10/best-laptops-2012/\",\r\n        \"contentSize\": \"107530 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.poptens.com/2012/08/10/best-laptops-2012/\",\r\n        \"width\": 1176,\r\n        \"height\": 822,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 331\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=63B6B87399A5C0CC29E354AEABDEAB41BD952138&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.53HMFXPU-BoNxDwUZPSx_AHaFL&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://www.poptens.com/wp-content/uploads/2012/08/Acer-Aspire-57501.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Brands of Laptops - World of Laptop\",\r\n        \"datePublished\": \"2017-10-10T03:00:00Z\",\r\n        \"hostPageUrl\": \"http://laptopworld1.blogspot.com/2015/03/top-10-brands-of-laptops.html\",\r\n        \"contentSize\": \"126898 B\",\r\n        \"hostPageDisplayUrl\": \"http://laptopworld1.blogspot.com/2015/03/top-10-brands-of-laptops.html\",\r\n        \"width\": 1600,\r\n        \"height\": 1067,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 316\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=F7A268119889C53DED77F15B63391FAA98D00332&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.eUK9rGbqWXBgjG9FiiYdWwHaE8&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://3.bp.blogspot.com/-6O6PM4qT93I/VQxavCMrEUI/AAAAAAAABRI/zGD9SpxhOT8/s1600/Samsung-laptop.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"icreativeself | Spotlights of Cool Stuff\",\r\n        \"datePublished\": \"2014-11-20T12:00:00Z\",\r\n        \"hostPageUrl\": \"https://photospotlight.wordpress.com/author/icreativeself/\",\r\n        \"contentSize\": \"169750 B\",\r\n        \"hostPageDisplayUrl\": \"https://photospotlight.wordpress.com/author/icreativeself/\",\r\n        \"width\": 1500,\r\n        \"height\": 1000,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 316\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=C5B77B50B45131BE1AC7768F1C48394EFDB9AE02&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.KoiBymJvre29cSmSxd8n4AHaE8&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"https://photospotlight.files.wordpress.com/2014/09/best-college-laptops-acer-aspire-r7.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Laptop Reviews - 2017 Buying Guide and Top Picks\",\r\n        \"datePublished\": \"2016-09-01T02:42:00Z\",\r\n        \"hostPageUrl\": \"http://www.laptopmag.com/t/laptops\",\r\n        \"contentSize\": \"37336 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.laptopmag.com/t/laptops\",\r\n        \"width\": 775,\r\n        \"height\": 500,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 305\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=9932DB661F8B6587E20CBBC403B8B5B6C487808A&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.t-19BcFnYtbtsdLfQdQkgQHaEx&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://www.laptopmag.com/images/uploads/ppress/41535/best_laptops.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Laptops\",\r\n        \"datePublished\": \"2013-09-14T12:00:00Z\",\r\n        \"hostPageUrl\": \"http://www.machinesreview.com/2013/09/14/top-10-laptops-of-the-world/\",\r\n        \"contentSize\": \"188799 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.machinesreview.com/2013/09/14/top-10-laptops-of-the-world/\",\r\n        \"width\": 1000,\r\n        \"height\": 593,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 281\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=8B6E179B9F676D20B9810936A9540652BC696688&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.U-zjQjx5_mVEOK4MCfPktAHaEZ&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://www.machinesreview.com/wp-content/uploads/2013/09/Top-10-Laptops.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"5 Best Laptop for Video Editing 2014-2015\",\r\n        \"datePublished\": \"2014-09-02T16:35:00Z\",\r\n        \"hostPageUrl\": \"https://www.wiknix.com/5-best-laptop-for-video-editing-2014/\",\r\n        \"contentSize\": \"204182 B\",\r\n        \"hostPageDisplayUrl\": \"https://www.wiknix.com/5-best-laptop-for-video-editing-2014/\",\r\n        \"width\": 1481,\r\n        \"height\": 1046,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 334\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=D52EF6944C02FB991E805C891B5DC4F42E95E6CF&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.ICFHQ_Lr1XhNyCE57D1R1gHaFO&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://www.wiknix.com/wp-content/uploads/2014/07/Toshiba-Qosmio-X75-A7170-Laptop1-e1406694777264.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Best laptop 2017 | Stuff\",\r\n        \"datePublished\": \"2018-02-16T05:00:00Z\",\r\n        \"hostPageUrl\": \"http://www.stuff.tv/features/laptops-supertest-apple-macbook-pro-vs-microsoft-surface-book-vs-dell-xps-13-vs-hp-spectre\",\r\n        \"contentSize\": \"1625933 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.stuff.tv/features/laptops-supertest-apple-macbook-pro-vs-microsoft-surface-book-vs-dell-xps-13-vs-hp-spectre\",\r\n        \"width\": 1200,\r\n        \"height\": 900,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 355\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=EC019F9058A9B689D8273C34380B75A92B160300&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.6twnbFIEWpzaYJR0iF-fRQHaFj&pid=Api\",\r\n        \"encodingFormat\": \"png\",\r\n        \"contentUrl\": \"https://images.cdn.stuff.tv/sites/stuff.tv/files/brands/Group_tests/laptops-supertest-2017/best_laptop_2017_main_review_stuff.png\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Best Ultrabook Laptops 2013 List - Greatest Ten\",\r\n        \"datePublished\": \"2013-03-30T07:07:00Z\",\r\n        \"hostPageUrl\": \"http://greatestten.com/best-ultrabook-laptops/\",\r\n        \"contentSize\": \"103289 B\",\r\n        \"hostPageDisplayUrl\": \"http://greatestten.com/best-ultrabook-laptops/\",\r\n        \"width\": 1500,\r\n        \"height\": 1032,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 326\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=6D67E7610C36793D72AC73CA118D992BCFF36BF9&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.nrsDLp6xNF1bbGvg7UaeMQHaFG&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://greatestten.com/wp-content/uploads/2013/03/Top-10-Best-Ultrabook-Laptops.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Picking out a Laptop in 2015 - Dom's Tech & Computer Blog\",\r\n        \"datePublished\": \"2018-02-11T00:19:00Z\",\r\n        \"hostPageUrl\": \"http://www.domstechblog.com/picking-out-a-laptop-in-2015/\",\r\n        \"contentSize\": \"106491 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.domstechblog.com/picking-out-a-laptop-in-2015/\",\r\n        \"width\": 1500,\r\n        \"height\": 1030,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 325\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=04594D28FD77540E9B781B5C94727BCB3DCBDCA2&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.tQeU7UZ7zeJ_iCU26_SWswHaFF&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://www.domstechblog.com/wp-content/uploads/2014/11/budget-laptop.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"The 15 Best Laptops Of 2017 The Top Laptops Ranked\",\r\n        \"datePublished\": \"2018-02-06T09:29:00Z\",\r\n        \"hostPageUrl\": \"https://vocalviews.com/the-15-best-laptops-of-2017-the-top-laptops-ranked/\",\r\n        \"contentSize\": \"26384 B\",\r\n        \"hostPageDisplayUrl\": \"https://vocalviews.com/the-15-best-laptops-of-2017-the-top-laptops-ranked/\",\r\n        \"width\": 1200,\r\n        \"height\": 675,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 266\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=BE8A07B3DE7854D057954CD8DF3C047C238166AE&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.Dl5aoGAnZXWvDFa1XuI2IgHaEK&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"https://vocalviews.com/wp-content/uploads/2017/01/the-15-best-laptops-of-2017-the-top-laptops-ranked.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Best Laptop Brands\",\r\n        \"datePublished\": \"2016-01-28T06:07:00Z\",\r\n        \"hostPageUrl\": \"http://gadgetreview.com/best-laptop-brands?es_c=10165&es_t=1453920260\",\r\n        \"contentSize\": \"81292 B\",\r\n        \"hostPageDisplayUrl\": \"http://gadgetreview.com/best-laptop-brands?es_c=10165&es_t=1453920260\",\r\n        \"width\": 1200,\r\n        \"height\": 780,\r\n        \"thumbnail\": {\r\n          \"width\": 310,\r\n          \"height\": 201\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=0937FAEFDB297EBAF7E064455A4D332CCC2F1DFB&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.751zL97CBIqqlBpCLwj1GwHaE0&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://www.gadgetreview.com/wp-content/uploads/2015/12/Dell-Best-Laptop-Brands.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Best Gaming Laptops: Holiday 2017\",\r\n        \"datePublished\": \"2017-11-25T03:59:00Z\",\r\n        \"hostPageUrl\": \"https://www.anandtech.com/show/12058/best-gaming-laptops\",\r\n        \"contentSize\": \"173478 B\",\r\n        \"hostPageDisplayUrl\": \"https://www.anandtech.com/show/12058/best-gaming-laptops\",\r\n        \"width\": 1275,\r\n        \"height\": 1080,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 401\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=51F495F3B5D0D40225457FAB38A67E4B6CEBBE85&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.1GrVNRyOBIiG7vQ5o6pV7wHaGR&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"https://images.anandtech.com/doci/12058/mythlogic-7.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Best PC laptops of 2015: 2-in-1s, Ultrabooks, budget PCs ...\",\r\n        \"datePublished\": \"2016-01-28T14:52:00Z\",\r\n        \"hostPageUrl\": \"http://www.itworld.com/article/3025704/hardware/the-best-pc-laptops-of-the-year.html\",\r\n        \"contentSize\": \"207894 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.itworld.com/article/3025704/hardware/the-best-pc-laptops-of-the-year.html\",\r\n        \"width\": 961,\r\n        \"height\": 642,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 316\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=D094BF2FA0C008EF6A8DA8568A35C64ABF79B89B&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.Z9vgnAzqP27PCObO1j9Q1QHaE8&pid=Api\",\r\n        \"encodingFormat\": \"png\",\r\n        \"contentUrl\": \"https://cms-images.idgesg.net/images/article/2015/01/xps-13-5-100539022-orig.png\"\r\n      },\r\n      {\r\n        \"name\": \"The Best Laptops of 2017 | PCMag.com\",\r\n        \"datePublished\": \"2017-07-20T21:23:00Z\",\r\n        \"hostPageUrl\": \"https://www.pcmag.com/article2/0,2817,2369981,00.asp\",\r\n        \"contentSize\": \"39247 B\",\r\n        \"hostPageDisplayUrl\": \"https://www.pcmag.com/article2/0,2817,2369981,00.asp\",\r\n        \"width\": 740,\r\n        \"height\": 416,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 266\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=374D79D817D20973DFA4BEFAC5094DB2AC11F184&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.toFVWApFygft1bQe2ZD2tAHaEK&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"https://assets.pcmag.com/media/images/524897-the-best-laptops-of-2016-november-2016-update-asus-zenbook-3.jpg?thumb=y&width=740&height=416\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Best Laptops in 2017 You Can Buy Right Now\",\r\n        \"datePublished\": \"2017-04-30T12:00:00Z\",\r\n        \"hostPageUrl\": \"http://www.nextgeekers.com/2017/04/30/top-10-best-laptops-in-2017-you-can-buy-right-now/\",\r\n        \"contentSize\": \"198026 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.nextgeekers.com/2017/04/30/top-10-best-laptops-in-2017-you-can-buy-right-now/\",\r\n        \"width\": 1512,\r\n        \"height\": 1080,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 338\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=D465A1952B98EAC0DED696CB8C516438C786D475&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.MNWyFr0yIx8lIkkwf13fUAHaFS&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"https://www.nextgeekers.com/wp-content/uploads/2017/04/Best-Laptops-in-2017-Asus-ZenBook-UX305.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Best Cheap Gaming Laptops - Top10Great\",\r\n        \"datePublished\": \"2016-11-07T07:34:00Z\",\r\n        \"hostPageUrl\": \"http://top10great.com/top-10-best-cheap-gaming-laptops/\",\r\n        \"contentSize\": \"144114 B\",\r\n        \"hostPageDisplayUrl\": \"http://top10great.com/top-10-best-cheap-gaming-laptops/\",\r\n        \"width\": 1500,\r\n        \"height\": 979,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 309\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=126C789C1E1AD5B530D9CC59B80E5833866225E2&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.kCsAbEdnkf8k_n4jpWVJuQHaE1&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://top10great.com/wp-content/uploads/2016/11/10-HP-15-ay011nr-Gaming-Laptop.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Best Selling Laptop in India 2017 - Top Laptops ...\",\r\n        \"datePublished\": \"2013-03-24T16:41:00Z\",\r\n        \"hostPageUrl\": \"http://www.redicals.com/best-laptop-in-india.html\",\r\n        \"contentSize\": \"127053 B\",\r\n        \"hostPageDisplayUrl\": \"http://www.redicals.com/best-laptop-in-india.html\",\r\n        \"width\": 900,\r\n        \"height\": 900,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 474\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=9A7D73076D4319046E9E44C2F6BD5BBD17806AFD&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.MRnZ9qhK2htxS0K8PKWoawHaHa&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://www.redicals.com/wp-content/uploads/2013/03/ASUS-lappi.jpg\"\r\n      },\r\n      {\r\n        \"name\": \"Top 10 Laptop 2011 | REALITYPOD\",\r\n        \"datePublished\": \"2011-07-31T03:06:00Z\",\r\n        \"hostPageUrl\": \"http://realitypod.com/2011/07/top-10-laptop-2011/\",\r\n        \"contentSize\": \"131794 B\",\r\n        \"hostPageDisplayUrl\": \"http://realitypod.com/2011/07/top-10-laptop-2011/\",\r\n        \"width\": 1024,\r\n        \"height\": 791,\r\n        \"thumbnail\": {\r\n          \"width\": 474,\r\n          \"height\": 366\r\n        },\r\n        \"webSearchUrl\": \"https://www.bing.com/images/search?q=top+laptops&id=04467A89B7ECDC1EBA4CBDBEA9A2F072B3B59432&FORM=IQFRBA\",\r\n        \"thumbnailUrl\": \"https://tse1.mm.bing.net/th?id=OIP.slLc9UkaLaLV0V6p91tR8wHaFu&pid=Api\",\r\n        \"encodingFormat\": \"jpeg\",\r\n        \"contentUrl\": \"http://realitypod.com/wp-content/uploads/2011/07/notebook_samsung_sf510_1d.jpg\"\r\n      }\r\n    ],\r\n    \"displayShoppingSourcesBadges\": false,\r\n    \"displayRecipeSourcesBadges\": false\r\n  },\r\n  \"news\": null,\r\n  \"relatedSearches\": {\r\n    \"id\": \"https://api.cognitive.microsoft.com/api/v7/#RelatedSearches\",\r\n    \"value\": [\r\n      {\r\n        \"text\": \"top laptop games free download\",\r\n        \"displayText\": \"top laptop games free download\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=top+laptop+games+free+download\"\r\n      },\r\n      {\r\n        \"text\": \"top laptops reviews\",\r\n        \"displayText\": \"top laptops reviews\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=top+laptops+reviews\"\r\n      },\r\n      {\r\n        \"text\": \"best laptop buys\",\r\n        \"displayText\": \"best laptop buys\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=best+laptop+buys\"\r\n      },\r\n      {\r\n        \"text\": \"top laptops for students\",\r\n        \"displayText\": \"top laptops for students\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=top+laptops+for+students\"\r\n      },\r\n      {\r\n        \"text\": \"best laptop for the money\",\r\n        \"displayText\": \"best laptop for the money\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=best+laptop+for+the+money\"\r\n      },\r\n      {\r\n        \"text\": \"top laptops brands\",\r\n        \"displayText\": \"top laptops brands\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=top+laptops+brands\"\r\n      },\r\n      {\r\n        \"text\": \"best personal laptop\",\r\n        \"displayText\": \"best personal laptop\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=best+personal+laptop\"\r\n      },\r\n      {\r\n        \"text\": \"top laptop deals today\",\r\n        \"displayText\": \"top laptop deals today\",\r\n        \"webSearchUrl\": \"https://www.bing.com/search?q=top+laptop+deals+today\"\r\n      }\r\n    ]\r\n  },\r\n  \"videos\": null,\r\n  \"rankingResponse\": {\r\n    \"mainline\": {\r\n      \"items\": [\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.0\"\r\n          },\r\n          \"resultIndex\": 0\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.1\"\r\n          },\r\n          \"resultIndex\": 1\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.2\"\r\n          },\r\n          \"resultIndex\": 2\r\n        },\r\n        {\r\n          \"answerType\": \"Images\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#Images\"\r\n          },\r\n          \"resultIndex\": 0\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.3\"\r\n          },\r\n          \"resultIndex\": 3\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.4\"\r\n          },\r\n          \"resultIndex\": 4\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.5\"\r\n          },\r\n          \"resultIndex\": 5\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.6\"\r\n          },\r\n          \"resultIndex\": 6\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.7\"\r\n          },\r\n          \"resultIndex\": 7\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.8\"\r\n          },\r\n          \"resultIndex\": 8\r\n        },\r\n        {\r\n          \"answerType\": \"WebPages\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#WebPages.9\"\r\n          },\r\n          \"resultIndex\": 9\r\n        }\r\n      ]\r\n    },\r\n    \"sidebar\": {\r\n      \"items\": [\r\n        {\r\n          \"answerType\": \"RelatedSearches\",\r\n          \"value\": {\r\n            \"id\": \"https://api.cognitive.microsoft.com/api/v7/#RelatedSearches\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+  "QueryString": null,
+  "BingNewsSearchLink": null,
+  "ResponseFilter": null,
+  "Query": null,
+  "Market": "en-us",
+  "Freshness": null
+}

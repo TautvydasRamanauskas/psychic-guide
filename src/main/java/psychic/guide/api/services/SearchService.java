@@ -1,5 +1,10 @@
 package psychic.guide.api.services;
 
+
+import psychic.guide.api.model.SearchResult;
+
+import java.util.List;
+
 public interface SearchService {
-    Object search(String keyword);
+	List<SearchResult> search(String keyword);
 }
