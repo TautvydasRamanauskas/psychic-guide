@@ -2,7 +2,6 @@ package psychic.guide.api.services;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.stereotype.Service;
 import psychic.guide.api.model.SearchResult;
 
 import java.io.File;
@@ -12,8 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-@Service
-public class AzureSearchApi implements SearchService {
+public class AzureSearchApi implements SearchAPIService {
 	private static final String DEMO_FILE = "data/azure-demo";
 	private static final String KEY_DEMO = "Demo";
 	private static final String KEY_WEB_PAGES = "webPages";
