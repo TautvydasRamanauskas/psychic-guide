@@ -1,5 +1,6 @@
 package psychic.guide.api.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import psychic.guide.api.ResultEntry;
 
@@ -14,8 +15,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class SearchServiceImpl implements SearchService {
-	private final BookmarkService bookmarkService = new BookmarkService();
+	private final BookmarkService bookmarkService;
 
+	@Autowired
+	public SearchServiceImpl(BookmarkService bookmarkService) {
+		this.bookmarkService = bookmarkService;
+	}
+
+	@Override
 	public List<ResultEntry> search(String keyword, String ip) {
 		return readResults().stream()
 				.map(line -> parseResultEntry(line, ip))
@@ -37,7 +44,7 @@ public class SearchServiceImpl implements SearchService {
 		String[] splits = line.split("\\|");
 		String result = splits[0].trim();
 		String count = splits[1].replaceFirst("count: ", "").trim();
-		boolean bookmark = bookmarkService.containsBookmark(ip, line);
+		boolean bookmark = bookmarkService.containsBookmark(result, ip);
 		return new ResultEntry(result, Integer.valueOf(count), bookmark);
 	}
 }

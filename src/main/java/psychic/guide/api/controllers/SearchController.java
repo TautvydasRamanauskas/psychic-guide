@@ -33,13 +33,14 @@ public class SearchController {
 	public ResponseEntity<Object> search(@PathVariable("searchKeyword") String searchKeyword,
 										 @RequestBody Map<String, Object> body,
 										 HttpServletRequest request) {
-		logger.info("Searching for keyword - {}", searchKeyword);
-		if (authenticate(body.get("key").toString())) {
-			String remoteAddress = request.getRemoteAddr();
-			List<ResultEntry> searchResult = searchService.search(searchKeyword, remoteAddress);
-			return new ResponseEntity<>(searchResult, HttpStatus.OK);
+		if (!authenticate(body.get("key").toString())) {
+			logger.info("Failed to authenticate");
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
-		logger.info("Failed to authenticate");
-		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
+		logger.info("Searching for keyword - {}", searchKeyword);
+		String remoteAddress = request.getRemoteAddr();
+		List<ResultEntry> searchResult = searchService.search(searchKeyword, remoteAddress);
+		return new ResponseEntity<>(searchResult, HttpStatus.OK);
 	}
 }
