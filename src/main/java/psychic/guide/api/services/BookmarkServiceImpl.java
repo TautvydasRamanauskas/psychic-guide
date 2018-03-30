@@ -1,5 +1,6 @@
 package psychic.guide.api.services;
 
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.stereotype.Service;
 import psychic.guide.api.ResultEntry;
 
@@ -8,16 +9,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class BookmarkServiceImpl implements BookmarkService {
+public class BookmarkServiceImpl implements BookmarkService, DisposableBean {
 	private static final String FILE_NAME = "data/bookmarks.ser";
-	private Map<String, Collection<ResultEntry>> ipToText = read();
+	private final Map<String, Collection<ResultEntry>> ipToText = read();
 
 	@Override
 	public void addBookmark(ResultEntry entry, String ip) {
 		entry.setBookmark(true);
 		Collection<ResultEntry> bookmarks = ipToText.computeIfAbsent(ip, k -> new HashSet<>());
 		bookmarks.add(entry);
-		save();
 	}
 
 	@Override
@@ -26,7 +26,6 @@ public class BookmarkServiceImpl implements BookmarkService {
 		if (bookmarks != null) {
 			bookmarks.remove(entry);
 		}
-		save();
 	}
 
 	@Override
@@ -39,6 +38,11 @@ public class BookmarkServiceImpl implements BookmarkService {
 	public List<ResultEntry> bookmarks(String ip) {
 		Collection<ResultEntry> bookmarks = ipToText.getOrDefault(ip, new HashSet<>());
 		return bookmarks.stream().sorted().collect(Collectors.toList());
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		save();
 	}
 
 	private synchronized void save() {
