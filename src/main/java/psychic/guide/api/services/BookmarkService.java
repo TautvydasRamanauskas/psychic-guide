@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 
 public class BookmarkService {
+	private static final String FILE_NAME = "data/bookmarks.ser";
 	private Map<String, Collection<String>> ipToText = read();
 
 	public void addBookmark(String ip, String text) {
@@ -23,8 +24,13 @@ public class BookmarkService {
 		save();
 	}
 
+	public boolean containsBookmark(String ip, String text) {
+		Collection<String> bookmarks = ipToText.get(ip);
+		return bookmarks != null && bookmarks.contains(text);
+	}
+
 	public void save() {
-		try (FileOutputStream fileOutputStream = new FileOutputStream("data/bookmarks.ser");
+		try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
 			 ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream)) {
 			outputStream.writeObject(ipToText);
 		} catch (IOException e) {
@@ -32,19 +38,29 @@ public class BookmarkService {
 		}
 	}
 
-	public boolean containsBookmark(String ip, String text) {
-		Collection<String> bookmarks = ipToText.get(ip);
-		return bookmarks != null && bookmarks.contains(text);
-	}
-
 	private Map<String, Collection<String>> read() {
-		try (FileInputStream fileInputStream = new FileInputStream("data/bookmarks.ser");
-			 ObjectInputStream inputStream = new ObjectInputStream(fileInputStream)) {
-			//noinspection unchecked
-			return (Map<String, Collection<String>>) inputStream.readObject();
-		} catch (Exception e) {
-			e.printStackTrace();
+		boolean fileReady = ensureFileExists();
+		if (fileReady) {
+			try (FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
+				 ObjectInputStream inputStream = new ObjectInputStream(fileInputStream)) {
+				//noinspection unchecked
+				return (Map<String, Collection<String>>) inputStream.readObject();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return new HashMap<>();
+	}
+
+	private static boolean ensureFileExists() {
+		File file = new File(FILE_NAME);
+		if (!file.exists()) {
+			try {
+				return file.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return true;
 	}
 }
