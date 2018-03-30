@@ -14,8 +14,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class SearchServiceImpl implements SearchService {
-	public List<ResultEntry> search(String keyword) {
-		return readResults().stream().map(SearchServiceImpl::parseResultEntry).collect(Collectors.toList());
+	private final BookmarkService bookmarkService = new BookmarkService();
+
+	public List<ResultEntry> search(String keyword, String ip) {
+		return readResults().stream()
+				.map(line -> parseResultEntry(line, ip))
+				.sorted()
+				.collect(Collectors.toList());
 	}
 
 	private static Set<String> readResults() {
@@ -28,10 +33,11 @@ public class SearchServiceImpl implements SearchService {
 		return Collections.emptySet();
 	}
 
-	private static ResultEntry parseResultEntry(String line) {
+	private ResultEntry parseResultEntry(String line, String ip) {
 		String[] splits = line.split("\\|");
 		String result = splits[0].trim();
 		String count = splits[1].replaceFirst("count: ", "").trim();
-		return new ResultEntry(result, Integer.valueOf(count));
+		boolean bookmark = bookmarkService.containsBookmark(ip, line);
+		return new ResultEntry(result, Integer.valueOf(count), bookmark);
 	}
 }

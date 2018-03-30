@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import psychic.guide.api.ResultEntry;
 import psychic.guide.api.services.SearchService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -30,10 +31,12 @@ public class SearchController {
 	@ResponseBody
 	@RequestMapping(path = "/{searchKeyword}", method = RequestMethod.POST)
 	public ResponseEntity<Object> search(@PathVariable("searchKeyword") String searchKeyword,
-										 @RequestBody Map<String, Object> body) {
+										 @RequestBody Map<String, Object> body,
+										 HttpServletRequest request) {
 		logger.info("Searching for keyword - {}", searchKeyword);
 		if (authenticate(body.get("key").toString())) {
-			List<ResultEntry> searchResult = searchService.search(searchKeyword);
+			String remoteAddress = request.getRemoteAddr();
+			List<ResultEntry> searchResult = searchService.search(searchKeyword, remoteAddress);
 			return new ResponseEntity<>(searchResult, HttpStatus.OK);
 		}
 		logger.info("Failed to authenticate");
