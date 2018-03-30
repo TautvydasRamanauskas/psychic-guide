@@ -18,6 +18,13 @@ public class LinkServiceImpl implements LinkService, DisposableBean {
 	}
 
 	@Override
+	public UUID generate(List<ResultEntry> results) {
+		UUID link = UUID.randomUUID();
+		links.put(link, results);
+		return link;
+	}
+
+	@Override
 	public void destroy() throws Exception {
 		save();
 	}

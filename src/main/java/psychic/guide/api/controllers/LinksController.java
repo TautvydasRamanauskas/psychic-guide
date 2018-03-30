@@ -27,9 +27,17 @@ public class LinksController {
 
 	@ResponseBody
 	@RequestMapping(path = "{link}", method = RequestMethod.GET)
-	public ResponseEntity<Object> search(@PathVariable("link") String link) {
+	public ResponseEntity<List<ResultEntry>> search(@PathVariable("link") String link) {
 		logger.info("Retrieving link- {}", link);
 		List<ResultEntry> searchResult = linkService.get(UUID.fromString(link));
 		return new ResponseEntity<>(searchResult, HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<UUID> search(@RequestBody List<ResultEntry> results) {
+		UUID link = linkService.generate(results);
+		logger.info("Generating link- {}", link);
+		return new ResponseEntity<>(link, HttpStatus.OK);
 	}
 }
