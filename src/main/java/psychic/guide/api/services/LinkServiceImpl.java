@@ -1,6 +1,5 @@
 package psychic.guide.api.services;
 
-import org.springframework.beans.factory.DisposableBean;
 import org.springframework.stereotype.Service;
 import psychic.guide.api.ResultEntry;
 
@@ -8,7 +7,7 @@ import java.io.*;
 import java.util.*;
 
 @Service
-public class LinkServiceImpl implements LinkService, DisposableBean {
+public class LinkServiceImpl implements LinkService {
 	private static final String FILE_NAME = "data/searches.ser";
 	private final Map<UUID, List<ResultEntry>> links = read();
 
@@ -21,12 +20,8 @@ public class LinkServiceImpl implements LinkService, DisposableBean {
 	public UUID generate(List<ResultEntry> results) {
 		UUID link = UUID.randomUUID();
 		links.put(link, results);
-		return link;
-	}
-
-	@Override
-	public void destroy() throws Exception {
 		save();
+		return link;
 	}
 
 	private synchronized void save() {
