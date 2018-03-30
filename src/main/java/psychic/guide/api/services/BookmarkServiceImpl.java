@@ -1,38 +1,44 @@
 package psychic.guide.api.services;
 
 import org.springframework.stereotype.Service;
+import psychic.guide.api.ResultEntry;
 
 import java.io.*;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class BookmarkServiceImpl implements BookmarkService {
 	private static final String FILE_NAME = "data/bookmarks.ser";
-	private Map<String, Collection<String>> ipToText = read();
+	private Map<String, Collection<ResultEntry>> ipToText = read();
 
 	@Override
-	public void addBookmark(String text, String ip) {
-		Collection<String> bookmarks = ipToText.computeIfAbsent(ip, k -> new HashSet<>());
-		bookmarks.add(text);
+	public void addBookmark(ResultEntry entry, String ip) {
+		entry.setBookmark(true);
+		Collection<ResultEntry> bookmarks = ipToText.computeIfAbsent(ip, k -> new HashSet<>());
+		bookmarks.add(entry);
 		save();
 	}
 
 	@Override
-	public void removeBookmark(String text, String ip) {
-		Collection<String> bookmarks = ipToText.get(ip);
+	public void removeBookmark(ResultEntry entry, String ip) {
+		Collection<ResultEntry> bookmarks = ipToText.get(ip);
 		if (bookmarks != null) {
-			bookmarks.remove(text);
+			bookmarks.remove(entry);
 		}
 		save();
 	}
 
 	@Override
-	public boolean containsBookmark(String text, String ip) {
-		Collection<String> bookmarks = ipToText.get(ip);
-		return bookmarks != null && bookmarks.contains(text);
+	public boolean containsBookmark(ResultEntry entry, String ip) {
+		Collection<ResultEntry> bookmarks = ipToText.get(ip);
+		return bookmarks != null && bookmarks.contains(entry);
+	}
+
+	@Override
+	public List<ResultEntry> bookmarks(String ip) {
+		Collection<ResultEntry> bookmarks = ipToText.getOrDefault(ip, new HashSet<>());
+		return bookmarks.stream().sorted().collect(Collectors.toList());
 	}
 
 	private synchronized void save() {
@@ -44,29 +50,14 @@ public class BookmarkServiceImpl implements BookmarkService {
 		}
 	}
 
-	private Map<String, Collection<String>> read() {
-		boolean fileReady = ensureFileExists();
-		if (fileReady) {
-			try (FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
-				 ObjectInputStream inputStream = new ObjectInputStream(fileInputStream)) {
-				//noinspection unchecked
-				return (Map<String, Collection<String>>) inputStream.readObject();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+	private Map<String, Collection<ResultEntry>> read() {
+		try (FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
+			 ObjectInputStream inputStream = new ObjectInputStream(fileInputStream)) {
+			//noinspection unchecked
+			return (Map<String, Collection<ResultEntry>>) inputStream.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return new HashMap<>();
-	}
-
-	private static boolean ensureFileExists() {
-		File file = new File(FILE_NAME);
-		if (!file.exists()) {
-			try {
-				return file.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return true;
 	}
 }

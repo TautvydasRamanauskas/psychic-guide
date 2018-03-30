@@ -11,9 +11,6 @@ import psychic.guide.api.services.SearchService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
-
-import static psychic.guide.api.Authenticator.authenticate;
 
 @RestController
 @CrossOrigin
@@ -31,12 +28,11 @@ public class SearchController {
 	@ResponseBody
 	@RequestMapping(path = "/{searchKeyword}", method = RequestMethod.POST)
 	public ResponseEntity<Object> search(@PathVariable("searchKeyword") String searchKeyword,
-										 @RequestBody Map<String, Object> body,
 										 HttpServletRequest request) {
-		if (!authenticate(body.get("key").toString())) {
-			logger.info("Failed to authenticate");
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		}
+//		if (!authenticate(body.get("key").toString())) {
+//			logger.info("Failed to authenticate");
+//			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//		}
 
 		logger.info("Searching for keyword - {}", searchKeyword);
 		String remoteAddress = request.getRemoteAddr();

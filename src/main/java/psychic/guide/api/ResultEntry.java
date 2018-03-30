@@ -1,21 +1,16 @@
 package psychic.guide.api;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class ResultEntry implements Comparable<ResultEntry> {
+public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	private final UUID id = UUID.randomUUID();
-	private final String result;
+	private String result;
 	private int count;
 	private boolean bookmark;
 
-	public ResultEntry(String result) {
-		this.result = result;
-	}
+	public ResultEntry() {
 
-	public ResultEntry(String result, int count, boolean bookmark) {
-		this.result = result;
-		this.count = count;
-		this.bookmark = bookmark;
 	}
 
 	public UUID getId() {
@@ -34,8 +29,16 @@ public class ResultEntry implements Comparable<ResultEntry> {
 		return bookmark;
 	}
 
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public void setBookmark(boolean bookmark) {
+		this.bookmark = bookmark;
 	}
 
 	@Override

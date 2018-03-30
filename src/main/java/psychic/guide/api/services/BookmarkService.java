@@ -1,9 +1,15 @@
 package psychic.guide.api.services;
 
+import psychic.guide.api.ResultEntry;
+
+import java.util.List;
+
 public interface BookmarkService {
-	void addBookmark(String text, String ip);
+	void addBookmark(ResultEntry entry, String ip);
 
-	void removeBookmark(String text, String ip);
+	void removeBookmark(ResultEntry entry, String ip);
 
-	boolean containsBookmark(String text, String ip);
+	boolean containsBookmark(ResultEntry entry, String ip);
+
+	List<ResultEntry> bookmarks(String ip);
 }

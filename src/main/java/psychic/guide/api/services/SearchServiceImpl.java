@@ -42,9 +42,10 @@ public class SearchServiceImpl implements SearchService {
 
 	private ResultEntry parseResultEntry(String line, String ip) {
 		String[] splits = line.split("\\|");
-		String result = splits[0].trim();
-		String count = splits[1].replaceFirst("count: ", "").trim();
-		boolean bookmark = bookmarkService.containsBookmark(result, ip);
-		return new ResultEntry(result, Integer.valueOf(count), bookmark);
+		ResultEntry resultEntry = new ResultEntry();
+		resultEntry.setResult(splits[0].trim());
+		resultEntry.setCount(Integer.valueOf(splits[1].replaceFirst("count: ", "").trim()));
+		resultEntry.setBookmark(bookmarkService.containsBookmark(resultEntry, ip));
+		return resultEntry;
 	}
 }
