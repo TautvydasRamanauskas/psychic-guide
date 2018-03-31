@@ -41,6 +41,11 @@ public class BookmarkServiceImpl implements BookmarkService {
 		return bookmarks.stream().sorted().collect(Collectors.toList());
 	}
 
+	public void clear() {
+		ipToText.clear();
+		save();
+	}
+
 	private synchronized void save() {
 		try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
 			 ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream)) {

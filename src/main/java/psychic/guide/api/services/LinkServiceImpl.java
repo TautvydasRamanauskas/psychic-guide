@@ -24,6 +24,11 @@ public class LinkServiceImpl implements LinkService {
 		return link;
 	}
 
+	public void clear() {
+		links.clear();
+		save();
+	}
+
 	private synchronized void save() {
 		try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
 			 ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream)) {
