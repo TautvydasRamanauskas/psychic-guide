@@ -1,4 +1,4 @@
-package psychic.guide.api.services;
+package psychic.guide.api.services.internal;
 
 
 import psychic.guide.api.model.SearchResult;

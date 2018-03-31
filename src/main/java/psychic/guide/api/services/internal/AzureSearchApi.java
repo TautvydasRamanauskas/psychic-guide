@@ -1,4 +1,4 @@
-package psychic.guide.api.services;
+package psychic.guide.api.services.internal;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
