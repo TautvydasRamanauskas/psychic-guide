@@ -1,4 +1,4 @@
-package psychic.guide.api.model;
+package psychic.guide.api.services.internal;
 
 import java.util.HashMap;
 

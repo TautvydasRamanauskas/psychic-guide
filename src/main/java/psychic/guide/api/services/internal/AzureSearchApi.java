@@ -2,7 +2,6 @@ package psychic.guide.api.services.internal;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import psychic.guide.api.model.SearchResult;
 
 import java.io.File;
 import java.io.FileNotFoundException;

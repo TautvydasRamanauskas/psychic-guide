@@ -1,7 +1,9 @@
 package psychic.guide.api.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psychic.guide.api.ResultEntry;
+import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.Vote;
 
 import java.io.*;
 import java.util.*;
@@ -10,7 +12,14 @@ import java.util.stream.Collectors;
 @Service
 public class BookmarkServiceImpl implements BookmarkService {
 	private static final String FILE_NAME = "data/bookmarks.ser";
-	private final Map<String, Collection<ResultEntry>> ipToText = read();
+	private final VoteService voteService;
+	private final Map<String, Collection<ResultEntry>> ipToText;
+
+	@Autowired
+	public BookmarkServiceImpl(VoteService voteService) {
+		this.voteService = voteService;
+		this.ipToText = read();
+	}
 
 	@Override
 	public void addBookmark(ResultEntry entry, String ip) {
@@ -38,6 +47,11 @@ public class BookmarkServiceImpl implements BookmarkService {
 	@Override
 	public List<ResultEntry> bookmarks(String ip) {
 		Collection<ResultEntry> bookmarks = ipToText.getOrDefault(ip, new HashSet<>());
+		for (ResultEntry bookmark : bookmarks) {
+			bookmark.setVoteValue(voteService.calculateVoteValue(bookmark.getResult()));
+			Vote vote = voteService.getVote(bookmark.getResult(), ip);
+			bookmark.setPersonalVote(vote == null ? 0 : vote.getValue());
+		}
 		return bookmarks.stream().sorted().collect(Collectors.toList());
 	}
 

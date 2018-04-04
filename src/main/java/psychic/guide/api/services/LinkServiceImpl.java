@@ -1,7 +1,7 @@
 package psychic.guide.api.services;
 
 import org.springframework.stereotype.Service;
-import psychic.guide.api.ResultEntry;
+import psychic.guide.api.model.ResultEntry;
 
 import java.io.*;
 import java.util.*;

@@ -1,6 +1,6 @@
 package psychic.guide.api.services;
 
-import psychic.guide.api.ResultEntry;
+import psychic.guide.api.model.ResultEntry;
 
 import java.util.List;
 

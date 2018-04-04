@@ -1,4 +1,4 @@
-package psychic.guide.api;
+package psychic.guide.api.model;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -8,6 +8,8 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	private String result;
 	private int count;
 	private boolean bookmark;
+	private int voteValue;
+	private int personalVote;
 
 	public ResultEntry() {
 
@@ -21,24 +23,40 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 		return result;
 	}
 
-	public int getCount() {
-		return count;
-	}
-
-	public boolean isBookmark() {
-		return bookmark;
-	}
-
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public int getCount() {
+		return count;
 	}
 
 	public void setCount(int count) {
 		this.count = count;
 	}
 
+	public boolean isBookmark() {
+		return bookmark;
+	}
+
 	public void setBookmark(boolean bookmark) {
 		this.bookmark = bookmark;
+	}
+
+	public int getVoteValue() {
+		return voteValue;
+	}
+
+	public void setVoteValue(int voteValue) {
+		this.voteValue = voteValue;
+	}
+
+	public int getPersonalVote() {
+		return personalVote;
+	}
+
+	public void setPersonalVote(int personalVote) {
+		this.personalVote = personalVote;
 	}
 
 	@Override
@@ -56,6 +74,6 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 
 	@Override
 	public int compareTo(ResultEntry resultEntry) {
-		return Integer.compare(resultEntry.getCount(), this.count);
+		return Integer.compare(resultEntry.getCount() + resultEntry.getVoteValue(), count + voteValue);
 	}
 }

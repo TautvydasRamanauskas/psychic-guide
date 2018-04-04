@@ -2,7 +2,8 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psychic.guide.api.ResultEntry;
+import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.Vote;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,10 +17,12 @@ import java.util.stream.Collectors;
 @Service
 public class SearchServiceImpl implements SearchService {
 	private final BookmarkService bookmarkService;
+	private final VoteService voteService;
 
 	@Autowired
-	public SearchServiceImpl(BookmarkService bookmarkService) {
+	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService) {
 		this.bookmarkService = bookmarkService;
+		this.voteService = voteService;
 	}
 
 	@Override
@@ -46,6 +49,13 @@ public class SearchServiceImpl implements SearchService {
 		resultEntry.setResult(splits[0].trim());
 		resultEntry.setCount(Integer.valueOf(splits[1].replaceFirst("count: ", "").trim()));
 		resultEntry.setBookmark(bookmarkService.containsBookmark(resultEntry, ip));
+		resultEntry.setVoteValue(voteService.calculateVoteValue(resultEntry.getResult()));
+		resultEntry.setPersonalVote(getVote(resultEntry.getResult(), ip));
 		return resultEntry;
+	}
+
+	private int getVote(String title, String ip) {
+		Vote vote = voteService.getVote(title, ip);
+		return vote == null ? 0 : vote.getValue();
 	}
 }
