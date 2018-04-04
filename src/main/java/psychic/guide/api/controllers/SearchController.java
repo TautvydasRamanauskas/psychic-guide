@@ -27,8 +27,8 @@ public class SearchController {
 
 	@ResponseBody
 	@RequestMapping(path = "/{searchKeyword}", method = RequestMethod.POST)
-	public ResponseEntity<Object> search(@PathVariable("searchKeyword") String searchKeyword,
-										 HttpServletRequest request) {
+	public ResponseEntity<List<ResultEntry>> search(@PathVariable("searchKeyword") String searchKeyword,
+													HttpServletRequest request) {
 //		if (!authenticate(body.get("key").toString())) {
 //			logger.info("Failed to authenticate");
 //			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -38,5 +38,13 @@ public class SearchController {
 		String remoteAddress = request.getRemoteAddr();
 		List<ResultEntry> searchResult = searchService.search(searchKeyword, remoteAddress);
 		return new ResponseEntity<>(searchResult, HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(path = "/popular/", method = RequestMethod.GET)
+	public ResponseEntity<List<String>> popular() {
+		logger.info("Retrieving most popular searches");
+		List<String> mostPopularSearches = searchService.mostPopular();
+		return new ResponseEntity<>(mostPopularSearches, HttpStatus.OK);
 	}
 }

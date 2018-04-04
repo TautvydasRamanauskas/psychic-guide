@@ -10,7 +10,7 @@ import java.util.*;
 
 @Service
 public class LinkServiceImpl implements LinkService {
-	private static final String FILE_NAME = "data/searches.ser";
+	private static final String FILE_NAME = "data/links.ser";
 	private final VoteService voteService;
 	private final Map<UUID, List<ResultEntry>> links;
 
@@ -22,7 +22,7 @@ public class LinkServiceImpl implements LinkService {
 
 	@Override
 	public List<ResultEntry> get(UUID link, String ip) {
-		List<ResultEntry> linkEntries = links.getOrDefault(link, new ArrayList<>());
+		List<ResultEntry> linkEntries = links.computeIfAbsent(link, l -> new ArrayList<>());
 		for (ResultEntry linkEntry : linkEntries) {
 			linkEntry.setVoteValue(voteService.calculateVoteValue(linkEntry.getResult()));
 			Vote vote = voteService.getVote(linkEntry.getResult(), ip);

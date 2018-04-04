@@ -9,7 +9,7 @@ public class DatabaseWipe {
 		BookmarkServiceImpl bookmarkService = new BookmarkServiceImpl(null);
 		bookmarkService.clear();
 
-		LinkServiceImpl linkService = new LinkServiceImpl();
+		LinkServiceImpl linkService = new LinkServiceImpl(null);
 		linkService.clear();
 
 		VoteServiceImpl voteService = new VoteServiceImpl();
