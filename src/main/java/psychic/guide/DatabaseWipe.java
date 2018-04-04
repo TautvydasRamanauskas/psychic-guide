@@ -2,6 +2,7 @@ package psychic.guide;
 
 import psychic.guide.api.services.BookmarkServiceImpl;
 import psychic.guide.api.services.LinkServiceImpl;
+import psychic.guide.api.services.SearchServiceImpl;
 import psychic.guide.api.services.VoteServiceImpl;
 
 public class DatabaseWipe {
@@ -14,5 +15,8 @@ public class DatabaseWipe {
 
 		VoteServiceImpl voteService = new VoteServiceImpl();
 		voteService.clear();
+
+		SearchServiceImpl searchService = new SearchServiceImpl(null, null);
+		searchService.clear();
 	}
 }

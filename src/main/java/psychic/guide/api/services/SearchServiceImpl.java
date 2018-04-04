@@ -4,34 +4,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import psychic.guide.api.model.ResultEntry;
 import psychic.guide.api.model.Vote;
+import psychic.guide.api.services.internal.PersistenceSerializationService;
+import psychic.guide.api.services.internal.PersistenceService;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Service
 public class SearchServiceImpl implements SearchService {
-	private static final String FILE_NAME = "data/searches.ser";
+	private static final String FILE_NAME = "searches";
 	private static final int SHOWN_MOST_POPULAR_SEARCHES = 10;
+
 	private final BookmarkService bookmarkService;
 	private final VoteService voteService;
+	private final PersistenceService<Map<String, AtomicInteger>> persistenceService;
 	private final Map<String, AtomicInteger> searches;
 
 	@Autowired
 	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService) {
 		this.bookmarkService = bookmarkService;
 		this.voteService = voteService;
-		this.searches = read();
+		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
+		this.searches = persistenceService.read();
 	}
 
 	@Override
 	public List<ResultEntry> search(String keyword, String ip) {
 		AtomicInteger searchCount = searches.computeIfAbsent(keyword, k -> new AtomicInteger());
 		searchCount.incrementAndGet();
-		save();
+		persistenceService.save(searches);
 
 		return readResults().stream()
 				.map(line -> parseResultEntry(line, ip))
@@ -46,6 +55,11 @@ public class SearchServiceImpl implements SearchService {
 				.map(Map.Entry::getKey)
 				.limit(SHOWN_MOST_POPULAR_SEARCHES)
 				.collect(Collectors.toList());
+	}
+
+	public void clear() {
+		searches.clear();
+		persistenceService.save(searches);
 	}
 
 	private static Set<String> readResults() {
@@ -74,29 +88,9 @@ public class SearchServiceImpl implements SearchService {
 		return vote == null ? 0 : vote.getValue();
 	}
 
-	private synchronized void save() {
-		try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
-			 ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream)) {
-			outputStream.writeObject(searches);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	private int compareSearches(Map.Entry<String, AtomicInteger> entryOne, Map.Entry<String, AtomicInteger> entryTwo) {
 		int searchCountOne = entryOne.getValue().get();
 		int searchCountTwo = entryTwo.getValue().get();
 		return Integer.compare(searchCountTwo, searchCountOne);
-	}
-
-	private Map<String, AtomicInteger> read() {
-		try (FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
-			 ObjectInputStream inputStream = new ObjectInputStream(fileInputStream)) {
-			//noinspection unchecked
-			return (Map<String, AtomicInteger>) inputStream.readObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return new HashMap<>();
 	}
 }

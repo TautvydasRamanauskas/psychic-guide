@@ -4,20 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import psychic.guide.api.model.ResultEntry;
 import psychic.guide.api.model.Vote;
+import psychic.guide.api.services.internal.PersistenceSerializationService;
+import psychic.guide.api.services.internal.PersistenceService;
 
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class LinkServiceImpl implements LinkService {
-	private static final String FILE_NAME = "data/links.ser";
+	private static final String FILE_NAME = "links";
+
 	private final VoteService voteService;
+	private final PersistenceService<Map<UUID, List<ResultEntry>>> persistenceService;
 	private final Map<UUID, List<ResultEntry>> links;
 
 	@Autowired
 	public LinkServiceImpl(VoteService voteService) {
 		this.voteService = voteService;
-		this.links = read();
+		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
+		this.links = persistenceService.read();
 	}
 
 	@Override
@@ -35,32 +42,12 @@ public class LinkServiceImpl implements LinkService {
 	public UUID generate(List<ResultEntry> results) {
 		UUID link = UUID.randomUUID();
 		links.put(link, results);
-		save();
+		persistenceService.save(links);
 		return link;
 	}
 
 	public void clear() {
 		links.clear();
-		save();
-	}
-
-	private synchronized void save() {
-		try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
-			 ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream)) {
-			outputStream.writeObject(links);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private Map<UUID, List<ResultEntry>> read() {
-		try (FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
-			 ObjectInputStream inputStream = new ObjectInputStream(fileInputStream)) {
-			//noinspection unchecked
-			return (Map<UUID, List<ResultEntry>>) inputStream.readObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return new HashMap<>();
+		persistenceService.save(links);
 	}
 }
