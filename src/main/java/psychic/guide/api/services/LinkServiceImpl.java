@@ -1,7 +1,9 @@
 package psychic.guide.api.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.Vote;
 
 import java.io.*;
 import java.util.*;
@@ -9,11 +11,24 @@ import java.util.*;
 @Service
 public class LinkServiceImpl implements LinkService {
 	private static final String FILE_NAME = "data/searches.ser";
-	private final Map<UUID, List<ResultEntry>> links = read();
+	private final VoteService voteService;
+	private final Map<UUID, List<ResultEntry>> links;
+
+	@Autowired
+	public LinkServiceImpl(VoteService voteService) {
+		this.voteService = voteService;
+		this.links = read();
+	}
 
 	@Override
-	public List<ResultEntry> get(UUID link) {
-		return links.getOrDefault(link, new ArrayList<>());
+	public List<ResultEntry> get(UUID link, String ip) {
+		List<ResultEntry> linkEntries = links.getOrDefault(link, new ArrayList<>());
+		for (ResultEntry linkEntry : linkEntries) {
+			linkEntry.setVoteValue(voteService.calculateVoteValue(linkEntry.getResult()));
+			Vote vote = voteService.getVote(linkEntry.getResult(), ip);
+			linkEntry.setPersonalVote(vote == null ? 0 : vote.getValue());
+		}
+		return linkEntries;
 	}
 
 	@Override

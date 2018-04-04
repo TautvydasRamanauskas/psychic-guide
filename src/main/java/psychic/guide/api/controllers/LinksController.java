@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import psychic.guide.api.model.ResultEntry;
 import psychic.guide.api.services.LinkService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,9 +28,11 @@ public class LinksController {
 
 	@ResponseBody
 	@RequestMapping(path = "{link}", method = RequestMethod.GET)
-	public ResponseEntity<List<ResultEntry>> search(@PathVariable("link") String link) {
+	public ResponseEntity<List<ResultEntry>> open(@PathVariable("link") String link,
+													HttpServletRequest request) {
 		logger.info("Retrieving link- {}", link);
-		List<ResultEntry> searchResult = linkService.get(UUID.fromString(link));
+		String remoteAddress = request.getRemoteAddr();
+		List<ResultEntry> searchResult = linkService.get(UUID.fromString(link), remoteAddress);
 		return new ResponseEntity<>(searchResult, HttpStatus.OK);
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface LinkService {
-	List<ResultEntry> get(UUID link);
+	List<ResultEntry> get(UUID link, String ip);
 
 	UUID generate(List<ResultEntry> results);
 }
