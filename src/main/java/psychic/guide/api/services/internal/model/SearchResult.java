@@ -1,12 +1,13 @@
-package psychic.guide.api.services.internal;
+package psychic.guide.api.services.internal.model;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class SearchResult
 {
 	public final String displayUrl;
 	public final String snippet;
-	public final String about;
+	public final List about;
 	public final String name;
 	public final String dateLastCrawled;
 	public final String id;
@@ -16,7 +17,7 @@ public class SearchResult
 	public SearchResult(HashMap value) {
 		displayUrl = (String) value.get("displayUrl");
 		snippet = (String) value.get("snippet");
-		about = (String) value.get("about");
+		about = (List) value.get("about");
 		name = (String) value.get("name");
 		dateLastCrawled = (String) value.get("dateLastCrawled");
 		id = (String) value.get("id");
