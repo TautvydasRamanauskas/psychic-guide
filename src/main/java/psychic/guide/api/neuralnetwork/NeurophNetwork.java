@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class NeurophNetwork implements psychic.guide.api.neuralnetwork.NeuralNetwork {
-	private static final int INPUT_NEURONS_COUNT = 2;
+	private static final int INPUT_NEURONS_COUNT = 6;
 	private static final int OUTPUT_NEURONS_COUNT = 1;
 	private static final String FILE_NAME = "data/network.nn";
 	private final NeuralNetwork network;
@@ -18,16 +18,9 @@ public class NeurophNetwork implements psychic.guide.api.neuralnetwork.NeuralNet
 	}
 
 	@Override
-	public void train(boolean isBrand, boolean isLink, boolean isBold, boolean isH3,
-					  boolean isH4, boolean isH5, boolean isWord) {
-		train(new double[]{boolToDouble(isBrand), boolToDouble(isLink), boolToDouble(isBold), boolToDouble(isH3),
-				boolToDouble(isH4), boolToDouble(isH5), boolToDouble(isWord)});
-	}
-
-	@Override
-	public void train(double[] inputs) {
+	public void train(double[] inputs, double[] outputs) {
 		DataSet trainingSet = new DataSet(INPUT_NEURONS_COUNT, OUTPUT_NEURONS_COUNT);
-		trainingSet.addRow(new DataSetRow(inputs));
+		trainingSet.addRow(new DataSetRow(inputs, outputs));
 		network.learn(trainingSet);
 	}
 
@@ -40,9 +33,5 @@ public class NeurophNetwork implements psychic.guide.api.neuralnetwork.NeuralNet
 
 	public void save() {
 		network.save(FILE_NAME);
-	}
-
-	private static double boolToDouble(boolean bool) {
-		return bool ? 1 : 0;
 	}
 }
