@@ -8,8 +8,8 @@ import psychic.guide.api.services.internal.PersistenceSerializationService;
 import psychic.guide.api.services.internal.PersistenceService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -17,8 +17,8 @@ public class LinkServiceImpl implements LinkService {
 	private static final String FILE_NAME = "links";
 
 	private final VoteService voteService;
-	private final PersistenceService<Map<UUID, List<ResultEntry>>> persistenceService;
-	private final Map<UUID, List<ResultEntry>> links;
+	private final PersistenceService<HashMap<UUID, List<ResultEntry>>> persistenceService;
+	private final HashMap<UUID, List<ResultEntry>> links;
 
 	@Autowired
 	public LinkServiceImpl(VoteService voteService) {

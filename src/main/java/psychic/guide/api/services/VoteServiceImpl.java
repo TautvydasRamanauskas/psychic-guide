@@ -12,8 +12,8 @@ import java.util.Map;
 public class VoteServiceImpl implements VoteService {
 	private static final String FILE_NAME = "votes";
 
-	private PersistenceService<Map<String, Map<String, Vote>>> persistenceService;
-	private final Map<String, Map<String, Vote>> votes; // title -> ip -> vote
+	private PersistenceService<HashMap<String, Map<String, Vote>>> persistenceService;
+	private final HashMap<String, Map<String, Vote>> votes; // title -> ip -> vote
 
 	public VoteServiceImpl() {
 		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);

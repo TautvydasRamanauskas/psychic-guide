@@ -11,10 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -25,8 +22,8 @@ public class SearchServiceImpl implements SearchService {
 
 	private final BookmarkService bookmarkService;
 	private final VoteService voteService;
-	private final PersistenceService<Map<String, AtomicInteger>> persistenceService;
-	private final Map<String, AtomicInteger> searches;
+	private final PersistenceService<HashMap<String, AtomicInteger>> persistenceService;
+	private final HashMap<String, AtomicInteger> searches;
 
 	@Autowired
 	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService) {

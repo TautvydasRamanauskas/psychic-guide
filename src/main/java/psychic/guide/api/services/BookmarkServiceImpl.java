@@ -8,9 +8,9 @@ import psychic.guide.api.services.internal.PersistenceSerializationService;
 import psychic.guide.api.services.internal.PersistenceService;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,8 +18,8 @@ public class BookmarkServiceImpl implements BookmarkService {
 	private static final String FILE_NAME = "bookmarks";
 
 	private final VoteService voteService;
-	private final PersistenceService<Map<String, Collection<ResultEntry>>> persistenceService;
-	private final Map<String, Collection<ResultEntry>> bookmarksByIp;
+	private final PersistenceService<HashMap<String, Collection<ResultEntry>>> persistenceService;
+	private final HashMap<String, Collection<ResultEntry>> bookmarksByIp;
 
 	@Autowired
 	public BookmarkServiceImpl(VoteService voteService) {
