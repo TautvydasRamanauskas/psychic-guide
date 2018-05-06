@@ -10,8 +10,8 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public String generateDoc(List<ResultEntry> entries) {
 		StringBuilder doc = new StringBuilder();
-		doc.append("<html>\n<body>\n<table>\n");
-		doc.append("<th><td>Title</td><td>Rating</td></th>");
+		doc.append("<html>\n<body>\n<table style=\"border: 1px solid black;\">\n");
+		doc.append("<tr><th>Title</th><th>Rating</th></tr>");
 		entries.stream().map(this::createRow).forEach(doc::append);
 		doc.append("</table>\n</body>\n</html>");
 		return doc.toString();
