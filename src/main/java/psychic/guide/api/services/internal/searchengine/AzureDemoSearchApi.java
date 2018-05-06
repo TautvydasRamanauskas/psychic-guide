@@ -1,4 +1,4 @@
-package psychic.guide.api.services.internal;
+package psychic.guide.api.services.internal.searchengine;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class AzureSearchApi implements SearchAPIService {
+public class AzureDemoSearchApi implements SearchAPIService {
 	private static final String DEMO_FILE = "data/azure-demo";
 	private static final String KEY_DEMO = "Demo";
 	private static final String KEY_WEB_PAGES = "webPages";
