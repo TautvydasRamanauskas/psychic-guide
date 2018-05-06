@@ -1,0 +1,547 @@
+{
+ "kind": "customsearch#search",
+ "url": {
+  "type": "application/json",
+  "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+ },
+ "queries": {
+  "request": [
+   {
+    "title": "Google Custom Search - laptop",
+    "totalResults": "112000000",
+    "searchTerms": "laptop",
+    "count": 10,
+    "startIndex": 1,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "001435949413411837190:zwoql81phfa"
+   }
+  ],
+  "nextPage": [
+   {
+    "title": "Google Custom Search - laptop",
+    "totalResults": "112000000",
+    "searchTerms": "laptop",
+    "count": 10,
+    "startIndex": 11,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "001435949413411837190:zwoql81phfa"
+   }
+  ]
+ },
+ "context": {
+  "title": "Google"
+ },
+ "searchInformation": {
+  "searchTime": 0.517578,
+  "formattedSearchTime": "0.52",
+  "totalResults": "112000000",
+  "formattedTotalResults": "112,000,000"
+ },
+ "items": [
+  {
+   "kind": "customsearch#result",
+   "title": "Laptops & Notebook Computers - Best Buy",
+   "htmlTitle": "<b>Laptops</b> &amp; Notebook Computers - Best Buy",
+   "link": "https://www.bestbuy.com/site/computers-pcs/laptop-computers/abcat0502000.c?id=abcat0502000",
+   "displayLink": "www.bestbuy.com",
+   "snippet": "Shop Best Buy for the best laptop or notebook computer to meet your needs at \nhome, school, or work.",
+   "htmlSnippet": "Shop Best Buy for the best <b>laptop</b> or notebook computer to meet your needs at <br>\nhome, school, or work.",
+   "cacheId": "hnDINwTZMe4J",
+   "formattedUrl": "https://www.bestbuy.com/site/computers.../laptop.../abcat0502000.c?id...",
+   "htmlFormattedUrl": "https://www.bestbuy.com/site/computers.../<b>laptop</b>.../abcat0502000.c?id...",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "203",
+      "height": "138",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRoMO847Twzi6gNccx5tW7UdOnN5tQ0j1o9n2xLbpPuiTHXBdcDC-SAqEMp"
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=1024",
+      "format-detection": "telephone=no",
+      "p:domain_verify": "2fe2282e158c475589f2792766b66a79"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://pisces.bbystatic.com/image2/BestBuy_US/Gallery/pol-EVN-70192-180121-17431.jpg;maxHeight=138;maxWidth=207"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Laptops | Amazon.com",
+   "htmlTitle": "<b>Laptops</b> | Amazon.com",
+   "link": "https://www.amazon.com/Notebooks-Laptop-Computers/b?ie=UTF8&node=565108",
+   "displayLink": "www.amazon.com",
+   "snippet": "Shop a wide selection of Laptops including 2 in 1 and traditional laptops at \nAmazon.com. Free shipping and free returns on eligible items.",
+   "htmlSnippet": "Shop a wide selection of <b>Laptops</b> including 2 in 1 and traditional <b>laptops</b> at <br>\nAmazon.com. Free shipping and free returns on eligible items.",
+   "cacheId": "qGVG8vdP28EJ",
+   "formattedUrl": "https://www.amazon.com/Notebooks-Laptop-Computers/b?ie...",
+   "htmlFormattedUrl": "https://www.amazon.com/Notebooks-<b>Laptop</b>-Computers/b?ie...",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "373",
+      "height": "135",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT7OXlFBwwGy8n9WYjA0sncWbsr90WMe5-ECu7gvg2Opzwya9cpirKeHDA"
+     }
+    ],
+    "metatags": [
+     {
+      "og:title": "Laptops | Amazon.com",
+      "twitter:title": "Laptops | Amazon.com",
+      "og:description": "Shop a wide selection of Laptops including 2 in 1 and traditional laptops at Amazon.com. Free shipping and free returns on eligible items.",
+      "twitter:description": "Shop a wide selection of Laptops including 2 in 1 and traditional laptops at Amazon.com. Free shipping and free returns on eligible items."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://images-na.ssl-images-amazon.com/images/G/01/pc/vs/AMZ_Laptop_Billboard_1900x690._CB501669238_.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Laptops - Walmart.com",
+   "htmlTitle": "<b>Laptops</b> - Walmart.com",
+   "link": "https://www.walmart.com/cp/laptops/1089430",
+   "displayLink": "www.walmart.com",
+   "snippet": "Shop Laptops at Walmart.com and find popular brands including Dell, HP, \nSamsung, Apple and Acer. Save money. Live better.",
+   "htmlSnippet": "Shop <b>Laptops</b> at Walmart.com and find popular brands including Dell, HP, <br>\nSamsung, Apple and Acer. Save money. Live better.",
+   "cacheId": "esZH8_XDHvUJ",
+   "formattedUrl": "https://www.walmart.com/cp/laptops/1089430",
+   "htmlFormattedUrl": "https://www.walmart.com/cp/<b>laptops</b>/1089430",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "303",
+      "height": "166",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTxJqZYPOyhsTExnG0HktfJu00ikCTghQbHyk1xuXh2xZ1MDPnaTgWTkLzj"
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=device-width, initial-scale=1.0",
+      "og:type": "Website",
+      "og:image": "http://sphotos-b.xx.fbcdn.net/hphotos-ash4/229244_10150189115584236_162217_n.jpg",
+      "og:site_name": "Walmart.com",
+      "fb:app_id": "105223049547814",
+      "twitter:card": "summary",
+      "twitter:image": "https://pbs.twimg.com/profile_images/616833885/walmart_logo_youtube_bigger.jpg",
+      "twitter:site": "@walmart",
+      "twitter:url": "https://www.walmart.com/cp/laptops/1089430",
+      "og:url": "https://www.walmart.com/cp/laptops/1089430",
+      "twitter:description": "Shop Laptops at Walmart.com and find popular brands including Dell, HP, Samsung, Apple and Acer. Save money. Live better.",
+      "og:title": "Laptops - Walmart.com",
+      "twitter:title": "Laptops - Walmart.com"
+     }
+    ],
+    "listitem": [
+     {
+      "position": "1"
+     },
+     {
+      "position": "2"
+     },
+     {
+      "position": "3"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://i5.walmartimages.com/dfw/4ff9c6c9-db5b/k2-_f6608a0f-5880-4921-be32-25b7c293c217.v1.jpg?odnWidth=912&odnHeight=500&odnBg=ffffff"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Laptop Reviews - CNET",
+   "htmlTitle": "<b>Laptop</b> Reviews - CNET",
+   "link": "https://www.cnet.com/topics/laptops/products/",
+   "displayLink": "www.cnet.com",
+   "snippet": "Laptop reviews, ratings, and prices at CNET. Find the Laptop that is right for you.",
+   "htmlSnippet": "<b>Laptop</b> reviews, ratings, and prices at CNET. Find the <b>Laptop</b> that is right for you.",
+   "cacheId": "HPOY396cVsAJ",
+   "formattedUrl": "https://www.cnet.com/topics/laptops/products/",
+   "htmlFormattedUrl": "https://www.cnet.com/topics/<b>laptops</b>/products/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "225",
+      "height": "225",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS8itIcjjycl8CBAJXm9YfJPVQUyvSX6as19EoshRzAuOmM5cIdgpExwto"
+     }
+    ],
+    "metatags": [
+     {
+      "theme-color": "#B80000",
+      "apple-mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-status-bar-style": "black-translucent",
+      "og:site_name": "CNET",
+      "og:title": "Laptop Reviews",
+      "og:description": "Laptop reviews, ratings, and prices at CNET. Find the Laptop that is right for you.",
+      "og:image": "https://cnet4.cbsistatic.com/fly/bundles/cnetcss/images/core/redball/cnet-meta.jpg",
+      "og:type": "website",
+      "og:url": "https://www.cnet.com/topics/laptops/products/",
+      "al:ios:app_name": "CNET",
+      "al:ios:app_store_id": "383989837",
+      "al:ios:url": "https://www.cnet.com/topics/laptops/products/?search=toapp",
+      "fb:app_id": "16995676698",
+      "fb:admins": "100001036810388",
+      "article:publisher": "https://www.facebook.com/cnet",
+      "fb:pages": "7155422274",
+      "twitter:account_id": "30261067",
+      "p:domain_verify": "47524839a64b83c951afca9ef6c838e0",
+      "msapplication-tooltip": "Product reviews and prices, software downloads, and tech news - CNET",
+      "msapplication-starturl": "https://www.cnet.com/",
+      "msapplication-window": "width=1024;height=768",
+      "msapplication-navbutton-color": "#424244",
+      "msapplication-task": "name=Home; action-uri=https://www.cnet.com/; icon-uri=https://www.cnet.com/favicon.ico",
+      "viewport": "width=device-width"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://cnet4.cbsistatic.com/fly/bundles/cnetcss/images/core/redball/cnet-meta.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "The best laptops of 2018: find your next laptop | TechRadar",
+   "htmlTitle": "The best <b>laptops</b> of 2018: find your next <b>laptop</b> | TechRadar",
+   "link": "https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361",
+   "displayLink": "www.techradar.com",
+   "snippet": "3 days ago ... We've reviewed all the best models from the best brands to help you discover \nwhich is the best laptop for your own personal needs.",
+   "htmlSnippet": "3 days ago <b>...</b> We&#39;ve reviewed all the best models from the best brands to help you discover <br>\nwhich is the best <b>laptop</b> for your own personal needs.",
+   "cacheId": "dZ0FK8qPN-MJ",
+   "formattedUrl": "https://www.techradar.com/news/.../laptops/best-laptops-1304361",
+   "htmlFormattedUrl": "https://www.techradar.com/news/.../<b>laptops</b>/best-<b>laptops</b>-1304361",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTCwWlCzIvkkdNWXUEkEZlWfQm-xV-n_p_zR5px5UkSCfj2p2IAHVrK3E7x"
+     }
+    ],
+    "metatags": [
+     {
+      "geo_locale": "US",
+      "viewport": "width=device-width,minimum-scale=1,initial-scale=1",
+      "news_keywords": "tech,Computing,Apple,best laptops",
+      "pub_date": "2018-05-03T18:55:00+00:00",
+      "msapplication-tilecolor": "#000000",
+      "msapplication-tileimage": "https://vanilla.futurecdn.net/techradar/201805032/apple-touch-icon.png",
+      "og:title": "The best laptop 2018: our pick of the 15 best laptops you can buy this year",
+      "og:site_name": "TechRadar",
+      "og:url": "https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361",
+      "og:description": "We've reviewed all the recent models from the best brands to help you discover which is the best laptop for your own personal needs",
+      "og:image": "https://cdn.mos.cms.futurecdn.net/7sYPeKLEMKg5Hp9hc4WrmL-1200-80.jpg",
+      "og:image:width": "1200",
+      "og:type": "article",
+      "article:publisher": "https://www.facebook.com/TechRadar",
+      "article:author": "https://www.facebook.com/TechRadar",
+      "fb:app_id": "235441786508054",
+      "twitter:card": "summary_large_image",
+      "twitter:site": "@TechRadar",
+      "twitter:title": "The best laptop 2018: our pick of the 15 best laptops you can buy this year",
+      "twitter:description": "We've reviewed all the recent models from the best brands to help you discover which is the best laptop for your own personal needs",
+      "twitter:creator": "@TechRadar",
+      "twitter:image": "https://cdn.mos.cms.futurecdn.net/7sYPeKLEMKg5Hp9hc4WrmL-1200-80.jpg",
+      "twitter:account_id": "15560223",
+      "p:domain_verify": "10329f1fd4d0a2cd5c0d3b3b809cb4cd",
+      "taboola:url": "https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361",
+      "botify-site-verification": "xkNFqB6l1qBl8BEqMjQvrHuYinhxlJVe"
+     }
+    ],
+    "newsarticle": [
+     {
+      "mainentityofpage": "https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361",
+      "name": "The best laptop 2018: our pick of the 15 best laptops you can buy this year",
+      "headline": "The best laptop 2018: our pick of the 15 best laptops you can buy this year",
+      "datepublished": "2018-05-03T18:55:00.122Z",
+      "datemodified": "2018-05-03T18:55:00.122Z",
+      "articlebody": "Welcome to our list of the best laptops you can buy in 2018. Here, you'll find the top laptops that have been carefully tested by the TechRadar editorial team.In our list of the best laptops..."
+     }
+    ],
+    "hcard": [
+     {
+      "fn": "Future Publishing Limited"
+     }
+    ],
+    "imageobject": [
+     {
+      "url": "https://vanilla.futurecdn.net/techradar/media/img/techradar_logo.png"
+     },
+     {
+      "url": "https://cdn.mos.cms.futurecdn.net/7sYPeKLEMKg5Hp9hc4WrmL.jpg",
+      "height": "600",
+      "width": "338"
+     }
+    ],
+    "person": [
+     {
+      "name": "Matt Hanson"
+     }
+    ],
+    "organization": [
+     {
+      "url": "TechRadar The source for Tech Buying Advice",
+      "name": "TechRadar"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://cdn.mos.cms.futurecdn.net/7sYPeKLEMKg5Hp9hc4WrmL-1200-80.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "I Bought A $39 Laptop From Amazon... - YouTube",
+   "htmlTitle": "I Bought A $39 <b>Laptop</b> From Amazon... - YouTube",
+   "link": "https://www.youtube.com/watch?v=-ofQV33q0Bo",
+   "displayLink": "www.youtube.com",
+   "snippet": "Aug 14, 2017 ... The Coolest Phone You've Never Heard Of... https://youtu.be/MjSeHQpEoTA?list\n=PL7u4lWXQ3wfI_7PgX0C-VTiwLeu0S4v34 Craig Wireless ...",
+   "htmlSnippet": "Aug 14, 2017 <b>...</b> The Coolest Phone You&#39;ve Never Heard Of... https://youtu.be/MjSeHQpEoTA?list<br>\n=PL7u4lWXQ3wfI_7PgX0C-VTiwLeu0S4v34 Craig Wireless&nbsp;...",
+   "cacheId": "UGc7BoPpm04J",
+   "formattedUrl": "https://www.youtube.com/watch?v=-ofQV33q0Bo",
+   "htmlFormattedUrl": "https://www.youtube.com/watch?v=-ofQV33q0Bo",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQw7w4bfqCCumdvkkfOywpELimRV0GuJ0QAAWHD2qkx3BaRZXe99Q-iCYs"
+     }
+    ],
+    "metatags": [
+     {
+      "title": "I Bought A $39 Laptop From Amazon...",
+      "theme-color": "#ff0000",
+      "og:site_name": "YouTube",
+      "og:url": "https://www.youtube.com/watch?v=-ofQV33q0Bo",
+      "og:title": "I Bought A $39 Laptop From Amazon...",
+      "og:image": "https://i.ytimg.com/vi/-ofQV33q0Bo/maxresdefault.jpg",
+      "og:description": "The Coolest Phone You've Never Heard Of... https://youtu.be/MjSeHQpEoTA?list=PL7u4lWXQ3wfI_7PgX0C-VTiwLeu0S4v34 Craig Wireless Netbook (USA Link) - http://am...",
+      "al:ios:app_store_id": "544007664",
+      "al:ios:app_name": "YouTube",
+      "al:ios:url": "vnd.youtube://www.youtube.com/watch?v=-ofQV33q0Bo&feature=applinks",
+      "al:android:url": "vnd.youtube://www.youtube.com/watch?v=-ofQV33q0Bo&feature=applinks",
+      "al:android:app_name": "YouTube",
+      "al:android:package": "com.google.android.youtube",
+      "al:web:url": "https://www.youtube.com/watch?v=-ofQV33q0Bo&feature=applinks",
+      "og:type": "video.other",
+      "og:video:url": "https://www.youtube.com/embed/-ofQV33q0Bo",
+      "og:video:secure_url": "https://www.youtube.com/embed/-ofQV33q0Bo",
+      "og:video:type": "text/html",
+      "og:video:width": "1280",
+      "og:video:height": "720",
+      "og:video:tag": "laptop"
+     }
+    ],
+    "videoobject": [
+     {
+      "url": "https://www.youtube.com/watch?v=-ofQV33q0Bo",
+      "name": "I Bought A $39 Laptop From Amazon...",
+      "description": "The Coolest Phone You've Never Heard Of... https://youtu.be/MjSeHQpEoTA?list=PL7u4lWXQ3wfI_7PgX0C-VTiwLeu0S4v34 Craig Wireless Netbook (USA Link) - http://am...",
+      "paid": "False",
+      "channelid": "UCsTcErHg8oDvUnTzoqsYeNw",
+      "videoid": "-ofQV33q0Bo",
+      "duration": "PT6M53S",
+      "unlisted": "False",
+      "thumbnailurl": "https://i.ytimg.com/vi/-ofQV33q0Bo/maxresdefault.jpg",
+      "embedurl": "https://www.youtube.com/embed/-ofQV33q0Bo",
+      "playertype": "HTML5 Flash",
+      "width": "1280",
+      "height": "720",
+      "isfamilyfriendly": "True",
+      "regionsallowed": "AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH...",
+      "interactioncount": "4935768",
+      "datepublished": "2017-08-14",
+      "genre": "Science & Technology"
+     }
+    ],
+    "imageobject": [
+     {
+      "url": "https://i.ytimg.com/vi/-ofQV33q0Bo/maxresdefault.jpg",
+      "width": "1280",
+      "height": "720"
+     }
+    ],
+    "person": [
+     {
+      "url": "http://www.youtube.com/user/unboxtherapy"
+     },
+     {
+      "url": "https://plus.google.com/111749552663635945392"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://i.ytimg.com/vi/-ofQV33q0Bo/maxresdefault.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Laptop & Notebook Computers",
+   "htmlTitle": "<b>Laptop</b> &amp; Notebook Computers",
+   "link": "https://store.hp.com/us/en/vwa/laptops/form=Standard-laptop",
+   "displayLink": "store.hp.com",
+   "snippet": "Find a great collection of Laptop & Notebook Computers at HP. Enjoy Low Prices \nand Free Shipping when you buy now online.",
+   "htmlSnippet": "Find a great collection of <b>Laptop</b> &amp; Notebook Computers at HP. Enjoy Low Prices <br>\nand Free Shipping when you buy now online.",
+   "cacheId": "sOzG3bRA744J",
+   "formattedUrl": "https://store.hp.com/us/en/vwa/laptops/form=Standard-laptop",
+   "htmlFormattedUrl": "https://store.hp.com/us/en/vwa/<b>laptops</b>/form=Standard-<b>laptop</b>",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "259",
+      "height": "194",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcShIS5L61eR-7vG7KjwQp-q_EjAupN4cufqVF4vGb_Cc96wc_eanh7r4FVX"
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
+      "apple-mobile-web-app-capable": "yes",
+      "allow-search": "yes",
+      "hp_design_version": "hpweb.1.4",
+      "target_country": "US",
+      "page_content": "Products",
+      "segment": "consumer.home",
+      "lifecycle": "presales.awareness",
+      "business_unit": "shared",
+      "web_section_id": "R329",
+      "language": "en-us",
+      "commercesearch": "storeId_10151",
+      "hp_inav_version": "ihfcaas.4.r"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05811656.png"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Laptops and Notebook Computers - Newegg.com",
+   "htmlTitle": "<b>Laptops</b> and Notebook Computers - Newegg.com",
+   "link": "https://www.newegg.com/Laptops-Notebooks/Category/ID-223",
+   "displayLink": "www.newegg.com",
+   "snippet": "HP Laptop 250 G6 (1NW57UT#ABA) Intel Core i5 7th Gen 7200U (2.50 GHz) 8 \nGB Memory 256 GB SSD Intel HD Graphics 620 15.6\" Windows 10 Pro 64-Bit.",
+   "htmlSnippet": "HP <b>Laptop</b> 250 G6 (1NW57UT#ABA) Intel Core i5 7th Gen 7200U (2.50 GHz) 8 <br>\nGB Memory 256 GB SSD Intel HD Graphics 620 15.6&quot; Windows 10 Pro 64-Bit.",
+   "cacheId": "cCgf7RnED20J",
+   "formattedUrl": "https://www.newegg.com/Laptops-Notebooks/Category/ID-223",
+   "htmlFormattedUrl": "https://www.newegg.com/<b>Laptops</b>-Notebooks/Category/ID-223",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "319",
+      "height": "158",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRu3Krqu3HQQ3VggoOcb6qAdwEQqiqU0o5WYmkflfhhrs6F5hg03zZfbuoY"
+     }
+    ],
+    "metatags": [
+     {
+      "referrer": "always",
+      "og:image": "https://c1.neweggimages.com/WebResource/Themes/2005/Nest/logo_424x210.png",
+      "og:description": "Shop a wide selection of Laptops and Notebooks from ACER, ASUS, Lenovo & more! Newegg offers the best prices, fast shipping and top-rated customer service!",
+      "language": "english",
+      "copyright": "© 2000-2018 Newegg Inc.",
+      "application-name": "Newegg.com",
+      "msapplication-tooltip": "Come for the great reviews. Buy for the great prices. Newegg.com – Computers, Electronics and more.",
+      "msapplication-starturl": "//www.newegg.com/?cm_mmc=IE9PIN-_-US-_-na-_-na",
+      "msapplication-task": "name=Shell Shocker;action-uri=//www.newegg.com/Special/ShellShocker.aspx?cm_mmc=IE9PIN-_-US-_-ShellShocker-_-na;icon-uri=//c1.neweggimages.com/WebResource/Themes/2005/Nest/Newegg2.ico"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://c1.neweggimages.com/WebResource/Themes/2005/Nest/logo_424x210.png"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Laptop - Wikipedia",
+   "htmlTitle": "<b>Laptop</b> - Wikipedia",
+   "link": "https://en.wikipedia.org/wiki/Laptop",
+   "displayLink": "en.wikipedia.org",
+   "snippet": "A laptop, often called a notebook computer or just notebook, is a small, portable \npersonal computer with a \"clamshell\" form factor, having, typically, a thin LCD or ...",
+   "htmlSnippet": "A <b>laptop</b>, often called a notebook computer or just notebook, is a small, portable <br>\npersonal computer with a &quot;clamshell&quot; form factor, having, typically, a thin LCD or&nbsp;...",
+   "cacheId": "qxX4DuKm8xIJ",
+   "formattedUrl": "https://en.wikipedia.org/wiki/Laptop",
+   "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Laptop</b>",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "259",
+      "height": "194",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSsBBzUA3M4LHB2kH_7vnNSLHrvd4ywqpD0tdwnyrqoDqCSz-XVglQLFL0"
+     }
+    ],
+    "metatags": [
+     {
+      "referrer": "origin",
+      "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lenovo_G500s_laptop-2905.jpg/1200px-Lenovo_G500s_laptop-2905.jpg"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lenovo_G500s_laptop-2905.jpg/1200px-Lenovo_G500s_laptop-2905.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Laptop Mag: Find the Perfect Laptop, Tablet or 2-in-1 for You",
+   "htmlTitle": "<b>Laptop</b> Mag: Find the Perfect <b>Laptop</b>, Tablet or 2-in-1 for You",
+   "link": "https://www.laptopmag.com/",
+   "displayLink": "www.laptopmag.com",
+   "snippet": "Laptop Mag reviews and benchmarks the latest laptops, tablets and 2-in-1s; \ntakes you hands-on with new products; and helps you save time with smart tips.",
+   "htmlSnippet": "<b>Laptop</b> Mag reviews and benchmarks the latest <b>laptops</b>, tablets and 2-in-1s; <br>\ntakes you hands-on with new products; and helps you save time with smart tips.",
+   "cacheId": "wAIrzWMvoE4J",
+   "formattedUrl": "https://www.laptopmag.com/",
+   "htmlFormattedUrl": "https://www.<b>laptop</b>mag.com/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "291",
+      "height": "173",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS82QkhWwI1VUcZON_qo1VLrgvdPZiVKLjAeuWFAPc-0dg7h2UU7tiEcMCD"
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=device-width",
+      "fb:app_id": "346246512129983"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://img.purch.com/o/aHR0cHM6Ly93d3cubGFwdG9wbWFnLmNvbS9pbWFnZXMvdXBsb2Fkcy9tZnMvNTI5MF9tZi5qcGc="
+     }
+    ]
+   }
+  }
+ ]
+}
