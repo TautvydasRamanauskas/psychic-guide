@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yandexsearch version="1.0">
+  <request>
+    <query>
+      laptop
+    </query>
+    <page>
+      0
+    </page>
+    <sortby order="descending" priority="no">
+      rlv
+    </sortby>
+    <maxpassages>
+    </maxpassages>
+    <groupings>
+      <groupby attr="" mode="flat" groups-on-page="10" docs-in-group="1" curcateg="-1" />
+    </groupings>
+  </request>
+  <response date="20180507T175553">
+    <reqid>
+      1525715753118968-1631982455706201647366029-sas1-6805-XML
+    </reqid>
+    <found priority="phrase">
+      183674910
+    </found>
+    <found priority="strict">
+      183674910
+    </found>
+    <found priority="all">
+      183674910
+    </found>
+    <found-human>
+      184 mln. answers found
+      </found-human>
+    <results>
+      <grouping attr="" mode="flat" groups-on-page="10" docs-in-group="1" curcateg="-1">
+        <found priority="phrase">
+          111653
+        </found>
+        <found priority="strict">
+          111653
+        </found>
+        <found priority="all">
+          111653
+        </found>
+        <found-docs priority="phrase">
+          111653
+          </found-docs>
+        <found-docs priority="strict">
+          111653
+          </found-docs>
+        <found-docs priority="all">
+          111653
+          </found-docs>
+        <found-docs-human>
+          found 112 thsd. answers
+          </found-docs-human>
+        <page first="1" last="10">
+          0
+        </page>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="Z6B3C534366669DCD">
+            <relevance />
+            <url>
+              https://en.wikipedia.org/wiki/Laptop
+            </url>
+            <domain>
+              en.wikipedia.org
+            </domain>
+            <title>
+              <hlword>
+                Laptop
+              </hlword>
+              - Wikipedia
+            </title>
+            <headline>
+              A
+              <hlword>
+                laptop
+              </hlword>
+              , often called a notebook computer or just notebook, is a small, portable personal computer with a &quot;clamshell&quot; form factor, having, typically, a thin LCD or LED computer screen mounted on the inside of the upper lid of the &quot;clamshell&quot; and an alphanumeric keyboard on the inside of the lower lid.
+            </headline>
+            <modtime>
+              20080228T030000
+            </modtime>
+            <size>
+              15747
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="ZBE2640B5F5E34F8E">
+            <relevance />
+            <url>
+              https://www.bestbuy.com/site/computers-pcs/laptop-computers/abcat0502000.c?id=abcat0502000
+            </url>
+            <domain>
+              www.bestbuy.com
+            </domain>
+            <title>
+              <hlword>
+                Laptops
+              </hlword>
+              &amp; Notebook Computers - Best Buy
+            </title>
+            <modtime>
+              20130802T155332
+            </modtime>
+            <size>
+              6084
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <passages>
+              <passage>
+                Check out this week's featured
+                <hlword>
+                  laptops
+                </hlword>
+                for portable productivity and entertainment.
+              </passage>
+            </passages>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="Z1D68851796EC3607">
+            <relevance />
+            <url>
+              https://simple.wikipedia.org/wiki/Laptop
+            </url>
+            <domain>
+              simple.wikipedia.org
+            </domain>
+            <title>
+              <hlword>
+                Laptop
+              </hlword>
+              - Simple English Wikipedia, the free encyclopedia
+            </title>
+            <headline>
+              A
+              <hlword>
+                laptop
+              </hlword>
+              is a computer which is easy to carry around. Its user can fold the
+              <hlword>
+                laptop
+              </hlword>
+              along its hinge for carrying. The
+              <hlword>
+                laptop
+              </hlword>
+              was created mainly for this particular reason. Computer parts were scaled to smaller size so this could happen.
+            </headline>
+            <modtime>
+              20070826T040000
+            </modtime>
+            <size>
+              1700
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="Z6D73E4B8C815406E">
+            <relevance />
+            <url>
+              https://www.walmart.com/cp/laptops/1089430
+            </url>
+            <domain>
+              www.walmart.com
+            </domain>
+            <title>
+              <hlword>
+                Laptops
+              </hlword>
+              - Walmart.com
+            </title>
+            <modtime>
+              20140120T111638
+            </modtime>
+            <size>
+              9091
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <passages>
+              <passage>
+                Shop
+                <hlword>
+                  Laptops
+                </hlword>
+                at Walmart.com and find popular brands including Dell, HP, Samsung, Apple and Acer. Save money. Live better.
+              </passage>
+            </passages>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="ZC96540A9D545BD40">
+            <relevance />
+            <url>
+              https://en.wiktionary.org/wiki/laptop
+            </url>
+            <domain>
+              en.wiktionary.org
+            </domain>
+            <title>
+              <hlword>
+                laptop
+              </hlword>
+              - Wiktionary
+            </title>
+            <headline>
+              lap (“upper legs of a seated person”) +‎ top. (UK) IPA(key): /ˈlæp.tɒp/. (US) IPA(key): /ˈlæp.tɑp/.
+              <hlword>
+                laptop
+              </hlword>
+              (plural
+              <hlword>
+                laptops
+              </hlword>
+              ). (computing) A
+              <hlword>
+                laptop
+              </hlword>
+              computer. 2013 August 3, “Revenge of the nerds”, in The Economist, volume 408...
+            </headline>
+            <modtime>
+              20170428T030000
+            </modtime>
+            <size>
+              2956
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="Z509EE2814B07CC51">
+            <relevance />
+            <url>
+              https://www.pcmag.com/article2/0,2817,2369981,00.asp
+            </url>
+            <domain>
+              www.pcmag.com
+            </domain>
+            <title>
+              The Best
+              <hlword>
+                Laptops
+              </hlword>
+              of 2018 -- Lab Tested Reviews From... | PCMag.com
+            </title>
+            <headline>
+              The Lay of the
+              <hlword>
+                Laptop
+              </hlword>
+              Land. The market has undergone major changes in the past few years, and there's likely to be more confusion in the notebook aisle now than at any other time.
+            </headline>
+            <modtime>
+              20090920T040000
+            </modtime>
+            <size>
+              9761
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="ZC662A1FFB28517A9">
+            <relevance />
+            <url>
+              https://www.cnet.com/topics/laptops/products/
+            </url>
+            <domain>
+              www.cnet.com
+            </domain>
+            <title>
+              <hlword>
+                Laptop
+              </hlword>
+              Reviews - CNET
+            </title>
+            <modtime>
+              20141014T115106
+            </modtime>
+            <size>
+              2536
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <passages>
+              <passage>
+                The Asus NovaGo makes good use of its Qualcomm Snapdragon 835 brain for long battery life and always-on cellular, but the performance feels more like a phone than
+                <hlword>
+                  laptop
+                </hlword>
+                .
+              </passage>
+            </passages>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="ZCC234AE1445E9F3E">
+            <relevance />
+            <url>
+              https://www.laptopmag.com/t/laptops
+            </url>
+            <domain>
+              www.laptopmag.com
+            </domain>
+            <title>
+              <hlword>
+                Laptop
+              </hlword>
+              Reviews - 2018 Buying Guide and Top Picks
+            </title>
+            <modtime>
+              20140808T034507
+            </modtime>
+            <size>
+              1787
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <passages>
+              <passage>
+                Get unbiased
+                <hlword>
+                  laptop
+                </hlword>
+                reviews from the experts at
+                <hlword>
+                  Laptop
+                </hlword>
+                Mag.
+              </passage>
+              <passage>
+                <hlword>
+                  Laptop
+                </hlword>
+                Guide. There are plenty of high-performance
+                <hlword>
+                  laptops
+                </hlword>
+                on the market.
+              </passage>
+            </passages>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="ZC809FBCA5D7CCF43">
+            <relevance />
+            <url>
+              https://www.laptopmag.com/best-laptops
+            </url>
+            <domain>
+              www.laptopmag.com
+            </domain>
+            <title>
+              Best
+              <hlword>
+                Laptops
+              </hlword>
+              of 2018 - Windows
+              <hlword>
+                Laptops
+              </hlword>
+              , Chromebooks and Macs
+            </title>
+            <modtime>
+              20140809T034125
+            </modtime>
+            <size>
+              4795
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <passages>
+              <passage>
+                Whether you're shopping for a sub-$200
+                <hlword>
+                  laptop
+                </hlword>
+                for a kid, a lightweight
+                <hlword>
+                  laptop
+                </hlword>
+                for work or a powerful gaming rig, the sheer number of choices can be overwhelming.
+              </passage>
+            </passages>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+        <group>
+          <doccount>
+            1
+          </doccount>
+          <relevance />
+          <doc id="Z4BAD4D85FC1F4357">
+            <relevance />
+            <url>
+              https://www.consumersearch.com/laptops
+            </url>
+            <domain>
+              www.consumersearch.com
+            </domain>
+            <title>
+              Best
+              <hlword>
+                Laptops
+              </hlword>
+              -
+              <hlword>
+                Laptop
+              </hlword>
+              Reviews - 2017
+            </title>
+            <modtime>
+              20081010T040000
+            </modtime>
+            <size>
+              2654
+            </size>
+            <charset>
+              utf-8
+            </charset>
+            <passages>
+              <passage>
+                The 2017 version of the Dell XPS 13 breaks from the pack with a near-edge-to-edge Infinity display that fits a 13.3-inch screen into a
+                <hlword>
+                  laptop
+                </hlword>
+                sized similarly to an 11-inch model.
+              </passage>
+            </passages>
+            <properties>
+              <_PassagesType>
+                0
+              </_PassagesType>
+              <lang>
+                en
+              </lang>
+            </properties>
+            <mime-type>
+              text/html
+              </mime-type>
+          </doc>
+        </group>
+      </grouping>
+    </results>
+  </response>
+</yandexsearch>
