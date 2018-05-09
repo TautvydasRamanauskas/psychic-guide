@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -62,7 +63,7 @@ public class YandexSearchApi implements SearchAPIService {
 	private Document fetchResults(String keyword) {
 		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 		try {
-			URL url = new URL(String.format(API_URL_TEMPLATE, keyword.replaceAll(" ", "+")));
+			URL url = new URL(String.format(API_URL_TEMPLATE, URLEncoder.encode(keyword, "UTF-8")));
 			URLConnection connection = url.openConnection();
 			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
 			try (InputStream inputStream = connection.getInputStream()) {

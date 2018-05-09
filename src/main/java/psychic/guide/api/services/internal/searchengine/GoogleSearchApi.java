@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -34,7 +35,7 @@ public class GoogleSearchApi implements SearchAPIService {
 	private JSONObject fetchResults(String keyword) {
 		StringBuilder results = new StringBuilder();
 		try {
-			URL url = new URL(String.format(REQUEST_URL_TEMPLATE, keyword.replaceAll(" ", "+")));
+			URL url = new URL(String.format(REQUEST_URL_TEMPLATE, URLEncoder.encode(keyword, "UTF-8")));
 			URLConnection connection = url.openConnection();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
 				String line;
