@@ -1,11 +1,13 @@
 package psychic.guide.api.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	private final UUID id = UUID.randomUUID();
 	private String result;
+	private List<String> references;
 	private int count;
 	private boolean bookmark;
 	private int voteValue;
@@ -25,6 +27,14 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public List<String> getReferences() {
+		return references;
+	}
+
+	public void setReferences(List<String> references) {
+		this.references = references;
 	}
 
 	public int getCount() {

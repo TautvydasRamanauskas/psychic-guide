@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import static psychic.guide.api.services.internal.Tags.*;
 
 public class Parser {
+	private static final String ELEMENTS_BRANDS_SELECTOR = ":containsOwn(%s)";
 	private static final int DEFAULT_TAG_LEVEL = 3;
 	private static final Set<String> TAGS = Set.of(TAG_A, TAG_B, TAG_H3, TAG_H4, TAG_H5);
 
@@ -41,7 +42,7 @@ public class Parser {
 
 	private void parse(Document page, String url) {
 		Collection<Element> brandedElements = brandList.stream()
-				.flatMap(b -> page.select(String.format(":containsOwn(%s)", b)).stream())
+				.flatMap(b -> page.select(String.format(ELEMENTS_BRANDS_SELECTOR, b)).stream())
 				.collect(Collectors.toSet());
 		Collection<Element> filteredElements = brandedElements.stream()
 				.filter(this::isResult)
@@ -49,9 +50,7 @@ public class Parser {
 		page.children().forEach(e -> networkTrainer.train(e, brandedElements, filteredElements));
 
 		filteredElements.stream()
-				.map(Element::text)
-				.map(ruleSet::modify)
-				.map(t -> createResultEntry(url, t))
+				.map(e -> createResultEntry(e, url))
 				.forEach(results::add);
 	}
 
@@ -64,10 +63,10 @@ public class Parser {
 				(TAGS.contains(element.tagName()) || isResult(element.parent(), --level));
 	}
 
-	private static ResultEntry createResultEntry(String url, String text) {
+	private ResultEntry createResultEntry(Element element, String url) {
 		ResultEntry resultEntry = new ResultEntry();
-		resultEntry.setResult(text);
-		resultEntry.setReferences(Collections.singletonList(url));
+		resultEntry.setResult(url);
+		resultEntry.setReferences(Collections.singletonList(ruleSet.modify(element.text())));
 		return resultEntry;
 	}
 }
