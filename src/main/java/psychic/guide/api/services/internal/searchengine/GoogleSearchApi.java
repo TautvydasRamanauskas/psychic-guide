@@ -2,6 +2,7 @@ package psychic.guide.api.services.internal.searchengine;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import psychic.guide.api.SearchProperties;
 import psychic.guide.api.services.internal.model.SearchResult;
 
 import java.io.BufferedReader;
@@ -16,10 +17,10 @@ import java.util.stream.IntStream;
 import static psychic.guide.api.services.internal.PercentEncoder.encode;
 
 public class GoogleSearchApi implements SearchAPIService {
-	private static final String GOOGLE_ENGINE_ID = "001435949413411837190:zwoql81phfa";
-	private static final String GOOGLE_API_KEY = "AIzaSyD88NTT8RHl-GjvcxwzJ0tgfU4qzDgtxB0";
-	private static final String REQUEST_URL_TEMPLATE = String.format("https://www.googleapis.com/customsearch/v1?" +
-			"q=%%s&" + "cx=%s&" + "key%s", GOOGLE_ENGINE_ID, GOOGLE_API_KEY);
+	private static final String REQUEST_URL_TEMPLATE = "https://www.googleapis.com/customsearch/v1?" +
+			"q=%s" +
+			"&cx=&" + SearchProperties.get("GOOGLE_ENGINE_ID") +
+			"&key=" + SearchProperties.get("GOOGLE_API_KEY");
 	private static final String KEY_ITEMS = "items";
 	private static final String KEY_LINK = "link";
 

@@ -4,6 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import psychic.guide.api.SearchProperties;
 import psychic.guide.api.services.internal.model.SearchResult;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -21,8 +22,8 @@ import static psychic.guide.api.services.internal.PercentEncoder.encode;
 public class YandexSearchApi implements SearchAPIService {
 	private static final String DEMO_FILE = "data/yandex-demo.xml";
 	private static final String API_URL_TEMPLATE = "https://yandex.com/search/xml?" +
-			"user=uid-ur3yepho" +
-			"&key=03.646582953:a4948c8b1c559f36776513469bfd199b" +
+			"user=" + SearchProperties.get("YANDEX_USER_ID") +
+			"&key=" + SearchProperties.get("YANDEX_API_KEY") +
 			"&query=%s" +
 			"&l10n=en" +
 			"&sortby=rlv" +
