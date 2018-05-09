@@ -70,10 +70,11 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	private ResultEntry parseResultEntry(String line, String ip) {
-		String[] splits = line.split("\\|");
+		String[] splits = line.split("$");
 		ResultEntry resultEntry = new ResultEntry();
-		resultEntry.setResult(splits[0].trim());
-		resultEntry.setCount(Integer.valueOf(splits[1].replaceFirst("count: ", "").trim()));
+		resultEntry.setResult(splits[0]);
+		resultEntry.setCount(Integer.valueOf(splits[1]));
+		resultEntry.setReferences(Arrays.stream(splits[2].split("\\|")).collect(Collectors.toList()));
 		resultEntry.setBookmark(bookmarkService.containsBookmark(resultEntry, ip));
 		resultEntry.setVoteValue(voteService.calculateVoteValue(resultEntry.getResult()));
 		resultEntry.setPersonalVote(getVote(resultEntry.getResult(), ip));

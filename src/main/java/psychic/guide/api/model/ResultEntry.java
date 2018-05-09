@@ -72,7 +72,7 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("%s %d %s", result, voteValue, references.stream().collect(Collectors.joining("|")));
+		return String.format("%s$%d$%s", result, voteValue, references.stream().collect(Collectors.joining("|")));
 	}
 
 	@Override

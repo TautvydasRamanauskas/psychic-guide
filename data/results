@@ -1,12 +1,12 @@
-Nintendo Switch | count: 3
-Apple HomeKit | count: 3
-Philips Hue | count: 3
-Lenovo Yoga 920 | count: 3
-Amazon Alexa | count: 3
-Samsung SmartThings | count: 3
-Google Home | count: 3
-Samsung Galaxy S9 | count: 4
-Microsoft Surface Book 2 | count: 4
-Dell XPS | count: 4
-Dell XPS 15 | count: 4
-Dell XPS 13 | count: 5
+Nintendo Switch$3$refOne|refTwo
+Apple HomeKit$3$refOne|refTwo|refThree
+Philips Hue$3$refOne
+Lenovo Yoga 920$3$refOne|refTwo
+Amazon Alexa$3$refOne|refTwo|refThree
+Samsung SmartThings$3$refOne|refTwo
+Google Home$3$refOne
+Samsung Galaxy S9$4$refOne|refTwo|refThree
+Microsoft Surface Book 2$4$refOne|refTwo
+Dell XPS$4$refOne|refTwo|refThree
+Dell XPS 15$4$refOne|refTwo
+Dell XPS 13$5$refOne|refTwo
