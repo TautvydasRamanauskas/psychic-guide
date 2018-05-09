@@ -6,8 +6,8 @@ import psychic.guide.api.services.internal.model.SearchResult;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -23,7 +23,7 @@ public class AzureDemoSearchApi implements SearchAPIService {
 		JSONObject webPages = demo.getJSONObject(KEY_WEB_PAGES);
 		JSONArray values = webPages.getJSONArray(KEY_VALUE);
 		return values.toList().stream()
-				.map(v -> ((HashMap) v))
+				.map(AzureDemoSearchApi::getUrl)
 				.map(SearchResult::new)
 				.collect(Collectors.toList());
 	}
@@ -36,5 +36,10 @@ public class AzureDemoSearchApi implements SearchAPIService {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	private static String getUrl(Object value) {
+		Map map = (Map) value;
+		return (String) map.get("url");
 	}
 }
