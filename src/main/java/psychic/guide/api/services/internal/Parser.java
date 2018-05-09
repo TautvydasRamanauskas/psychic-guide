@@ -18,7 +18,7 @@ import static psychic.guide.api.services.internal.Tags.*;
 public class Parser {
 	private static final String ELEMENTS_BRANDS_SELECTOR = ":containsOwn(%s)";
 	private static final int DEFAULT_TAG_LEVEL = 3;
-	private static final Set<String> TAGS = Set.of(TAG_A, TAG_B, TAG_H3, TAG_H4, TAG_H5);
+	private static final Set<String> TAGS = Set.of(TAG_A, TAG_B, TAG_H1, TAG_H2, TAG_H3, TAG_H4, TAG_H5);
 
 	private final Set<String> brandList;
 	private final TextRule ruleSet;
@@ -30,19 +30,14 @@ public class Parser {
 		this.networkTrainer = new NeuralNetworkTrainer(new NeurophNetwork());
 	}
 
-	public Set<ResultEntry> parse(String url) {
-		Document page = PageFetcher.fetch(url);
-		return parse(page, url);
-	}
-
-	private Set<ResultEntry> parse(Document page, String url) {
+	public Set<ResultEntry> parse(Document page, String url) {
 		Collection<Element> brandedElements = brandList.stream()
 				.flatMap(b -> page.select(String.format(ELEMENTS_BRANDS_SELECTOR, b)).stream())
 				.collect(Collectors.toSet());
 		Collection<Element> filteredElements = brandedElements.stream()
 				.filter(this::isResult)
 				.collect(Collectors.toSet());
-		page.children().forEach(e -> networkTrainer.train(e, brandedElements, filteredElements));
+//		page.children().forEach(e -> networkTrainer.train(e, brandedElements, filteredElements));
 
 		return filteredElements.stream()
 				.map(e -> createResultEntry(e, url))

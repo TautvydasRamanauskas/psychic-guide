@@ -27,7 +27,9 @@ public class LoadBalancer implements SearchAPIService {
 //		}
 //		return new ArrayList<>();
 
-		return services.get(Limit.BING).search(keyword);
+		List<SearchResult> results = services.get(Limit.BING).search(keyword);
+		Collections.shuffle(results);
+		return results;
 	}
 
 	public void stopTimer() {

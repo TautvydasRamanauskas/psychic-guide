@@ -3,6 +3,7 @@ package psychic.guide.api.model;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	private final UUID id = UUID.randomUUID();
@@ -70,20 +71,16 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		ResultEntry that = (ResultEntry) o;
-		return that.result.contains(result) || result.contains(that.result);
-	}
-
-	@Override
-	public int hashCode() {
-		return result != null ? result.hashCode() : 0;
+	public String toString() {
+		return String.format("%s %d %s", result, voteValue, references.stream().collect(Collectors.joining("|")));
 	}
 
 	@Override
 	public int compareTo(ResultEntry resultEntry) {
-		return Integer.compare(resultEntry.getCount() + resultEntry.getVoteValue(), count + voteValue);
+		int voteCompareResult = Integer.compare(resultEntry.getCount() + resultEntry.getVoteValue(), count + voteValue);
+		if (voteCompareResult == 0) {
+			return resultEntry.getResult().compareTo(result);
+		}
+		return voteCompareResult;
 	}
 }
