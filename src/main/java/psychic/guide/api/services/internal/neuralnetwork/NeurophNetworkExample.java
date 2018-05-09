@@ -1,4 +1,4 @@
-package psychic.guide.api.neuralnetwork;
+package psychic.guide.api.services.internal.neuralnetwork;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;

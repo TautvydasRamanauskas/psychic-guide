@@ -1,4 +1,4 @@
-package psychic.guide.api.neuralnetwork;
+package psychic.guide.api.services.internal.neuralnetwork;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
@@ -7,7 +7,7 @@ import org.neuroph.nnet.Perceptron;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NeurophNetwork implements psychic.guide.api.neuralnetwork.NeuralNetwork {
+public class NeurophNetwork implements psychic.guide.api.services.internal.neuralnetwork.NeuralNetwork {
 	private static final int INPUT_NEURONS_COUNT = 6;
 	private static final int OUTPUT_NEURONS_COUNT = 1;
 	private static final String FILE_NAME = "data/network.nn";
