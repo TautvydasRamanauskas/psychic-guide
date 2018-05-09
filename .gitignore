@@ -24,4 +24,4 @@ nbdist/
 .nb-gradle/
 
 ### Secure config files ###
-src/main/recources/search.properties
+src/main/resources/search.properties
