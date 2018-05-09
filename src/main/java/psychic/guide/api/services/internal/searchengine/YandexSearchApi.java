@@ -12,10 +12,11 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static psychic.guide.api.services.internal.PercentEncoder.encode;
 
 public class YandexSearchApi implements SearchAPIService {
 	private static final String DEMO_FILE = "data/yandex-demo.xml";
@@ -63,7 +64,7 @@ public class YandexSearchApi implements SearchAPIService {
 	private Document fetchResults(String keyword) {
 		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 		try {
-			URL url = new URL(String.format(API_URL_TEMPLATE, URLEncoder.encode(keyword, "UTF-8")));
+			URL url = new URL(String.format(API_URL_TEMPLATE, encode(keyword)));
 			URLConnection connection = url.openConnection();
 			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
 			try (InputStream inputStream = connection.getInputStream()) {

@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static psychic.guide.api.services.internal.PercentEncoder.encode;
 
 public class GoogleSearchApi implements SearchAPIService {
 	private static final String GOOGLE_ENGINE_ID = "001435949413411837190:zwoql81phfa";
@@ -35,7 +36,7 @@ public class GoogleSearchApi implements SearchAPIService {
 	private JSONObject fetchResults(String keyword) {
 		StringBuilder results = new StringBuilder();
 		try {
-			URL url = new URL(String.format(REQUEST_URL_TEMPLATE, URLEncoder.encode(keyword, "UTF-8")));
+			URL url = new URL(String.format(REQUEST_URL_TEMPLATE, encode(keyword)));
 			URLConnection connection = url.openConnection();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
 				String line;
