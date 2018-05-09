@@ -18,14 +18,16 @@ public class LoadBalancer implements SearchAPIService {
 
 	@Override
 	public List<SearchResult> search(String keyword) {
-		SearchAPIService service = services.entrySet().stream()
-				.max((eOne, eTwo) -> compare(eOne.getKey(), eTwo.getKey()))
-				.map(Map.Entry::getValue)
-				.orElse(null);
-		if (service != null) {
-			return service.search(keyword);
-		}
-		return new ArrayList<>();
+//		SearchAPIService service = services.entrySet().stream()
+//				.max((eOne, eTwo) -> compare(eOne.getKey(), eTwo.getKey()))
+//				.map(Map.Entry::getValue)
+//				.orElse(null);
+//		if (service != null) {
+//			return service.search(keyword);
+//		}
+//		return new ArrayList<>();
+
+		return services.get(Limit.BING).search(keyword);
 	}
 
 	public void stopTimer() {
