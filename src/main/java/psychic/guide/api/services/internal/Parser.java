@@ -8,6 +8,7 @@ import psychic.guide.api.services.internal.neuralnetwork.NeurophNetwork;
 import psychic.guide.api.services.internal.textrule.TextRule;
 import psychic.guide.api.services.internal.textrule.TextRuleSet;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
@@ -55,8 +56,8 @@ public class Parser {
 
 	private ResultEntry createResultEntry(Element element, String url) {
 		ResultEntry resultEntry = new ResultEntry();
-		resultEntry.setResult(url);
-		resultEntry.setReferences(Collections.singletonList(ruleSet.modify(element.text())));
+		resultEntry.setResult(ruleSet.modify(element.text()));
+		resultEntry.setReferences(new ArrayList<>(Collections.singleton(url)));
 		return resultEntry;
 	}
 }

@@ -16,7 +16,7 @@ public class TextRuleSet implements TextRule {
 
 	@Override
 	public String modify(String text) {
-		String newText = "";
+		String newText = text;
 		for (TextRule rule : ruleSet) {
 			newText = rule.modify(newText);
 		}
