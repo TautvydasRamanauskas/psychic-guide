@@ -14,6 +14,6 @@ public class PercentEncoder {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		return "";
+		return string;
 	}
 }
