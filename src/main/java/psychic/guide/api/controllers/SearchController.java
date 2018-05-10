@@ -29,11 +29,6 @@ public class SearchController {
 	@RequestMapping(path = "/{searchKeyword}", method = RequestMethod.POST)
 	public ResponseEntity<List<ResultEntry>> search(@PathVariable("searchKeyword") String searchKeyword,
 													HttpServletRequest request) {
-//		if (!authenticate(body.get("key").toString())) {
-//			logger.info("Failed to authenticate");
-//			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//		}
-
 		logger.info("Searching for keyword - {}", searchKeyword);
 		String remoteAddress = request.getRemoteAddr();
 		List<ResultEntry> searchResult = searchService.search(searchKeyword, remoteAddress);
