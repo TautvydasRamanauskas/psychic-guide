@@ -6,6 +6,9 @@ import org.neuroph.core.data.DataSetRow;
 import org.neuroph.nnet.Perceptron;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 @Service
 public class NeurophNetwork implements psychic.guide.api.services.internal.neuralnetwork.NeuralNetwork {
 	private static final int INPUT_NEURONS_COUNT = 6;
@@ -21,6 +24,15 @@ public class NeurophNetwork implements psychic.guide.api.services.internal.neura
 	public void train(double[] inputs, double[] outputs) {
 		DataSet trainingSet = new DataSet(INPUT_NEURONS_COUNT, OUTPUT_NEURONS_COUNT);
 		trainingSet.addRow(new DataSetRow(inputs, outputs));
+		network.learn(trainingSet);
+	}
+
+	@Override
+	public void train(List<double[]> inputs, List<double[]> outputs) {
+		DataSet trainingSet = new DataSet(INPUT_NEURONS_COUNT, OUTPUT_NEURONS_COUNT);
+		IntStream.range(0, inputs.size())
+				.mapToObj(i -> new DataSetRow(inputs.get(i), outputs.get(i)))
+				.forEach(trainingSet::addRow);
 		network.learn(trainingSet);
 	}
 
