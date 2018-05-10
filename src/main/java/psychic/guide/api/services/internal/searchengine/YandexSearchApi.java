@@ -22,8 +22,8 @@ import static psychic.guide.api.services.internal.PercentEncoder.encode;
 public class YandexSearchApi implements SearchAPIService {
 	private static final String DEMO_FILE = "data/yandex-demo.xml";
 	private static final String API_URL_TEMPLATE = "https://yandex.com/search/xml?" +
-			"user=" + SearchProperties.get("yandex.user.id") +
-			"&key=" + SearchProperties.get("yandex.api.key") +
+			"user=" + SearchProperties.getInstance().get("yandex.user.id") +
+			"&key=" + SearchProperties.getInstance().get("yandex.api.key") +
 			"&query=%s" +
 			"&l10n=en" +
 			"&sortby=rlv" +

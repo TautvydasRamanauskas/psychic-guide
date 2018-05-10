@@ -78,9 +78,12 @@ public class PersistenceSerializationService<T extends Serializable> implements 
 	}
 
 	private static Cipher getCipher(int encryptMode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
-		String cipherType = SearchProperties.get("persistence.cipher");
+		String cipherType = SearchProperties.getInstance().get("persistence.cipher");
+		byte[] key = SearchProperties.getInstance().getByteArray("persistence.key");
 		Cipher cipher = Cipher.getInstance(cipherType);
-		cipher.init(encryptMode, new SecretKeySpec(SearchProperties.getByteArray("persistence.key"), cipherType));
+		if (key != null) {
+			cipher.init(encryptMode, new SecretKeySpec(key, cipherType));
+		}
 		return cipher;
 	}
 }
