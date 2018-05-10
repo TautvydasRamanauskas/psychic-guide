@@ -38,7 +38,7 @@ public class Parser {
 		Collection<Element> filteredElements = brandedElements.stream()
 				.filter(this::isResult)
 				.collect(Collectors.toSet());
-//		page.children().forEach(e -> networkTrainer.train(e, brandedElements, filteredElements));
+//		page.children().forEach(e -> networkTrainer.trainOnThread(e, brandedElements, filteredElements));
 
 		return filteredElements.stream()
 				.map(e -> createResultEntry(e, url))

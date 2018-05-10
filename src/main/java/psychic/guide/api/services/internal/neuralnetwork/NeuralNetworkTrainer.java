@@ -4,17 +4,25 @@ import org.jsoup.nodes.Element;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static psychic.guide.api.services.internal.Tags.*;
 
 public class NeuralNetworkTrainer {
-	private NeurophNetwork network;
+	private final NeurophNetwork network;
+	private final ExecutorService trainExecutor;
 
 	public NeuralNetworkTrainer(NeurophNetwork network) {
 		this.network = network;
+		this.trainExecutor = Executors.newSingleThreadExecutor();
 	}
 
-	public void train(Element element, Collection<Element> brandedElements, Collection<Element> filteredElements) {
+	public void trainOnThread(Element element, Collection<Element> brandedElements, Collection<Element> filteredElements) {
+		trainExecutor.execute(() -> train(element, brandedElements, filteredElements));
+	}
+
+	private void train(Element element, Collection<Element> brandedElements, Collection<Element> filteredElements) {
 		boolean isBrand = brandedElements.contains(element);
 		boolean isLink = Objects.equals(element.tagName(), TAG_A);
 		boolean isBold = Objects.equals(element.tagName(), TAG_B);
