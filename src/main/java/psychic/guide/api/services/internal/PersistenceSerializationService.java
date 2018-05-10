@@ -1,5 +1,7 @@
 package psychic.guide.api.services.internal;
 
+import psychic.guide.api.SearchProperties;
+
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
@@ -10,8 +12,6 @@ import java.util.concurrent.Executors;
 
 public class PersistenceSerializationService<T extends Serializable> implements PersistenceService<T> {
 	private static final String FILE_NAME_FORMAT = "data/%s.ser";
-	private static final String CIPHER = "Blowfish";
-	private static final SecretKey KEY = new SecretKeySpec(new byte[]{0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07}, CIPHER);
 	private final String fileName;
 	private final ExecutorService saveExecutor;
 	private final Object accessLock;
@@ -78,8 +78,9 @@ public class PersistenceSerializationService<T extends Serializable> implements 
 	}
 
 	private static Cipher getCipher(int encryptMode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
-		Cipher cipher = Cipher.getInstance(CIPHER);
-		cipher.init(encryptMode, KEY);
+		String cipherType = SearchProperties.get("persistence.cipher");
+		Cipher cipher = Cipher.getInstance(cipherType);
+		cipher.init(encryptMode, new SecretKeySpec(SearchProperties.getByteArray("persistence.key"), cipherType));
 		return cipher;
 	}
 }
