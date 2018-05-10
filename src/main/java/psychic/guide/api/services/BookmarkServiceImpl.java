@@ -25,7 +25,7 @@ public class BookmarkServiceImpl implements BookmarkService {
 	public BookmarkServiceImpl(VoteService voteService) {
 		this.voteService = voteService;
 		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
-		this.bookmarksByIp = persistenceService.read();
+		this.bookmarksByIp = persistenceService.readOrDefault(new HashMap<>());
 	}
 
 	@Override

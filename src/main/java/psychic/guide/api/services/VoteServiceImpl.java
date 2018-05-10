@@ -17,7 +17,7 @@ public class VoteServiceImpl implements VoteService {
 
 	public VoteServiceImpl() {
 		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
-		this.votes = persistenceService.read();
+		this.votes = persistenceService.readOrDefault(new HashMap<>());
 	}
 
 	@Override

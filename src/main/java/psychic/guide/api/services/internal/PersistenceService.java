@@ -4,4 +4,6 @@ public interface PersistenceService <T> {
 	void save(T object);
 
 	T read();
+
+	T readOrDefault(T defaultResult);
 }

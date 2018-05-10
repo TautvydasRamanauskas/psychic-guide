@@ -24,7 +24,7 @@ public class LinkServiceImpl implements LinkService {
 	public LinkServiceImpl(VoteService voteService) {
 		this.voteService = voteService;
 		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
-		this.links = persistenceService.read();
+		this.links = persistenceService.readOrDefault(new HashMap<>());
 	}
 
 	@Override

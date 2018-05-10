@@ -30,7 +30,7 @@ public class SearchServiceImpl implements SearchService {
 		this.bookmarkService = bookmarkService;
 		this.voteService = voteService;
 		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
-		this.searches = persistenceService.read();
+		this.searches = persistenceService.readOrDefault(new HashMap<>());
 	}
 
 	@Override

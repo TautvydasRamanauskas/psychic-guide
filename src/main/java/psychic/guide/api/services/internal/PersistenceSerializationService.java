@@ -46,10 +46,21 @@ public class PersistenceSerializationService<T extends Serializable> implements 
 				//noinspection unchecked
 				return (T) sealedObject.getObject(cipher);
 			}
+		} catch (EOFException | FileNotFoundException ignored) {
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public T readOrDefault(T defaultResult) {
+		T read = read();
+		if (read == null) {
+			return defaultResult;
+		}
+		return read;
 	}
 
 	private static Cipher getCipher(int encryptMode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
