@@ -70,7 +70,7 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	private ResultEntry parseResultEntry(String line, String ip) {
-		String[] splits = line.split("$");
+		String[] splits = line.split("//$");
 		ResultEntry resultEntry = new ResultEntry();
 		resultEntry.setResult(splits[0]);
 		resultEntry.setCount(Integer.valueOf(splits[1]));
