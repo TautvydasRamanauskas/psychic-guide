@@ -15,9 +15,12 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import static psychic.guide.api.services.internal.PercentEncoder.encode;
+
 @Service
 public class SearchServiceImpl implements SearchService {
 	private static final String FILE_NAME = "searches";
+	private static final String CACHE_FILE_NAME_FORMAT = "caches/%s";
 	private static final int SHOWN_MOST_POPULAR_SEARCHES = 10;
 
 	private final BookmarkService bookmarkService;
@@ -35,14 +38,19 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<ResultEntry> search(String keyword, String ip) {
-		AtomicInteger searchCount = searches.computeIfAbsent(keyword, k -> new AtomicInteger());
-		searchCount.incrementAndGet();
-		persistenceService.save(searches);
+		noteSearch(keyword);
 
-		return readResults().stream()
-				.map(line -> parseResultEntry(line, ip))
-				.sorted()
-				.collect(Collectors.toList());
+		String cacheFileName = String.format(CACHE_FILE_NAME_FORMAT, encode(keyword));
+		List<ResultEntry> cachedResults = readCache(cacheFileName);
+		if (cachedResults == null) {
+			List<ResultEntry> results = readResults().stream()
+					.map(line -> parseResultEntry(line, ip))
+					.sorted()
+					.collect(Collectors.toList());
+			cacheResults(cacheFileName, (ArrayList<ResultEntry>) results);
+			return results;
+		}
+		return cachedResults;
 	}
 
 	@Override
@@ -56,6 +64,12 @@ public class SearchServiceImpl implements SearchService {
 
 	public void clear() {
 		searches.clear();
+		persistenceService.save(searches);
+	}
+
+	private void noteSearch(String keyword) {
+		AtomicInteger searchCount = searches.computeIfAbsent(keyword, k -> new AtomicInteger());
+		searchCount.incrementAndGet();
 		persistenceService.save(searches);
 	}
 
@@ -84,6 +98,23 @@ public class SearchServiceImpl implements SearchService {
 	private int getVote(String title, String ip) {
 		Vote vote = voteService.getVote(title, ip);
 		return vote == null ? 0 : vote.getValue();
+	}
+
+	private ArrayList<ResultEntry> readCache(String fileName) {
+		File file = new File(fileName);
+		if (file.exists()) {
+			PersistenceService<ArrayList<ResultEntry>> service = new PersistenceSerializationService<>(fileName);
+			return service.read();
+		}
+		return null;
+	}
+
+	private void cacheResults(String fileName, ArrayList<ResultEntry> results) {
+		File file = new File(fileName);
+		if (!file.exists()) {
+			PersistenceService<ArrayList<ResultEntry>> service = new PersistenceSerializationService<>(fileName);
+			service.save(results);
+		}
 	}
 
 	private int compareSearches(Map.Entry<String, AtomicInteger> entryOne, Map.Entry<String, AtomicInteger> entryTwo) {
