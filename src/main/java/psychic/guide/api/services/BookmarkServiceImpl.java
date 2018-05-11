@@ -33,7 +33,7 @@ public class BookmarkServiceImpl implements BookmarkService {
 		entry.setBookmark(true);
 		Collection<ResultEntry> bookmarks = bookmarksByIp.computeIfAbsent(ip, k -> new HashSet<>());
 		bookmarks.add(entry);
-		persistenceService.save(bookmarksByIp);
+		persistenceService.saveOnThread(bookmarksByIp);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class BookmarkServiceImpl implements BookmarkService {
 		if (bookmarks != null) {
 			bookmarks.remove(entry);
 		}
-		persistenceService.save(bookmarksByIp);
+		persistenceService.saveOnThread(bookmarksByIp);
 	}
 
 	@Override
@@ -64,6 +64,6 @@ public class BookmarkServiceImpl implements BookmarkService {
 
 	public void clear() {
 		bookmarksByIp.clear();
-		persistenceService.save(bookmarksByIp);
+		persistenceService.saveOnThread(bookmarksByIp);
 	}
 }

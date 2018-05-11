@@ -36,14 +36,14 @@ public class VoteServiceImpl implements VoteService {
 	public void addVote(Vote vote) {
 		Map<String, Vote> votesByIp = votes.computeIfAbsent(vote.getTitle(), t -> new HashMap<>());
 		votesByIp.put(vote.getIp(), vote);
-		persistenceService.save(votes);
+		persistenceService.saveOnThread(votes);
 	}
 
 	@Override
 	public void removeVote(Vote vote) {
 		Map<String, Vote> votesByIp = votes.computeIfAbsent(vote.getTitle(), t -> new HashMap<>());
 		votesByIp.remove(vote.getIp());
-		persistenceService.save(votes);
+		persistenceService.saveOnThread(votes);
 	}
 
 	@Override
@@ -57,6 +57,6 @@ public class VoteServiceImpl implements VoteService {
 
 	public void clear() {
 		votes.clear();
-		persistenceService.save(votes);
+		persistenceService.saveOnThread(votes);
 	}
 }

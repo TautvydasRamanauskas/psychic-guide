@@ -23,8 +23,27 @@ public class PersistenceSerializationService<T extends Serializable> implements 
 	}
 
 	@Override
+	public void saveOnThread(T object) {
+		saveExecutor.execute(() -> save(object));
+	}
+
+	@Override
 	public void save(T object) {
-		saveExecutor.execute(() -> saveWithLock(object));
+		synchronized (accessLock) {
+			try {
+				Cipher cipher = getCipher(Cipher.ENCRYPT_MODE);
+				SealedObject sealedObject = new SealedObject(object, cipher);
+				try (ObjectOutputStream outputStream =
+							 new ObjectOutputStream(
+									 new CipherOutputStream(
+											 new BufferedOutputStream(
+													 new FileOutputStream(fileName)), cipher))) {
+					outputStream.writeObject(sealedObject);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -57,24 +76,6 @@ public class PersistenceSerializationService<T extends Serializable> implements 
 			return defaultResult;
 		}
 		return read;
-	}
-
-	private void saveWithLock(T object) {
-		synchronized (accessLock) {
-			try {
-				Cipher cipher = getCipher(Cipher.ENCRYPT_MODE);
-				SealedObject sealedObject = new SealedObject(object, cipher);
-				try (ObjectOutputStream outputStream =
-							 new ObjectOutputStream(
-									 new CipherOutputStream(
-											 new BufferedOutputStream(
-													 new FileOutputStream(fileName)), cipher))) {
-					outputStream.writeObject(sealedObject);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	private static Cipher getCipher(int encryptMode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {

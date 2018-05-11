@@ -64,13 +64,13 @@ public class SearchServiceImpl implements SearchService {
 
 	public void clear() {
 		searches.clear();
-		persistenceService.save(searches);
+		persistenceService.saveOnThread(searches);
 	}
 
 	private void noteSearch(String keyword) {
 		AtomicInteger searchCount = searches.computeIfAbsent(keyword, k -> new AtomicInteger());
 		searchCount.incrementAndGet();
-		persistenceService.save(searches);
+		persistenceService.saveOnThread(searches);
 	}
 
 	private static Set<String> readResults() {
@@ -113,7 +113,7 @@ public class SearchServiceImpl implements SearchService {
 		File file = new File(fileName);
 		if (!file.exists()) {
 			PersistenceService<ArrayList<ResultEntry>> service = new PersistenceSerializationService<>(fileName);
-			service.save(results);
+			service.saveOnThread(results);
 		}
 	}
 

@@ -42,12 +42,12 @@ public class LinkServiceImpl implements LinkService {
 	public UUID generate(List<ResultEntry> results) {
 		UUID link = UUID.randomUUID();
 		links.put(link, results);
-		persistenceService.save(links);
+		persistenceService.saveOnThread(links);
 		return link;
 	}
 
 	public void clear() {
 		links.clear();
-		persistenceService.save(links);
+		persistenceService.saveOnThread(links);
 	}
 }
