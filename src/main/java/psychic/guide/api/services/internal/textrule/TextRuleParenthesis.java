@@ -1,14 +1,10 @@
 package psychic.guide.api.services.internal.textrule;
 
 class TextRuleParenthesis implements TextRule {
-	private static final String PARENTHESIS_OPEN = "(";
+	private static final String PARENTHESIS_MATCHING_PATTERN = "\\((.+?)\\)";
 
 	@Override
 	public String modify(String text) {
-		int start = text.indexOf(PARENTHESIS_OPEN);
-		if (start != -1) {
-			return text.substring(0, start);
-		}
-		return text;
+		return text.replaceAll(PARENTHESIS_MATCHING_PATTERN, "");
 	}
 }

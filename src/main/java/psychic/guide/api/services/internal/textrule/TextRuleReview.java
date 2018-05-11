@@ -7,7 +7,7 @@ class TextRuleReview implements TextRule {
 	public String modify(String text) {
 		int review = text.indexOf(REVIEW);
 		if (review != -1) {
-			return text.substring(0, review);
+			return text.replaceAll(REVIEW, "");
 		}
 		return text;
 	}

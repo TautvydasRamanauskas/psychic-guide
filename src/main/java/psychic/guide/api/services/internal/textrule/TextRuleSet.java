@@ -1,13 +1,13 @@
 package psychic.guide.api.services.internal.textrule;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextRuleSet implements TextRule {
-	private final Set<TextRule> ruleSet;
+	private final List<TextRule> ruleSet;
 
 	public TextRuleSet() {
-		ruleSet = new HashSet<>();
+		ruleSet = new ArrayList<>();
 		ruleSet.add(new TextRuleParenthesis());
 		ruleSet.add(new TextRuleReview());
 		ruleSet.add(new TextRuleNumber());
