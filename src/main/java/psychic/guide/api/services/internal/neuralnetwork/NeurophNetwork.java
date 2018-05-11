@@ -21,13 +21,6 @@ public class NeurophNetwork implements psychic.guide.api.services.internal.neura
 	}
 
 	@Override
-	public void train(double[] inputs, double[] outputs) {
-		DataSet trainingSet = new DataSet(INPUT_NEURONS_COUNT, OUTPUT_NEURONS_COUNT);
-		trainingSet.addRow(new DataSetRow(inputs, outputs));
-		network.learn(trainingSet);
-	}
-
-	@Override
 	public void train(List<double[]> inputs, List<double[]> outputs) {
 		DataSet trainingSet = new DataSet(INPUT_NEURONS_COUNT, OUTPUT_NEURONS_COUNT);
 		IntStream.range(0, inputs.size())

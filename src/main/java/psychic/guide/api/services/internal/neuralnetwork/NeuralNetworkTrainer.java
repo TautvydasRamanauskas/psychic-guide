@@ -25,7 +25,7 @@ public class NeuralNetworkTrainer {
 		trainExecutor.execute(() -> train(elements, brandedElements, filteredElements));
 	}
 
-	private void train(Elements elements, Collection<Element> brandedElements, Collection<Element> filteredElements) {
+	public void train(Elements elements, Collection<Element> brandedElements, Collection<Element> filteredElements) {
 		List<double[]> inputs = new ArrayList<>();
 		List<double[]> outputs = new ArrayList<>();
 		elements.forEach(e -> addRow(e, brandedElements, filteredElements, inputs, outputs));
