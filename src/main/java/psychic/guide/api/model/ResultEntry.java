@@ -71,6 +71,18 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		return this == o ||
+				o != null && getClass() == o.getClass() && id.equals(((ResultEntry) o).id);
+
+	}
+
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}
+
+	@Override
 	public String toString() {
 		return String.format("%s$%d$%s", result, voteValue, references.stream().collect(Collectors.joining("|")));
 	}

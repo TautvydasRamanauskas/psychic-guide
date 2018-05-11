@@ -30,9 +30,14 @@ public class SearchServiceImpl implements SearchService {
 
 	@Autowired
 	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService) {
+		this(bookmarkService, voteService, new PersistenceSerializationService<>(FILE_NAME));
+	}
+
+	SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService,
+					  PersistenceService<HashMap<String, AtomicInteger>> persistenceService) {
 		this.bookmarkService = bookmarkService;
 		this.voteService = voteService;
-		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
+		this.persistenceService = persistenceService;
 		this.searches = persistenceService.readOrDefault(new HashMap<>());
 	}
 

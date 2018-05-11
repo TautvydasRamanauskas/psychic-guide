@@ -23,8 +23,12 @@ public class BookmarkServiceImpl implements BookmarkService {
 
 	@Autowired
 	public BookmarkServiceImpl(VoteService voteService) {
+		this(voteService, new PersistenceSerializationService<>(FILE_NAME));
+	}
+
+	BookmarkServiceImpl(VoteService voteService, PersistenceService<HashMap<String, Collection<ResultEntry>>> persistenceService) {
 		this.voteService = voteService;
-		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
+		this.persistenceService = persistenceService;
 		this.bookmarksByIp = persistenceService.readOrDefault(new HashMap<>());
 	}
 

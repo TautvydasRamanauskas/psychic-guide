@@ -22,8 +22,12 @@ public class LinkServiceImpl implements LinkService {
 
 	@Autowired
 	public LinkServiceImpl(VoteService voteService) {
+		this(voteService, new PersistenceSerializationService<>(FILE_NAME));
+	}
+
+	LinkServiceImpl(VoteService voteService, PersistenceService<HashMap<UUID, List<ResultEntry>>> persistenceService) {
 		this.voteService = voteService;
-		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
+		this.persistenceService = persistenceService;
 		this.links = persistenceService.readOrDefault(new HashMap<>());
 	}
 

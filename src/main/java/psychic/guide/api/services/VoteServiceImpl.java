@@ -16,7 +16,11 @@ public class VoteServiceImpl implements VoteService {
 	private final HashMap<String, Map<String, Vote>> votes; // title -> ip -> vote
 
 	public VoteServiceImpl() {
-		this.persistenceService = new PersistenceSerializationService<>(FILE_NAME);
+		this(new PersistenceSerializationService<>(FILE_NAME));
+	}
+
+	VoteServiceImpl(PersistenceService<HashMap<String, Map<String, Vote>>> persistenceService) {
+		this.persistenceService = persistenceService;
 		this.votes = persistenceService.readOrDefault(new HashMap<>());
 	}
 
