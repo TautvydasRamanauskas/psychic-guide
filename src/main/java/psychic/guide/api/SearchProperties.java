@@ -7,7 +7,7 @@ import java.util.Properties;
 import java.util.stream.IntStream;
 
 public final class SearchProperties {
-	private static final String FILE_PATH = "src/main/resources/search.properties";
+	private static final String FILE_PATH = "./data/search.properties";
 	private static final SearchProperties INSTANCE = new SearchProperties();
 	private final Properties properties;
 

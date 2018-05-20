@@ -17,7 +17,7 @@ public class PersistenceSerializationService<T extends Serializable> implements 
 	private final Object accessLock;
 
 	public PersistenceSerializationService(String fileName) {
-		this.fileName = String.format(FILE_NAME_FORMAT, fileName);
+		this.fileName = getFileNameFormat(fileName);
 		this.saveExecutor = Executors.newSingleThreadExecutor();
 		this.accessLock = new Object();
 	}
@@ -76,6 +76,10 @@ public class PersistenceSerializationService<T extends Serializable> implements 
 			return defaultResult;
 		}
 		return read;
+	}
+
+	public static String getFileNameFormat(String fileName) {
+		return String.format(FILE_NAME_FORMAT, fileName);
 	}
 
 	private static Cipher getCipher(int encryptMode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {

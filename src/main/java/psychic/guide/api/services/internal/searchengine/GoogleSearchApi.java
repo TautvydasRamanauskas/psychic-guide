@@ -19,7 +19,7 @@ import static psychic.guide.api.services.internal.PercentEncoder.encode;
 public class GoogleSearchApi implements SearchAPIService {
 	private static final String REQUEST_URL_TEMPLATE = "https://www.googleapis.com/customsearch/v1?" +
 			"q=%s" +
-			"&cx=&" + SearchProperties.getInstance().get("google.engine.id") +
+			"&cx=" + SearchProperties.getInstance().get("google.engine.id") +
 			"&key=" + SearchProperties.getInstance().get("google.api.key");
 	private static final String KEY_ITEMS = "items";
 	private static final String KEY_LINK = "link";

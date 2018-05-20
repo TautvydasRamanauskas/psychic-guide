@@ -32,6 +32,7 @@ public class SearchController {
 		logger.info("Searching for keyword - {}", searchKeyword);
 		String remoteAddress = request.getRemoteAddr();
 		List<ResultEntry> searchResult = searchService.search(searchKeyword, remoteAddress);
+		logger.info("Returning {} results", searchResult.size());
 		return new ResponseEntity<>(searchResult, HttpStatus.OK);
 	}
 

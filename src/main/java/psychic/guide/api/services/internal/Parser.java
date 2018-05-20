@@ -8,9 +8,9 @@ import psychic.guide.api.services.internal.neuralnetwork.NeurophNetwork;
 import psychic.guide.api.services.internal.textrule.TextRule;
 import psychic.guide.api.services.internal.textrule.TextRuleSet;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -32,6 +32,7 @@ public class Parser {
 	}
 
 	public Set<ResultEntry> parse(Document page, String url) {
+		System.out.printf("Parsing: %s\n", url);
 		Collection<Element> brandedElements = brandList.stream()
 				.flatMap(b -> page.select(String.format(ELEMENTS_BRANDS_SELECTOR, b)).stream())
 				.collect(Collectors.toSet());
@@ -57,7 +58,7 @@ public class Parser {
 	private ResultEntry createResultEntry(Element element, String url) {
 		ResultEntry resultEntry = new ResultEntry();
 		resultEntry.setResult(ruleSet.modify(element.text()));
-		resultEntry.setReferences(new ArrayList<>(Collections.singleton(url)));
+		resultEntry.setReferences(new HashSet<>(Collections.singleton(url)));
 		return resultEntry;
 	}
 }

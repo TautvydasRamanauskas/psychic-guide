@@ -9,12 +9,12 @@ import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 
-public class SearchParserTest {
+public class SearcherTest {
 	@Test
 	@Ignore
 	public void testSearch() {
-		SearchParser searchParser = new SearchParser(new LoadBalancer());
-		List<ResultEntry> results = searchParser.search("test");
+		Searcher searcher = new Searcher(new LoadBalancer());
+		List<ResultEntry> results = searcher.search("test");
 		assertFalse(results.isEmpty());
 	}
 }

@@ -12,26 +12,35 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SearchParser {
+public class Searcher {
 	private static final String BRANDS_LIST_PATH = "data/brands";
+	private static final String SEARCH_WORD = "Best";
 	private static final int MIN_VOTE_VALUE = 3;
 	private final SearchAPIService searchService;
 	private final Parser pageParser;
 
-	public SearchParser(SearchAPIService searchService) {
+	public Searcher(SearchAPIService searchService) {
 		this.searchService = searchService;
 		this.pageParser = new Parser(fetchBrandList());
 	}
 
 	public List<ResultEntry> search(String keyword) {
-		List<SearchResult> searchResults = searchService.search(keyword);
+		String searchText = createSearchText(keyword);
+		List<SearchResult> searchResults = searchService.search(searchText);
 		Collection<ResultEntry> parseResults = parseSearchResults(searchResults);
 		List<ResultEntry> results = parseResults.stream()
-				.filter(r -> r.getVoteValue() >= MIN_VOTE_VALUE)
+				.filter(r -> r.getCount() >= MIN_VOTE_VALUE)
 				.sorted()
 				.collect(Collectors.toList());
 		results.forEach(System.out::println);
 		return results;
+	}
+
+	private String createSearchText(String keyword) {
+		if (keyword.contains(SEARCH_WORD) || keyword.contains(SEARCH_WORD.toLowerCase())) {
+			return keyword;
+		}
+		return SEARCH_WORD + " " + keyword;
 	}
 
 	private Set<ResultEntry> parseSearchResults(List<SearchResult> searchResults) {
@@ -57,7 +66,7 @@ public class SearchParser {
 				.findAny()
 				.orElse(null);
 		if (existingEntry != null) {
-			existingEntry.setVoteValue(existingEntry.getVoteValue() + 1);
+			existingEntry.setCount(existingEntry.getCount() + 1);
 			existingEntry.getReferences().addAll(resultEntry.getReferences());
 		} else {
 			parseResults.add(resultEntry);

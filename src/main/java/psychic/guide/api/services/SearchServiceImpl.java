@@ -6,6 +6,8 @@ import psychic.guide.api.model.ResultEntry;
 import psychic.guide.api.model.Vote;
 import psychic.guide.api.services.internal.PersistenceSerializationService;
 import psychic.guide.api.services.internal.PersistenceService;
+import psychic.guide.api.services.internal.Searcher;
+import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import static psychic.guide.api.services.internal.PercentEncoder.encode;
+import static psychic.guide.api.services.internal.PersistenceSerializationService.getFileNameFormat;
 
 @Service
 public class SearchServiceImpl implements SearchService {
@@ -48,10 +51,12 @@ public class SearchServiceImpl implements SearchService {
 		String cacheFileName = String.format(CACHE_FILE_NAME_FORMAT, encode(keyword));
 		List<ResultEntry> cachedResults = readCache(cacheFileName);
 		if (cachedResults == null) {
-			List<ResultEntry> results = readResults().stream()
-					.map(line -> parseResultEntry(line, ip))
-					.sorted()
-					.collect(Collectors.toList());
+			Searcher searcher = new Searcher(new LoadBalancer());
+			List<ResultEntry> results = searcher.search(keyword);
+//			List<ResultEntry> results = readResults().stream()
+//					.map(line -> parseResultEntry(line, ip))
+//					.sorted()
+//					.collect(Collectors.toList());
 			cacheResults(cacheFileName, (ArrayList<ResultEntry>) results);
 			return results;
 		}
@@ -93,7 +98,7 @@ public class SearchServiceImpl implements SearchService {
 		ResultEntry resultEntry = new ResultEntry();
 		resultEntry.setResult(splits[0]);
 		resultEntry.setCount(Integer.valueOf(splits[1]));
-		resultEntry.setReferences(Arrays.stream(splits[2].split("\\|")).collect(Collectors.toList()));
+		resultEntry.setReferences(Arrays.stream(splits[2].split("\\|")).collect(Collectors.toSet()));
 		resultEntry.setBookmark(bookmarkService.containsBookmark(resultEntry, ip));
 		resultEntry.setVoteValue(voteService.calculateVoteValue(resultEntry.getResult()));
 		resultEntry.setPersonalVote(getVote(resultEntry.getResult(), ip));
@@ -106,7 +111,7 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	private ArrayList<ResultEntry> readCache(String fileName) {
-		File file = new File(fileName);
+		File file = new File(getFileNameFormat(fileName));
 		if (file.exists()) {
 			PersistenceService<ArrayList<ResultEntry>> service = new PersistenceSerializationService<>(fileName);
 			return service.read();

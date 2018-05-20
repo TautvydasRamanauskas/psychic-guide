@@ -18,18 +18,19 @@ public class LoadBalancer implements SearchAPIService {
 
 	@Override
 	public List<SearchResult> search(String keyword) {
-//		SearchAPIService service = services.entrySet().stream()
-//				.max((eOne, eTwo) -> compare(eOne.getKey(), eTwo.getKey()))
-//				.map(Map.Entry::getValue)
-//				.orElse(null);
-//		if (service != null) {
-//			return service.search(keyword);
-//		}
-//		return new ArrayList<>();
+		SearchAPIService service = services.entrySet().stream()
+				.max((eOne, eTwo) -> compare(eOne.getKey(), eTwo.getKey()))
+				.map(Map.Entry::getValue)
+				.orElse(null);
+		if (service != null) {
+			System.out.printf("Using %s", service.getClass().getSimpleName());
+			return service.search(keyword);
+		}
+		return new ArrayList<>();
 
-		List<SearchResult> results = services.get(Limit.BING).search(keyword);
-		Collections.shuffle(results);
-		return results;
+//		List<SearchResult> results = services.get(Limit.BING).search(keyword);
+//		Collections.shuffle(results);
+//		return results;
 	}
 
 	public void stopTimer() {
@@ -40,7 +41,7 @@ public class LoadBalancer implements SearchAPIService {
 		Map<Limit, SearchAPIService> services = new HashMap<>();
 		services.put(Limit.GOOGLE, new GoogleSearchApi());
 		services.put(Limit.YANDEX, new YandexSearchApi());
-		services.put(Limit.BING, new AzureDemoSearchApi());
+//		services.put(Limit.BING, new AzureDemoSearchApi());
 		return services;
 	}
 
@@ -62,9 +63,9 @@ public class LoadBalancer implements SearchAPIService {
 	}
 
 	private enum Limit {
-		GOOGLE(100), YANDEX(10), BING(0);
+		GOOGLE(100), YANDEX(10)/*, BING(-1)*/;
 
-		private int limit;
+		private final int limit;
 		private int current;
 
 		Limit(int limit) {
@@ -77,6 +78,9 @@ public class LoadBalancer implements SearchAPIService {
 		}
 
 		public int available() {
+			if (limit == -1) {
+				return 0;
+			}
 			if (limit == 0) {
 				return 100;
 			}
