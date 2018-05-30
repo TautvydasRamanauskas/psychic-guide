@@ -10,7 +10,7 @@ import psychic.guide.api.SearchProperties;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurity extends WebSecurityConfigurerAdapter {
+public class WebSecurityBasic extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable()

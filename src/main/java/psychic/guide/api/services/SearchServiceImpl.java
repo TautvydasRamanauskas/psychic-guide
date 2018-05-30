@@ -6,8 +6,6 @@ import psychic.guide.api.model.ResultEntry;
 import psychic.guide.api.model.Vote;
 import psychic.guide.api.services.internal.PersistenceSerializationService;
 import psychic.guide.api.services.internal.PersistenceService;
-import psychic.guide.api.services.internal.Searcher;
-import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,18 +47,18 @@ public class SearchServiceImpl implements SearchService {
 		noteSearch(keyword);
 
 		String cacheFileName = String.format(CACHE_FILE_NAME_FORMAT, encode(keyword));
-		List<ResultEntry> cachedResults = readCache(cacheFileName);
-		if (cachedResults == null) {
-			Searcher searcher = new Searcher(new LoadBalancer());
-			List<ResultEntry> results = searcher.search(keyword);
-//			List<ResultEntry> results = readResults().stream()
-//					.map(line -> parseResultEntry(line, ip))
-//					.sorted()
-//					.collect(Collectors.toList());
-			cacheResults(cacheFileName, (ArrayList<ResultEntry>) results);
+//		List<ResultEntry> cachedResults = readCache(cacheFileName);
+//		if (cachedResults == null) {
+//			Searcher searcher = new Searcher(new LoadBalancer());
+//			List<ResultEntry> results = searcher.search(keyword);
+			List<ResultEntry> results = readResults().stream()
+					.map(line -> parseResultEntry(line, ip))
+					.sorted()
+					.collect(Collectors.toList());
+//			cacheResults(cacheFileName, (ArrayList<ResultEntry>) results);
 			return results;
-		}
-		return cachedResults;
+//		}
+//		return cachedResults;
 	}
 
 	@Override
