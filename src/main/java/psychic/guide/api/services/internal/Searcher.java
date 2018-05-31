@@ -1,7 +1,7 @@
 package psychic.guide.api.services.internal;
 
 import org.jsoup.nodes.Document;
-import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.model.SearchResult;
 import psychic.guide.api.services.internal.searchengine.SearchAPIService;
 

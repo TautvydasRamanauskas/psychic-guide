@@ -2,8 +2,8 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psychic.guide.api.model.ResultEntry;
 import psychic.guide.api.model.Vote;
+import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.PersistenceSerializationService;
 import psychic.guide.api.services.internal.PersistenceService;
 

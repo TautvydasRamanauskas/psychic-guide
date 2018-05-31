@@ -32,6 +32,10 @@ public class NeuralNetworkTrainer {
 		network.train(inputs, outputs);
 	}
 
+	public void persist() {
+		trainExecutor.execute(network::save);
+	}
+
 	private void addRow(Element element, Collection<Element> brandedElements, Collection<Element> filteredElements,
 						List<double[]> inputs, List<double[]> outputs) {
 		boolean isBrand = brandedElements.contains(element);

@@ -2,7 +2,7 @@ package psychic.guide.api.services.internal;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
 import java.util.List;

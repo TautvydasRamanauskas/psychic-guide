@@ -2,7 +2,7 @@ package psychic.guide.api.services;
 
 import org.junit.Before;
 import org.junit.Test;
-import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.data.ResultEntry;
 
 import java.util.*;
 

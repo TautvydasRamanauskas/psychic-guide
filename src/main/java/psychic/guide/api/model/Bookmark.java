@@ -1,11 +1,10 @@
 package psychic.guide.api.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "votes")
-public class Vote implements Serializable {
+@Table(name = "bookmarks")
+public class Bookmark {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -17,12 +16,6 @@ public class Vote implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "resultId", referencedColumnName = "id")
 	private Result result;
-
-	private int value;
-
-	public Vote() {
-
-	}
 
 	public long getId() {
 		return id;
@@ -46,13 +39,5 @@ public class Vote implements Serializable {
 
 	public void setResult(Result result) {
 		this.result = result;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
 	}
 }

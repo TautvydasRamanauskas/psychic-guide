@@ -2,8 +2,10 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.Search;
 import psychic.guide.api.model.Vote;
+import psychic.guide.api.model.data.ResultEntry;
+import psychic.guide.api.repository.SearchesRepository;
 import psychic.guide.api.services.internal.PersistenceSerializationService;
 import psychic.guide.api.services.internal.PersistenceService;
 
@@ -12,7 +14,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import static psychic.guide.api.services.internal.PercentEncoder.encode;
@@ -20,26 +21,18 @@ import static psychic.guide.api.services.internal.PersistenceSerializationServic
 
 @Service
 public class SearchServiceImpl implements SearchService {
-	private static final String FILE_NAME = "searches";
 	private static final String CACHE_FILE_NAME_FORMAT = "caches/%s";
 	private static final int SHOWN_MOST_POPULAR_SEARCHES = 10;
 
 	private final BookmarkService bookmarkService;
 	private final VoteService voteService;
-	private final PersistenceService<HashMap<String, AtomicInteger>> persistenceService;
-	private final HashMap<String, AtomicInteger> searches;
+	private final SearchesRepository searchesRepository;
 
 	@Autowired
-	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService) {
-		this(bookmarkService, voteService, new PersistenceSerializationService<>(FILE_NAME));
-	}
-
-	SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService,
-					  PersistenceService<HashMap<String, AtomicInteger>> persistenceService) {
+	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService, SearchesRepository searchesRepository) {
 		this.bookmarkService = bookmarkService;
 		this.voteService = voteService;
-		this.persistenceService = persistenceService;
-		this.searches = persistenceService.readOrDefault(new HashMap<>());
+		this.searchesRepository = searchesRepository;
 	}
 
 	@Override
@@ -51,18 +44,22 @@ public class SearchServiceImpl implements SearchService {
 //		if (cachedResults == null) {
 //			Searcher searcher = new Searcher(new LoadBalancer());
 //			List<ResultEntry> results = searcher.search(keyword);
-			List<ResultEntry> results = readResults().stream()
-					.map(line -> parseResultEntry(line, ip))
-					.sorted()
-					.collect(Collectors.toList());
+		List<ResultEntry> results = readResults().stream()
+				.map(line -> parseResultEntry(line, ip))
+				.sorted()
+				.collect(Collectors.toList());
 //			cacheResults(cacheFileName, (ArrayList<ResultEntry>) results);
-			return results;
+		return results;
 //		}
 //		return cachedResults;
 	}
 
 	@Override
 	public List<String> mostPopular() {
+		Map<String, Long> searches = new HashMap<>();
+		for (Search search : searchesRepository.findAll()) {
+			searches.put(search.getKeyword(), search.getSearchCount());
+		}
 		return searches.entrySet().stream()
 				.sorted(this::compareSearches)
 				.map(Map.Entry::getKey)
@@ -70,15 +67,20 @@ public class SearchServiceImpl implements SearchService {
 				.collect(Collectors.toList());
 	}
 
-	public void clear() {
-		searches.clear();
-		persistenceService.saveOnThread(searches);
+	private void noteSearch(String keyword) {
+		Search search = getSearch(keyword);
+		search.setSearchCount(search.getSearchCount() + 1);
+		searchesRepository.save(search);
 	}
 
-	private void noteSearch(String keyword) {
-		AtomicInteger searchCount = searches.computeIfAbsent(keyword, k -> new AtomicInteger());
-		searchCount.incrementAndGet();
-		persistenceService.saveOnThread(searches);
+	private Search getSearch(String keyword) {
+		Iterable<Search> searches = searchesRepository.findAll();
+		for (Search search : searches) {
+			if (Objects.equals(search.getKeyword(), keyword)) {
+				return search;
+			}
+		}
+		return new Search().setKeyword(keyword);
 	}
 
 	private static Set<String> readResults() {
@@ -125,9 +127,9 @@ public class SearchServiceImpl implements SearchService {
 		}
 	}
 
-	private int compareSearches(Map.Entry<String, AtomicInteger> entryOne, Map.Entry<String, AtomicInteger> entryTwo) {
-		int searchCountOne = entryOne.getValue().get();
-		int searchCountTwo = entryTwo.getValue().get();
-		return Integer.compare(searchCountTwo, searchCountOne);
+	private int compareSearches(Map.Entry<String, Long> entryOne, Map.Entry<String, Long> entryTwo) {
+		long searchCountOne = entryOne.getValue();
+		long searchCountTwo = entryTwo.getValue();
+		return Long.compare(searchCountTwo, searchCountOne);
 	}
 }

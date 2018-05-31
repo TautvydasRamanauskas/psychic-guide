@@ -1,4 +1,4 @@
-package psychic.guide.api.model;
+package psychic.guide.api.model.data;
 
 import java.io.Serializable;
 import java.util.Set;

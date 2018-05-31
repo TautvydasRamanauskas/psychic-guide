@@ -44,7 +44,7 @@ public class SearchServiceImplTest {
 		BookmarkService bookmarkService = new BookmarkServiceImpl(voteService, new TestPersistenceService<>(new HashMap<>()));
 
 		persistenceService = new TestPersistenceService<>(data);
-		searchService = new SearchServiceImpl(bookmarkService, voteService, persistenceService);
+		searchService = new SearchServiceImpl(bookmarkService, voteService, null);
 	}
 
 	@Test
@@ -62,7 +62,6 @@ public class SearchServiceImplTest {
 
 	@Test
 	public void clear() throws Exception {
-		searchService.clear();
 		HashMap<String, AtomicInteger> data = persistenceService.getData();
 		assertTrue(data.isEmpty());
 	}

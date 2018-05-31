@@ -38,15 +38,15 @@ public class VoteServiceImpl implements VoteService {
 
 	@Override
 	public void addVote(Vote vote) {
-		Map<String, Vote> votesByIp = votes.computeIfAbsent(vote.getTitle(), t -> new HashMap<>());
-		votesByIp.put(vote.getIp(), vote);
+		Map<String, Vote> votesByIp = votes.computeIfAbsent(vote.getResult().getResult(), t -> new HashMap<>());
+		votesByIp.put(vote.getUser().getId() + "", vote);
 		persistenceService.saveOnThread(votes);
 	}
 
 	@Override
 	public void removeVote(Vote vote) {
-		Map<String, Vote> votesByIp = votes.computeIfAbsent(vote.getTitle(), t -> new HashMap<>());
-		votesByIp.remove(vote.getIp());
+		Map<String, Vote> votesByIp = votes.computeIfAbsent(vote.getResult().getResult(), t -> new HashMap<>());
+		votesByIp.remove(vote.getUser().getId() + "");
 		persistenceService.saveOnThread(votes);
 	}
 

@@ -2,7 +2,7 @@ package psychic.guide.api.services.internal;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.neuralnetwork.NeuralNetworkTrainer;
 import psychic.guide.api.services.internal.neuralnetwork.NeurophNetwork;
 import psychic.guide.api.services.internal.textrule.TextRule;
@@ -44,6 +44,10 @@ public class Parser {
 		return filteredElements.stream()
 				.map(e -> createResultEntry(e, url))
 				.collect(Collectors.toSet());
+	}
+
+	public void persist() {
+		networkTrainer.persist();
 	}
 
 	private boolean isResult(Element element) {

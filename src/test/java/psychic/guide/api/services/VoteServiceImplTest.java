@@ -2,6 +2,8 @@ package psychic.guide.api.services;
 
 import org.junit.Before;
 import org.junit.Test;
+import psychic.guide.api.model.Result;
+import psychic.guide.api.model.User;
 import psychic.guide.api.model.Vote;
 
 import java.util.HashMap;
@@ -62,8 +64,8 @@ public class VoteServiceImplTest {
 	@Test
 	public void testGetVote() throws Exception {
 		Vote vote = voteService.getVote(TITLE_TWO, IP_TWO);
-		assertEquals(TITLE_TWO, vote.getTitle());
-		assertEquals(IP_TWO, vote.getIp());
+		assertEquals(TITLE_TWO, vote.getResult().getResult());
+		assertEquals(IP_TWO, vote.getUser().getId());
 		assertEquals(VALUE_TWO, vote.getValue());
 	}
 
@@ -76,8 +78,8 @@ public class VoteServiceImplTest {
 
 	private static Vote createVote(String title, String ip, int value) {
 		Vote vote = new Vote();
-		vote.setTitle(title);
-		vote.setIp(ip);
+		vote.setResult(new Result().setResult(title));
+		vote.setUser(new User().setId(Long.parseLong(ip)));
 		vote.setValue(value);
 		return vote;
 	}

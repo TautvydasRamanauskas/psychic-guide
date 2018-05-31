@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psychic.guide.api.model.User;
-import psychic.guide.api.services.internal.repository.UserRepository;
+import psychic.guide.api.repository.UserRepository;
 import psychic.guide.api.services.security.FacebookTokenValidator;
 import psychic.guide.api.services.security.TokenValidator;
 

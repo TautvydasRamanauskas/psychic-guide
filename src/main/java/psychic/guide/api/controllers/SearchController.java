@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import psychic.guide.api.model.ResultEntry;
+import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.SearchService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +28,7 @@ public class SearchController {
 	@ResponseBody
 	@RequestMapping(path = "/{searchKeyword}", method = RequestMethod.POST)
 	public ResponseEntity<List<ResultEntry>> search(@PathVariable("searchKeyword") String searchKeyword,
-													HttpServletRequest request) {
+											   HttpServletRequest request) {
 		logger.info("Searching for keyword - {}", searchKeyword);
 		String remoteAddress = request.getRemoteAddr();
 		List<ResultEntry> searchResult = searchService.search(searchKeyword, remoteAddress);

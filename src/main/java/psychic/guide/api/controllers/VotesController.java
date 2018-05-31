@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import psychic.guide.api.model.User;
 import psychic.guide.api.model.Vote;
 import psychic.guide.api.services.VoteService;
 
@@ -28,8 +29,8 @@ public class VotesController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> addVote(@RequestBody Vote vote,
 										  HttpServletRequest request) {
-		logger.info("Adding vote to - {}", vote.getTitle());
-		vote.setIp(request.getRemoteAddr());
+		logger.info("Adding vote to - {}", vote.getResult().getResult());
+		vote.setUser(new User().setId(Long.parseLong(request.getRemoteAddr())));
 		voteService.addVote(vote);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -38,8 +39,8 @@ public class VotesController {
 	@RequestMapping(method = RequestMethod.DELETE)
 	public ResponseEntity<Object> removeVote(@RequestBody Vote vote,
 											 HttpServletRequest request) {
-		logger.info("Removing vote from - {}", vote.getTitle());
-		vote.setIp(request.getRemoteAddr());
+		logger.info("Removing vote from - {}", vote.getResult().getResult());
+		vote.setUser(new User().setId(Long.parseLong(request.getRemoteAddr())));
 		voteService.removeVote(vote);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
