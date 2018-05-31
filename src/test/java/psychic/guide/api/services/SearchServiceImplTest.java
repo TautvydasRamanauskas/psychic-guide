@@ -44,7 +44,7 @@ public class SearchServiceImplTest {
 		BookmarkService bookmarkService = new BookmarkServiceImpl(voteService, new TestPersistenceService<>(new HashMap<>()));
 
 		persistenceService = new TestPersistenceService<>(data);
-		searchService = new SearchServiceImpl(bookmarkService, voteService, null);
+		searchService = new SearchServiceImpl(bookmarkService, voteService, null, null, null);
 	}
 
 	@Test

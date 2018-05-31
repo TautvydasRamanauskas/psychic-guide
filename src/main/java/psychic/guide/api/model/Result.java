@@ -1,7 +1,6 @@
 package psychic.guide.api.model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "results")
@@ -10,9 +9,7 @@ public class Result {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@ManyToMany
-	@JoinColumn(name = "id")
-	private Set<Reference> references;
+	private String keyword;
 
 	private String result;
 
@@ -28,6 +25,14 @@ public class Result {
 		this.id = id;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public String getResult() {
 		return result;
 	}
@@ -35,13 +40,5 @@ public class Result {
 	public Result setResult(String result) {
 		this.result = result;
 		return this;
-	}
-
-	public Set<Reference> getReferences() {
-		return references;
-	}
-
-	public void setReferences(Set<Reference> references) {
-		this.references = references;
 	}
 }
