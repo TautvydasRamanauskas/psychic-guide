@@ -2,11 +2,10 @@ package psychic.guide.api.model.data;
 
 import java.io.Serializable;
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class ResultEntry implements Comparable<ResultEntry>, Serializable {
-	private final UUID id = UUID.randomUUID();
+	private long id = System.currentTimeMillis();
 	private String result;
 	private Set<String> references;
 	private int count;
@@ -18,8 +17,12 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 
 	}
 
-	public UUID getId() {
+	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getResult() {
@@ -73,13 +76,13 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	@Override
 	public boolean equals(Object o) {
 		return this == o ||
-				o != null && getClass() == o.getClass() && id.equals(((ResultEntry) o).id);
+				o != null && getClass() == o.getClass() && id == ((ResultEntry) o).id;
 
 	}
 
 	@Override
 	public int hashCode() {
-		return id.hashCode();
+		return (int) id;
 	}
 
 	@Override

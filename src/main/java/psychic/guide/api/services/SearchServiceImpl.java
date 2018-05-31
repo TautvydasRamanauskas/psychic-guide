@@ -83,16 +83,20 @@ public class SearchServiceImpl implements SearchService {
 
 	private void saveResults(List<ResultEntry> results, String keyword) {
 		results.forEach(r -> {
-			if (resultsRepository.findResultByResultAndKeyword(r.getResult(), keyword) == null) {
+			Result existingResult = resultsRepository.findResultByResultAndKeyword(r.getResult(), keyword);
+			if (existingResult == null) {
 				Result result = new Result();
 				result.setResult(r.getResult());
 				result.setKeyword(keyword);
-				resultsRepository.save(result);
 
+				Result newResult = resultsRepository.save(result);
+				r.setId(newResult.getId());
 				r.getReferences().stream()
 						.filter(ref -> referenceRepository.findReferenceByUrlAndResult(ref, result) == null)
 						.map(ref -> new Reference().setUrl(ref).setResult(result))
 						.forEach(referenceRepository::save);
+			} else {
+				r.setId(existingResult.getId());
 			}
 		});
 	}
