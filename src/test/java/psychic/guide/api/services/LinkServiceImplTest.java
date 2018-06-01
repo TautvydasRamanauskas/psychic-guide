@@ -23,7 +23,7 @@ public class LinkServiceImplTest {
 		HashMap<UUID, List<ResultEntry>> data = new HashMap<>();
 		data.put(LINK_ONE, new ArrayList<>());
 
-		VoteService voteService = new VoteServiceImpl(new TestPersistenceService<>(new HashMap<>()));
+		VoteService voteService = new VoteServiceImpl(null);
 
 		persistenceService = new TestPersistenceService<>(data);
 		linkService = new LinkServiceImpl(voteService, persistenceService);

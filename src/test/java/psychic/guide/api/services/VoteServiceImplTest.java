@@ -38,12 +38,12 @@ public class VoteServiceImplTest {
 		data.put(TITLE_TWO, titleTwoMap);
 
 		persistenceService = new TestPersistenceService<>(data);
-		voteService = new VoteServiceImpl(persistenceService);
+		voteService = new VoteServiceImpl(null);
 	}
 
 	@Test
 	public void testCalculateVoteValue() throws Exception {
-		int voteValue = voteService.calculateVoteValue(TITLE_ONE);
+		int voteValue = voteService.calculateVoteValue(null);
 		assertEquals(3, voteValue);
 	}
 
@@ -63,17 +63,10 @@ public class VoteServiceImplTest {
 
 	@Test
 	public void testGetVote() throws Exception {
-		Vote vote = voteService.getVote(TITLE_TWO, new User());
+		Vote vote = voteService.getVote(null, new User());
 		assertEquals(TITLE_TWO, vote.getResult().getResult());
 		assertEquals(IP_TWO, vote.getUser().getId());
 		assertEquals(VALUE_TWO, vote.getValue());
-	}
-
-	@Test
-	public void testClear() throws Exception {
-		voteService.clear();
-		HashMap<String, Map<String, Vote>> data = persistenceService.getData();
-		assertTrue(data.isEmpty());
 	}
 
 	private static Vote createVote(String title, String ip, int value) {

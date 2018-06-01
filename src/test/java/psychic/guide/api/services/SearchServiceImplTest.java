@@ -40,7 +40,7 @@ public class SearchServiceImplTest {
 		data.put(SEARCH_TEN, new AtomicInteger(91));
 		data.put(SEARCH_ELEVEN, new AtomicInteger(90));
 
-		VoteService voteService = new VoteServiceImpl(new TestPersistenceService<>(new HashMap<>()));
+		VoteService voteService = new VoteServiceImpl(null);
 		BookmarkService bookmarkService = new BookmarkServiceImpl(voteService, null,null,null, null);
 
 		persistenceService = new TestPersistenceService<>(data);

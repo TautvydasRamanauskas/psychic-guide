@@ -41,7 +41,7 @@ public class SearchServiceImpl implements SearchService {
 		saveSearch(keyword);
 
 		List<ResultEntry> results = readResults().stream()
-				.map(line -> parseResultEntry(line, user))
+				.map(line -> parseResultEntry(line))
 				.sorted()
 				.collect(Collectors.toList());
 
@@ -80,22 +80,10 @@ public class SearchServiceImpl implements SearchService {
 
 	private void saveResults(List<ResultEntry> results, String keyword, User user) {
 		results.forEach(r -> {
-			Result existingResult = resultsRepository.findResultByResultAndKeyword(r.getResult(), keyword);
-			if (existingResult == null) {
-				Result result = new Result();
-				result.setResult(r.getResult());
-				result.setKeyword(keyword);
-				result.setRating(r.getCount());
-
-				Result newResult = resultsRepository.save(result);
-				r.setId(newResult.getId());
-				r.getReferences().stream()
-						.filter(ref -> referenceRepository.findReferenceByUrlAndResult(ref, result) == null)
-						.map(ref -> new Reference().setUrl(ref).setResult(result))
-						.forEach(referenceRepository::save);
-			} else {
-				r.setId(existingResult.getId());
-			}
+			Result result = getResult(r, keyword);
+			r.setId(result.getId());
+			r.setVoteValue(voteService.calculateVoteValue(result));
+			r.setPersonalVote(getVote(result, user));
 			r.setBookmark(bookmarkService.containsBookmark(r, user));
 		});
 	}
@@ -110,19 +98,36 @@ public class SearchServiceImpl implements SearchService {
 		return Collections.emptySet();
 	}
 
-	private ResultEntry parseResultEntry(String line, User user) {
+	private ResultEntry parseResultEntry(String line) {
 		String[] splits = line.split("\\$");
 		ResultEntry resultEntry = new ResultEntry();
 		resultEntry.setResult(splits[0]);
 		resultEntry.setCount(Integer.valueOf(splits[1]));
 		resultEntry.setReferences(Arrays.stream(splits[2].split("\\|")).collect(Collectors.toSet()));
-		resultEntry.setVoteValue(voteService.calculateVoteValue(resultEntry.getResult()));
-		resultEntry.setPersonalVote(getVote(resultEntry.getResult(), user));
 		return resultEntry;
 	}
 
-	private int getVote(String title, User user) {
-		Vote vote = voteService.getVote(title, user);
+	private Result getResult(ResultEntry entry, String keyword) {
+		Result existingResult = resultsRepository.findResultByResultAndKeyword(entry.getResult(), keyword);
+		if (existingResult == null) {
+			Result result = new Result();
+			result.setResult(entry.getResult());
+			result.setKeyword(keyword);
+			result.setRating(entry.getCount());
+
+			Result newResult = resultsRepository.save(result);
+			entry.getReferences().stream()
+					.filter(ref -> referenceRepository.findReferenceByUrlAndResult(ref, result) == null)
+					.map(ref -> new Reference().setUrl(ref).setResult(result))
+					.forEach(referenceRepository::save);
+			return newResult;
+		}
+		return existingResult;
+	}
+
+	private int getVote(Result result, User user) {
+		if (user == null) return 0;
+		Vote vote = voteService.getVote(result, user);
 		return vote == null ? 0 : vote.getValue();
 	}
 

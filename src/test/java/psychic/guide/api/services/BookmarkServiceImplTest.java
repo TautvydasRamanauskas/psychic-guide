@@ -22,7 +22,7 @@ public class BookmarkServiceImplTest {
 		resultEntry = new ResultEntry();
 
 		HashMap<String, Collection<ResultEntry>> data = createData();
-		VoteService voteService = new VoteServiceImpl(new TestPersistenceService<>(new HashMap<>()));
+		VoteService voteService = new VoteServiceImpl(null);
 
 		persistenceService = new TestPersistenceService<>(data);
 		bookmarkService = new BookmarkServiceImpl(voteService, null, null, null, null);
