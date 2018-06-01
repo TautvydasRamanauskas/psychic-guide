@@ -8,4 +8,5 @@ import psychic.guide.api.model.Result;
 public interface ReferenceRepository extends CrudRepository<Reference, Long> {
 	Reference findReferenceByUrlAndResult(@Param("url") String url, @Param("result") Result result);
 
+	Iterable<Reference> findReferencesByResult(@Param("result") Result result);
 }

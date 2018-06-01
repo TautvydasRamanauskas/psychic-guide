@@ -2,6 +2,7 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import psychic.guide.api.model.User;
 import psychic.guide.api.model.Vote;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.PersistenceSerializationService;
@@ -36,7 +37,7 @@ public class LinkServiceImpl implements LinkService {
 		List<ResultEntry> linkEntries = links.computeIfAbsent(link, l -> new ArrayList<>());
 		for (ResultEntry linkEntry : linkEntries) {
 			linkEntry.setVoteValue(voteService.calculateVoteValue(linkEntry.getResult()));
-			Vote vote = voteService.getVote(linkEntry.getResult(), ip);
+			Vote vote = voteService.getVote(linkEntry.getResult(), new User());
 			linkEntry.setPersonalVote(vote == null ? 0 : vote.getValue());
 		}
 		return linkEntries;

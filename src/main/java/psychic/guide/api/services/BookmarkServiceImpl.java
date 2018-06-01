@@ -2,72 +2,85 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psychic.guide.api.model.Vote;
+import psychic.guide.api.model.*;
 import psychic.guide.api.model.data.ResultEntry;
-import psychic.guide.api.services.internal.PersistenceSerializationService;
-import psychic.guide.api.services.internal.PersistenceService;
+import psychic.guide.api.repository.BookmarksRepository;
+import psychic.guide.api.repository.ReferenceRepository;
+import psychic.guide.api.repository.ResultsRepository;
+import psychic.guide.api.repository.UserRepository;
 
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class BookmarkServiceImpl implements BookmarkService {
-	private static final String FILE_NAME = "bookmarks";
-
 	private final VoteService voteService;
-	private final PersistenceService<HashMap<String, Collection<ResultEntry>>> persistenceService;
-	private final HashMap<String, Collection<ResultEntry>> bookmarksByIp;
+	private final BookmarksRepository bookmarksRepository;
+	private final ResultsRepository resultsRepository;
+	private final ReferenceRepository referenceRepository;
+	private final UserRepository userRepository;
 
 	@Autowired
-	public BookmarkServiceImpl(VoteService voteService) {
-		this(voteService, new PersistenceSerializationService<>(FILE_NAME));
-	}
-
-	BookmarkServiceImpl(VoteService voteService, PersistenceService<HashMap<String, Collection<ResultEntry>>> persistenceService) {
+	public BookmarkServiceImpl(VoteService voteService, BookmarksRepository bookmarksRepository,
+							   ResultsRepository resultsRepository, ReferenceRepository referenceRepository,
+							   UserRepository userRepository) {
 		this.voteService = voteService;
-		this.persistenceService = persistenceService;
-		this.bookmarksByIp = persistenceService.readOrDefault(new HashMap<>());
+		this.bookmarksRepository = bookmarksRepository;
+		this.resultsRepository = resultsRepository;
+		this.referenceRepository = referenceRepository;
+		this.userRepository = userRepository;
 	}
 
 	@Override
-	public void addBookmark(ResultEntry entry, String ip) {
-		entry.setBookmark(true);
-		Collection<ResultEntry> bookmarks = bookmarksByIp.computeIfAbsent(ip, k -> new HashSet<>());
-		bookmarks.add(entry);
-		persistenceService.saveOnThread(bookmarksByIp);
+	public void addBookmark(ResultEntry entry, User user) {
+		Result result = resultsRepository.findOne(entry.getId());
+		bookmarksRepository.save(new Bookmark().setResult(result).setUser(user));
 	}
 
 	@Override
-	public void removeBookmark(ResultEntry entry, String ip) {
-		Collection<ResultEntry> bookmarks = bookmarksByIp.get(ip);
-		if (bookmarks != null) {
-			bookmarks.remove(entry);
+	public void removeBookmark(ResultEntry entry, User user) {
+		Result result = resultsRepository.findOne(entry.getId());
+		bookmarksRepository.deleteBookmarkByResultAndUser(result, user);
+	}
+
+	@Override
+	public boolean containsBookmark(ResultEntry entry, User user) {
+		Result result = resultsRepository.findOne(entry.getId());
+		Bookmark bookmark = bookmarksRepository.findBookmarkByResultAndUser(result, user);
+		return bookmark != null;
+	}
+
+	@Override
+	public List<ResultEntry> bookmarks(long userId) {
+		User user = userRepository.findOne(userId);
+		Iterable<Bookmark> bookmarks = bookmarksRepository.getBookmarksByUser(user);
+		List<ResultEntry> results = new ArrayList<>();
+		for (Bookmark bookmark : bookmarks) {
+			Result result = bookmark.getResult();
+
+			ResultEntry resultEntry = new ResultEntry();
+			resultEntry.setBookmark(true);
+			resultEntry.setReferences(iterableToSet(result));
+			resultEntry.setId(result.getId());
+			resultEntry.setCount(result.getRating());
+			resultEntry.setResult(result.getResult());
+			resultEntry.setVoteValue(voteService.calculateVoteValue(result.getResult()));
+			Vote vote = voteService.getVote(result.getResult(), user);
+			resultEntry.setPersonalVote(vote == null ? 0 : vote.getValue());
+			results.add(resultEntry);
 		}
-		persistenceService.saveOnThread(bookmarksByIp);
+		return results.stream().sorted().collect(Collectors.toList());
 	}
 
-	@Override
-	public boolean containsBookmark(ResultEntry entry, String ip) {
-		Collection<ResultEntry> bookmarks = bookmarksByIp.get(ip);
-		return bookmarks != null && bookmarks.contains(entry);
-	}
-
-	@Override
-	public List<ResultEntry> bookmarks(String ip) {
-		Collection<ResultEntry> bookmarks = bookmarksByIp.getOrDefault(ip, new HashSet<>());
-		for (ResultEntry bookmark : bookmarks) {
-			bookmark.setVoteValue(voteService.calculateVoteValue(bookmark.getResult()));
-			Vote vote = voteService.getVote(bookmark.getResult(), ip);
-			bookmark.setPersonalVote(vote == null ? 0 : vote.getValue());
+	private Set<String> iterableToSet(Result result) {
+		Set<String> set = new HashSet<>();
+		Iterable<Reference> references = referenceRepository.findReferencesByResult(result);
+		for (Reference reference : references) {
+			set.add(reference.getUrl());
 		}
-		return bookmarks.stream().sorted().collect(Collectors.toList());
-	}
-
-	public void clear() {
-		bookmarksByIp.clear();
-		persistenceService.saveOnThread(bookmarksByIp);
+		return set;
 	}
 }

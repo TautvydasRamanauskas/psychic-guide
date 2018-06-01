@@ -1,5 +1,6 @@
 package psychic.guide.api.services;
 
+import psychic.guide.api.model.User;
 import psychic.guide.api.model.Vote;
 
 public interface VoteService {
@@ -9,5 +10,5 @@ public interface VoteService {
 
 	void removeVote(Vote vote);
 
-	Vote getVote(String title, String ip);
+	Vote getVote(String title, User user);
 }

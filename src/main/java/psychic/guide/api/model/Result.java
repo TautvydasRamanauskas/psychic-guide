@@ -13,6 +13,8 @@ public class Result {
 
 	private String result;
 
+	private int rating;
+
 	public Result() {
 
 	}
@@ -40,5 +42,13 @@ public class Result {
 	public Result setResult(String result) {
 		this.result = result;
 		return this;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 }

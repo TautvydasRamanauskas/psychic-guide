@@ -2,10 +2,7 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psychic.guide.api.model.Reference;
-import psychic.guide.api.model.Result;
-import psychic.guide.api.model.Search;
-import psychic.guide.api.model.Vote;
+import psychic.guide.api.model.*;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.repository.ReferenceRepository;
 import psychic.guide.api.repository.ResultsRepository;
@@ -40,15 +37,15 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public List<ResultEntry> search(String keyword, String ip) {
+	public List<ResultEntry> search(String keyword, User user) {
 		saveSearch(keyword);
 
 		List<ResultEntry> results = readResults().stream()
-				.map(line -> parseResultEntry(line, ip))
+				.map(line -> parseResultEntry(line, user))
 				.sorted()
 				.collect(Collectors.toList());
 
-		saveResults(results, keyword);
+		saveResults(results, keyword, user);
 		return results;
 	}
 
@@ -81,13 +78,14 @@ public class SearchServiceImpl implements SearchService {
 		return new Search().setKeyword(keyword);
 	}
 
-	private void saveResults(List<ResultEntry> results, String keyword) {
+	private void saveResults(List<ResultEntry> results, String keyword, User user) {
 		results.forEach(r -> {
 			Result existingResult = resultsRepository.findResultByResultAndKeyword(r.getResult(), keyword);
 			if (existingResult == null) {
 				Result result = new Result();
 				result.setResult(r.getResult());
 				result.setKeyword(keyword);
+				result.setRating(r.getCount());
 
 				Result newResult = resultsRepository.save(result);
 				r.setId(newResult.getId());
@@ -98,6 +96,7 @@ public class SearchServiceImpl implements SearchService {
 			} else {
 				r.setId(existingResult.getId());
 			}
+			r.setBookmark(bookmarkService.containsBookmark(r, user));
 		});
 	}
 
@@ -111,20 +110,19 @@ public class SearchServiceImpl implements SearchService {
 		return Collections.emptySet();
 	}
 
-	private ResultEntry parseResultEntry(String line, String ip) {
+	private ResultEntry parseResultEntry(String line, User user) {
 		String[] splits = line.split("\\$");
 		ResultEntry resultEntry = new ResultEntry();
 		resultEntry.setResult(splits[0]);
 		resultEntry.setCount(Integer.valueOf(splits[1]));
 		resultEntry.setReferences(Arrays.stream(splits[2].split("\\|")).collect(Collectors.toSet()));
-		resultEntry.setBookmark(bookmarkService.containsBookmark(resultEntry, ip));
 		resultEntry.setVoteValue(voteService.calculateVoteValue(resultEntry.getResult()));
-		resultEntry.setPersonalVote(getVote(resultEntry.getResult(), ip));
+		resultEntry.setPersonalVote(getVote(resultEntry.getResult(), user));
 		return resultEntry;
 	}
 
-	private int getVote(String title, String ip) {
-		Vote vote = voteService.getVote(title, ip);
+	private int getVote(String title, User user) {
+		Vote vote = voteService.getVote(title, user);
 		return vote == null ? 0 : vote.getValue();
 	}
 

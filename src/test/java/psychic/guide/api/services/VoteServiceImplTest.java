@@ -63,7 +63,7 @@ public class VoteServiceImplTest {
 
 	@Test
 	public void testGetVote() throws Exception {
-		Vote vote = voteService.getVote(TITLE_TWO, IP_TWO);
+		Vote vote = voteService.getVote(TITLE_TWO, new User());
 		assertEquals(TITLE_TWO, vote.getResult().getResult());
 		assertEquals(IP_TWO, vote.getUser().getId());
 		assertEquals(VALUE_TWO, vote.getValue());

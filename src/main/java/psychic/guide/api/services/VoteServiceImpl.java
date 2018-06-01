@@ -1,6 +1,7 @@
 package psychic.guide.api.services;
 
 import org.springframework.stereotype.Service;
+import psychic.guide.api.model.User;
 import psychic.guide.api.model.Vote;
 import psychic.guide.api.services.internal.PersistenceSerializationService;
 import psychic.guide.api.services.internal.PersistenceService;
@@ -51,10 +52,10 @@ public class VoteServiceImpl implements VoteService {
 	}
 
 	@Override
-	public Vote getVote(String title, String ip) {
+	public Vote getVote(String title, User user) {
 		Map<String, Vote> votesByIp = votes.get(title);
 		if (votesByIp != null) {
-			return votesByIp.get(ip);
+			return votesByIp.get(user.toString()); // TODO
 		}
 		return null;
 	}

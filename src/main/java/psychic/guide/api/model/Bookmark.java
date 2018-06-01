@@ -29,15 +29,17 @@ public class Bookmark {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public Bookmark setUser(User user) {
 		this.user = user;
+		return this;
 	}
 
 	public Result getResult() {
 		return result;
 	}
 
-	public void setResult(Result result) {
+	public Bookmark setResult(Result result) {
 		this.result = result;
+		return this;
 	}
 }
