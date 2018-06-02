@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import psychic.guide.api.model.Search;
 import psychic.guide.api.model.User;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.SearchService;
@@ -37,9 +38,9 @@ public class SearchController {
 
 	@ResponseBody
 	@RequestMapping(path = "/popular/", method = RequestMethod.GET)
-	public ResponseEntity<List<String>> popular() {
+	public ResponseEntity<List<Search>> popular() {
 		logger.info("Retrieving most popular searches");
-		List<String> mostPopularSearches = searchService.mostPopular();
+		List<Search> mostPopularSearches = searchService.mostPopular();
 		return new ResponseEntity<>(mostPopularSearches, HttpStatus.OK);
 	}
 }

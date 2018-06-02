@@ -50,14 +50,10 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public List<String> mostPopular() {
-		Map<String, Long> searches = new HashMap<>();
-		for (Search search : searchesRepository.findAll()) {
-			searches.put(search.getKeyword(), search.getSearchCount());
-		}
-		return searches.entrySet().stream()
+	public List<Search> mostPopular() {
+		List<Search> searches = (List<Search>) searchesRepository.findAll();
+		return searches.stream()
 				.sorted(this::compareSearches)
-				.map(Map.Entry::getKey)
 				.limit(SHOWN_MOST_POPULAR_SEARCHES)
 				.collect(Collectors.toList());
 	}
@@ -131,9 +127,11 @@ public class SearchServiceImpl implements SearchService {
 		return vote == null ? 0 : vote.getValue();
 	}
 
-	private int compareSearches(Map.Entry<String, Long> entryOne, Map.Entry<String, Long> entryTwo) {
-		long searchCountOne = entryOne.getValue();
-		long searchCountTwo = entryTwo.getValue();
-		return Long.compare(searchCountTwo, searchCountOne);
+	private int compareSearches(Search searchOne, Search searchTwo) {
+		int compareSearchCount = Long.compare(searchOne.getSearchCount(), searchTwo.getSearchCount());
+		if (compareSearchCount == 0) {
+			return searchOne.getKeyword().compareToIgnoreCase(searchTwo.getKeyword());
+		}
+		return compareSearchCount;
 	}
 }
