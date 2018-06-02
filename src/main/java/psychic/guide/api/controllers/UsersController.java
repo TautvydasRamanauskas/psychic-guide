@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import psychic.guide.api.model.Options;
 import psychic.guide.api.model.User;
+import psychic.guide.api.repository.OptionsRepository;
 import psychic.guide.api.repository.UserRepository;
 import psychic.guide.api.services.security.FacebookTokenValidator;
 import psychic.guide.api.services.security.TokenValidator;
@@ -16,11 +18,13 @@ import psychic.guide.api.services.security.TokenValidator;
 @RequestMapping(path = "/api/user/")
 public class UsersController {
 	private final UserRepository userRepository;
+	private final OptionsRepository optionsRepository;
 	private final Logger logger;
 
 	@Autowired
-	public UsersController(UserRepository userRepository) {
+	public UsersController(UserRepository userRepository, OptionsRepository optionsRepository) {
 		this.userRepository = userRepository;
+		this.optionsRepository = optionsRepository;
 		this.logger = LoggerFactory.getLogger(UsersController.class);
 	}
 
@@ -35,6 +39,14 @@ public class UsersController {
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+	}
+
+	@RequestMapping(path = "/options/", method = RequestMethod.PUT)
+	public ResponseEntity<Options> updateUserOptions(@RequestBody User user) {
+		logger.info("Updating options for user - {}", user);
+		Options options = user.getOptions();
+		optionsRepository.save(options);
+		return new ResponseEntity<>(options, HttpStatus.OK);
 	}
 
 	private User getUser(long facebookId) {
