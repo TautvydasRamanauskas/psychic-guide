@@ -1,12 +1,13 @@
 package psychic.guide.api.services;
 
+import psychic.guide.api.model.Link;
+import psychic.guide.api.model.User;
 import psychic.guide.api.model.data.ResultEntry;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface LinkService {
-	List<ResultEntry> get(UUID link, String ip);
+	List<ResultEntry> get(String link, User user);
 
-	UUID generate(List<ResultEntry> results);
+	Link generate(List<ResultEntry> results);
 }

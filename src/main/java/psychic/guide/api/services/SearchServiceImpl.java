@@ -41,7 +41,7 @@ public class SearchServiceImpl implements SearchService {
 		saveSearch(keyword);
 
 		List<ResultEntry> results = readResults().stream()
-				.map(line -> parseResultEntry(line))
+				.map(this::parseResultEntry)
 				.sorted()
 				.collect(Collectors.toList());
 
