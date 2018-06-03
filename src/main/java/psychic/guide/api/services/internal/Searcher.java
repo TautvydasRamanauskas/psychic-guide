@@ -1,6 +1,8 @@
 package psychic.guide.api.services.internal;
 
 import org.jsoup.nodes.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import psychic.guide.api.model.Options;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.model.SearchResult;
@@ -19,11 +21,13 @@ public class Searcher {
 	private final SearchAPIService searchService;
 	private final Options options;
 	private final Parser pageParser;
+	private final Logger logger;
 
 	public Searcher(SearchAPIService searchService, Options options) {
 		this.searchService = searchService;
 		this.options = options;
 		this.pageParser = new Parser(fetchBrandList(), options);
+		this.logger = LoggerFactory.getLogger(Searcher.class);
 	}
 
 	public List<ResultEntry> search(String keyword) {
@@ -34,7 +38,7 @@ public class Searcher {
 				.filter(r -> r.getCount() >= options.getMinRating())
 				.sorted()
 				.collect(Collectors.toList());
-		results.forEach(System.out::println);
+		results.stream().map(ResultEntry::toString).forEach(logger::info);
 		return results;
 	}
 

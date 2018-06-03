@@ -2,6 +2,8 @@ package psychic.guide.api.services.internal;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import psychic.guide.api.model.Options;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.neuralnetwork.NeuralNetworkTrainer;
@@ -25,15 +27,17 @@ public class Parser {
 	private final Set<String> brandList;
 	private final TextRule ruleSet;
 	private final NeuralNetworkTrainer networkTrainer;
+	private final Logger logger;
 
 	public Parser(Set<String> brandList, Options options) {
 		this.brandList = brandList;
 		this.ruleSet = new TextRuleSet(options);
 		this.networkTrainer = new NeuralNetworkTrainer(new NeurophNetwork());
+		this.logger = LoggerFactory.getLogger(Parser.class);
 	}
 
 	public Set<ResultEntry> parse(Document page, String url) {
-		System.out.printf("Parsing: %s\n", url);
+		logger.info("Parsing url - {}", url);
 		Collection<Element> brandedElements = brandList.stream()
 				.flatMap(b -> page.select(String.format(ELEMENTS_BRANDS_SELECTOR, b)).stream())
 				.collect(Collectors.toSet());

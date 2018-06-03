@@ -20,7 +20,7 @@ public class LoadBalancer implements SearchAPIService {
 		this.options = options;
 		this.services = createServicesMap();
 		this.timer = createAndStartTimer();
-		this.logger = LoggerFactory.getLogger(LoadBalancer.class);
+		this.logger = LoggerFactory.getLogger(SearchAPIService.class);
 	}
 
 	@Override
