@@ -9,12 +9,12 @@ public class Options {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private boolean useNeuralNetwork = true; // TODO
-	private boolean useGoogle = true; // TODO
-	private boolean useYandex = true; // TODO
+	private boolean useGoogle = true;
+	private boolean useYandex = true;
 	private boolean useCache = true;
-	private boolean useTextRuleReview = true; // TODO
-	private boolean useTextRuleNumber = true; // TODO
-	private boolean useTextRuleParenthesis = true; // TODO
+	private boolean useTextRuleReview = true;
+	private boolean useTextRuleNumber = true;
+	private boolean useTextRuleParenthesis = true;
 	private long minRating = 3;
 
 	public long getId() {

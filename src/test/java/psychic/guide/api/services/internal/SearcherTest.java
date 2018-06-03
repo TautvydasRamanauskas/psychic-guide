@@ -14,7 +14,7 @@ public class SearcherTest {
 	@Test
 	@Ignore
 	public void testSearch() {
-		Searcher searcher = new Searcher(new LoadBalancer(), new Options());
+		Searcher searcher = new Searcher(new LoadBalancer(new Options()), new Options());
 		List<ResultEntry> results = searcher.search("test");
 		assertFalse(results.isEmpty());
 	}

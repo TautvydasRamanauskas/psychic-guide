@@ -1,5 +1,8 @@
 package psychic.guide.api.services.internal.searchengine;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import psychic.guide.api.model.Options;
 import psychic.guide.api.services.internal.model.SearchResult;
 
 import java.time.LocalTime;
@@ -8,12 +11,16 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class LoadBalancer implements SearchAPIService {
+	private final Options options;
 	private final Map<Limit, SearchAPIService> services;
 	private final Timer timer;
+	private final Logger logger;
 
-	public LoadBalancer() {
-		services = createServicesMap();
-		timer = createAndStartTimer();
+	public LoadBalancer(Options options) {
+		this.options = options;
+		this.services = createServicesMap();
+		this.timer = createAndStartTimer();
+		this.logger = LoggerFactory.getLogger(LoadBalancer.class);
 	}
 
 	@Override
@@ -23,7 +30,7 @@ public class LoadBalancer implements SearchAPIService {
 				.map(Map.Entry::getValue)
 				.orElse(null);
 		if (service != null) {
-			System.out.printf("Using %s", service.getClass().getSimpleName());
+			logger.info("Using {} search engine", service.getClass().getSimpleName());
 			return service.search(keyword);
 		}
 		return new ArrayList<>();
@@ -37,15 +44,19 @@ public class LoadBalancer implements SearchAPIService {
 		timer.cancel();
 	}
 
-	private static Map<Limit, SearchAPIService> createServicesMap() {
+	private Map<Limit, SearchAPIService> createServicesMap() {
 		Map<Limit, SearchAPIService> services = new HashMap<>();
-		services.put(Limit.GOOGLE, new GoogleSearchApi());
-		services.put(Limit.YANDEX, new YandexSearchApi());
+		if (options.isUseGoogle()) {
+			services.put(Limit.GOOGLE, new GoogleSearchApi());
+		}
+		if (options.isUseYandex()) {
+			services.put(Limit.YANDEX, new YandexSearchApi());
+		}
 //		services.put(Limit.BING, new AzureDemoSearchApi());
 		return services;
 	}
 
-	private static Timer createAndStartTimer() {
+	private Timer createAndStartTimer() {
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
 			@Override
@@ -63,7 +74,7 @@ public class LoadBalancer implements SearchAPIService {
 	}
 
 	private enum Limit {
-		GOOGLE(100), YANDEX(10)/*, BING(-1)*/;
+		GOOGLE(100), YANDEX(10)/*, BING(-1)*/; // TODO: test limits
 
 		private final int limit;
 		private int current;
