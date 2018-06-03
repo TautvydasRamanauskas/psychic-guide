@@ -11,9 +11,9 @@ public class User {
 	private long facebookId;
 	private int level;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "optionId", referencedColumnName = "id")
-	private Options options;
+	private Options options = new Options();
 
 	public long getId() {
 		return id;
@@ -45,7 +45,8 @@ public class User {
 		return options;
 	}
 
-	public void setOptions(Options options) {
+	public User setOptions(Options options) {
 		this.options = options;
+		return this;
 	}
 }

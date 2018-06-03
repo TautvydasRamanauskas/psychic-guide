@@ -13,6 +13,8 @@ import psychic.guide.api.repository.UserRepository;
 import psychic.guide.api.services.security.FacebookTokenValidator;
 import psychic.guide.api.services.security.TokenValidator;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping(path = "/api/user/")
@@ -42,20 +44,20 @@ public class UsersController {
 	}
 
 	@RequestMapping(path = "/options/", method = RequestMethod.PUT)
-	public ResponseEntity<Options> updateUserOptions(@RequestBody User user) {
-		logger.info("Updating options for user - {}", user);
-		Options options = user.getOptions();
+	public ResponseEntity<Options> updateUserOptions(@RequestBody Options options) {
+		logger.info("Updating options - {}", options.getId());
 		optionsRepository.save(options);
 		return new ResponseEntity<>(options, HttpStatus.OK);
 	}
 
 	private User getUser(long facebookId) {
-		Iterable<User> users = userRepository.findAll();
-		for (User user : users) {
-			if (facebookId == user.getFacebookId()) {
-				return user;
-			}
-		}
+		return ((List<User>) userRepository.findAll()).stream()
+				.filter(u -> facebookId == u.getFacebookId())
+				.findAny()
+				.orElseGet(() -> createUser(facebookId));
+	}
+
+	private User createUser(long facebookId) {
 		User newUser = new User().setFacebookId(facebookId);
 		userRepository.save(newUser);
 		return newUser;
