@@ -15,6 +15,8 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static psychic.guide.api.ResultsConverter.resultsToEntries;
+
 @Service
 public class SearchServiceImpl implements SearchService {
 	private static final int SHOWN_MOST_POPULAR_SEARCHES = 10;
@@ -40,12 +42,17 @@ public class SearchServiceImpl implements SearchService {
 	public List<ResultEntry> search(String keyword, User user) {
 		saveSearch(keyword);
 
+		if (user.getOptions().isUseCache() && searchesRepository.findByKeyword(keyword) != null) {
+			List<Result> results = resultsRepository.findResultsByKeyword(keyword);
+			return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
+		}
+
 		List<ResultEntry> results = readResults().stream()
 				.map(this::parseResultEntry)
 				.sorted()
 				.collect(Collectors.toList());
-
 		saveResults(results, keyword, user);
+
 		return results;
 	}
 

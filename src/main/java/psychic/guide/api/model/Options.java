@@ -8,14 +8,14 @@ public class Options {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private boolean useNeuralNetwork = true;
-	private boolean useGoogle = true;
-	private boolean useYandex = true;
+	private boolean useNeuralNetwork = true; // TODO
+	private boolean useGoogle = true; // TODO
+	private boolean useYandex = true; // TODO
 	private boolean useCache = true;
-	private boolean useTextRuleReview = true;
-	private boolean useTextRuleNumber = true;
-	private boolean useTextRuleParenthesis = true;
-	private long minRating = 2;
+	private boolean useTextRuleReview = true; // TODO
+	private boolean useTextRuleNumber = true; // TODO
+	private boolean useTextRuleParenthesis = true; // TODO
+	private long minRating = 2; // TODO
 
 	public long getId() {
 		return id;

@@ -2,7 +2,9 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psychic.guide.api.model.*;
+import psychic.guide.api.model.Link;
+import psychic.guide.api.model.Result;
+import psychic.guide.api.model.User;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.repository.LinksRepository;
 import psychic.guide.api.repository.ReferenceRepository;
@@ -10,7 +12,9 @@ import psychic.guide.api.repository.ResultsRepository;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
+
+import static psychic.guide.api.ResultsConverter.entriesToResults;
+import static psychic.guide.api.ResultsConverter.resultsToEntries;
 
 @Service
 public class LinkServiceImpl implements LinkService {
@@ -34,43 +38,16 @@ public class LinkServiceImpl implements LinkService {
 	@Override
 	public List<ResultEntry> get(String link, User user) {
 		List<Result> results = linksRepository.getLinkByLink(link).getResults();
-		return resultsToEntries(results, user);
+		return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
 	}
 
 	@Override
 	public Link generate(List<ResultEntry> results) {
 		Link link = new Link();
 		link.setLink(UUID.randomUUID().toString());
-		link.setResults(entriesToResults(results));
+		link.setResults(entriesToResults(results, resultsRepository));
 		linksRepository.save(link);
 		return link;
 	}
 
-	private List<Result> entriesToResults(List<ResultEntry> results) {
-		return results.stream()
-				.map(ResultEntry::getId)
-				.map(resultsRepository::findOne)
-				.collect(Collectors.toList());
-	}
-
-	private List<ResultEntry> resultsToEntries(List<Result> results, User user) {
-		return results.stream()
-				.map(r -> {
-					ResultEntry entry = new ResultEntry();
-					entry.setId(r.getId());
-					entry.setResult(r.getResult());
-					entry.setCount(r.getRating());
-					entry.setPersonalVote(getVote(user, r));
-					entry.setVoteValue(voteService.calculateVoteValue(r));
-					entry.setBookmark(bookmarkService.containsBookmark(entry, user));
-					entry.setReferences(referenceRepository.findReferencesByResult(r).stream().map(Reference::getUrl).collect(Collectors.toSet()));
-					return entry;
-				})
-				.collect(Collectors.toList());
-	}
-
-	private int getVote(User user, Result result) {
-		Vote vote = voteService.getVote(result, user);
-		return vote == null ? 0 : vote.getValue();
-	}
 }

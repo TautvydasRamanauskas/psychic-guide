@@ -4,8 +4,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import psychic.guide.api.model.Result;
 
+import java.util.List;
+
 public interface ResultsRepository extends CrudRepository<Result, Long> {
-	Iterable<Result> findResultsByKeyword(@Param("keyword") String keyword);
+	List<Result> findResultsByKeyword(@Param("keyword") String keyword);
 
 	Result findResultByResultAndKeyword(@Param("result") String result, @Param("keyword") String keyword);
 }
