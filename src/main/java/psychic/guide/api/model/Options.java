@@ -8,7 +8,7 @@ public class Options {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private boolean useNeuralNetwork = true; // TODO
+	private boolean useNeuralNetwork = true;
 	private boolean useGoogle = true;
 	private boolean useYandex = true;
 	private boolean useCache = true;

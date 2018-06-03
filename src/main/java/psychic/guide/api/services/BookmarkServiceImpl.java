@@ -65,7 +65,6 @@ public class BookmarkServiceImpl implements BookmarkService {
 			resultEntry.setBookmark(true);
 			resultEntry.setReferences(iterableToSet(result));
 			resultEntry.setId(result.getId());
-			resultEntry.setCount(result.getRating());
 			resultEntry.setResult(result.getResult());
 			resultEntry.setVoteValue(voteService.calculateVoteValue(result));
 			Vote vote = user == null ? null : voteService.getVote(result, user);

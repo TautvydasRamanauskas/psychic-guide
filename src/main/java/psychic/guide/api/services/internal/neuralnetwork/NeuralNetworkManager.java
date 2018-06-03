@@ -3,20 +3,18 @@ package psychic.guide.api.services.internal.neuralnetwork;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 import static psychic.guide.api.services.internal.Tags.*;
 
-public class NeuralNetworkTrainer {
+public class NeuralNetworkManager {
 	private final NeurophNetwork network;
 	private final ExecutorService trainExecutor;
 
-	public NeuralNetworkTrainer(NeurophNetwork network) {
+	public NeuralNetworkManager(NeurophNetwork network) {
 		this.network = network;
 		this.trainExecutor = Executors.newSingleThreadExecutor();
 	}
@@ -32,22 +30,33 @@ public class NeuralNetworkTrainer {
 		network.train(inputs, outputs);
 	}
 
+	public Set<Element> calculate(Elements elements, Collection<Element> brandedElements) {
+		return elements.stream()
+				.filter(e -> calculateElement(brandedElements, e))
+				.collect(Collectors.toSet());
+	}
+
 	public void persist() {
 		trainExecutor.execute(network::save);
 	}
 
 	private void addRow(Element element, Collection<Element> brandedElements, Collection<Element> filteredElements,
 						List<double[]> inputs, List<double[]> outputs) {
+		boolean[] inputArray = createInputsArray(element, brandedElements);
+		boolean[] outputArray = {filteredElements.contains(element)};
+
+		inputs.add(toDoubleArray(inputArray));
+		outputs.add(toDoubleArray(outputArray));
+	}
+
+	private boolean[] createInputsArray(Element element, Collection<Element> brandedElements) {
 		boolean isBrand = brandedElements.contains(element);
 		boolean isLink = Objects.equals(element.tagName(), TAG_A);
 		boolean isBold = Objects.equals(element.tagName(), TAG_B);
 		boolean isH3 = Objects.equals(element.tagName(), TAG_H3);
 		boolean isH4 = Objects.equals(element.tagName(), TAG_H4);
 		boolean isH5 = Objects.equals(element.tagName(), TAG_H5);
-		boolean result = filteredElements.contains(element);
-
-		inputs.add(toDoubleArray(new boolean[]{isBrand, isLink, isBold, isH3, isH4, isH5}));
-		outputs.add(toDoubleArray(new boolean[]{result}));
+		return new boolean[]{isBrand, isLink, isBold, isH3, isH4, isH5};
 	}
 
 	private static double[] toDoubleArray(boolean[] booleanArray) {
@@ -56,5 +65,12 @@ public class NeuralNetworkTrainer {
 			doubleArray[i] = booleanArray[i] ? 1 : 0;
 		}
 		return doubleArray;
+	}
+
+	private boolean calculateElement(Collection<Element> brandedElements, Element element) {
+		boolean[] inputsArray = createInputsArray(element, brandedElements);
+		double[] results = network.calculate(toDoubleArray(inputsArray));
+		double result = results[0];
+		return result > 0.5;
 	}
 }

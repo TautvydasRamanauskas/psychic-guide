@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
-public class NeuralNetworkTrainerTest {
+public class NeuralNetworkManagerTest {
 	@Test
 	public void testTrainer() {
 		List<Element> brandedElements = List.of(new Element("tag"), new Element("tag"), new Element("tag"));
@@ -15,7 +15,7 @@ public class NeuralNetworkTrainerTest {
 		Elements elements = createElements(brandedElements, filteredElements);
 
 		NeurophNetwork neuralNetwork = Mockito.mock(NeurophNetwork.class);
-		NeuralNetworkTrainer trainer = new NeuralNetworkTrainer(neuralNetwork);
+		NeuralNetworkManager trainer = new NeuralNetworkManager(neuralNetwork);
 		trainer.train(elements, brandedElements, filteredElements);
 
 		Mockito.verify(neuralNetwork).train(Mockito.any(), Mockito.any());

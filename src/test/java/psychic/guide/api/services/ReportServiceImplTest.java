@@ -33,7 +33,6 @@ public class ReportServiceImplTest {
 	private static ResultEntry createResultEntry(String result, int count, int voteValue) {
 		ResultEntry resultEntry = new ResultEntry();
 		resultEntry.setResult(result);
-		resultEntry.setCount(count);
 		resultEntry.setVoteValue(voteValue);
 		return resultEntry;
 	}

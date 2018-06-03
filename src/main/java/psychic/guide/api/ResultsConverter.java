@@ -32,7 +32,6 @@ public class ResultsConverter {
 					ResultEntry entry = new ResultEntry();
 					entry.setId(r.getId());
 					entry.setResult(r.getResult());
-					entry.setCount(r.getRating());
 					entry.setPersonalVote(getVote(user, r, voteService));
 					entry.setVoteValue(voteService.calculateVoteValue(r));
 					entry.setBookmark(bookmarkService.containsBookmark(entry, user));

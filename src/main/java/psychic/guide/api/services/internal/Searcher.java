@@ -35,10 +35,12 @@ public class Searcher {
 		List<SearchResult> searchResults = searchService.search(searchText);
 		Collection<ResultEntry> parseResults = parseSearchResults(searchResults);
 		List<ResultEntry> results = parseResults.stream()
-				.filter(r -> r.getCount() >= options.getMinRating())
+				.filter(r -> r.getReferences().size() >= options.getMinRating())
 				.sorted()
 				.collect(Collectors.toList());
+
 		results.stream().map(ResultEntry::toString).forEach(logger::info);
+		pageParser.persist();
 		return results;
 	}
 
@@ -72,7 +74,6 @@ public class Searcher {
 				.findAny()
 				.orElse(null);
 		if (existingEntry != null) {
-			existingEntry.setCount(existingEntry.getCount() + 1);
 			existingEntry.getReferences().addAll(resultEntry.getReferences());
 		} else {
 			parseResults.add(resultEntry);

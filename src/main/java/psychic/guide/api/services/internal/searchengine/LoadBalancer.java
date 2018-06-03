@@ -11,6 +11,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class LoadBalancer implements SearchAPIService {
+	private static final Map<Limit, Limit> LIMITS = Map.of(Limit.GOOGLE, Limit.GOOGLE, Limit.YANDEX, Limit.YANDEX);
 	private final Options options;
 	private final Map<Limit, SearchAPIService> services;
 	private final Timer timer;
@@ -30,7 +31,7 @@ public class LoadBalancer implements SearchAPIService {
 				.map(Map.Entry::getValue)
 				.orElse(null);
 		if (service != null) {
-			logger.info("Using {} search engine", service.getClass().getSimpleName());
+			logger.info("Using {} as search engine", service.getClass().getSimpleName());
 			return service.search(keyword);
 		}
 		return new ArrayList<>();
@@ -74,7 +75,7 @@ public class LoadBalancer implements SearchAPIService {
 	}
 
 	private enum Limit {
-		GOOGLE(100), YANDEX(10)/*, BING(-1)*/; // TODO: test limits
+		GOOGLE(100), YANDEX(10)/*, BING(-1)*/; // TODO: persist limits (Map?)
 
 		private final int limit;
 		private int current;

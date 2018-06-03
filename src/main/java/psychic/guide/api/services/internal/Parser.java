@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import psychic.guide.api.model.Options;
 import psychic.guide.api.model.data.ResultEntry;
-import psychic.guide.api.services.internal.neuralnetwork.NeuralNetworkTrainer;
+import psychic.guide.api.services.internal.neuralnetwork.NeuralNetworkManager;
 import psychic.guide.api.services.internal.neuralnetwork.NeurophNetwork;
 import psychic.guide.api.services.internal.textrule.TextRule;
 import psychic.guide.api.services.internal.textrule.TextRuleSet;
@@ -25,14 +25,16 @@ public class Parser {
 	private static final Set<String> TAGS = Set.of(TAG_A, TAG_B, TAG_H1, TAG_H2, TAG_H3, TAG_H4, TAG_H5);
 
 	private final Set<String> brandList;
+	private final Options options;
 	private final TextRule ruleSet;
-	private final NeuralNetworkTrainer networkTrainer;
+	private final NeuralNetworkManager networkManager;
 	private final Logger logger;
 
 	public Parser(Set<String> brandList, Options options) {
 		this.brandList = brandList;
+		this.options = options;
 		this.ruleSet = new TextRuleSet(options);
-		this.networkTrainer = new NeuralNetworkTrainer(new NeurophNetwork());
+		this.networkManager = new NeuralNetworkManager(new NeurophNetwork());
 		this.logger = LoggerFactory.getLogger(Parser.class);
 	}
 
@@ -41,18 +43,24 @@ public class Parser {
 		Collection<Element> brandedElements = brandList.stream()
 				.flatMap(b -> page.select(String.format(ELEMENTS_BRANDS_SELECTOR, b)).stream())
 				.collect(Collectors.toSet());
-		Collection<Element> filteredElements = brandedElements.stream()
-				.filter(this::isResult)
-				.collect(Collectors.toSet());
-		networkTrainer.trainOnThread(page.children(), brandedElements, filteredElements);
-
+		Collection<Element> filteredElements = filter(page, brandedElements);
+		trainNeuralNetwork(page, brandedElements, filteredElements);
 		return filteredElements.stream()
 				.map(e -> createResultEntry(e, url))
 				.collect(Collectors.toSet());
 	}
 
 	public void persist() {
-		networkTrainer.persist();
+		networkManager.persist();
+	}
+
+	private Collection<Element> filter(Document page, Collection<Element> brandedElements) {
+		if (options.isUseNeuralNetwork()) {
+			return networkManager.calculate(page.children(), brandedElements);
+		}
+		return brandedElements.stream()
+				.filter(this::isResult)
+				.collect(Collectors.toSet());
 	}
 
 	private boolean isResult(Element element) {
@@ -62,6 +70,12 @@ public class Parser {
 	private boolean isResult(Element element, int level) {
 		return level > 0 && element.parent() != null &&
 				(TAGS.contains(element.tagName()) || isResult(element.parent(), --level));
+	}
+
+	private void trainNeuralNetwork(Document page, Collection<Element> brandedElements, Collection<Element> filteredElements) {
+		if (!options.isUseNeuralNetwork()) {
+			networkManager.trainOnThread(page.children(), brandedElements, filteredElements);
+		}
 	}
 
 	private ResultEntry createResultEntry(Element element, String url) {

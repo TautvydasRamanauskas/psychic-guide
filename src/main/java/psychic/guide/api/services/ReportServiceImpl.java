@@ -19,6 +19,6 @@ public class ReportServiceImpl implements ReportService {
 
 	private String createRow(ResultEntry entry) {
 		return String.format("<tr><td>%s</td><td>%s</td></tr>\n",
-				entry.getResult(), entry.getCount() + entry.getVoteValue());
+				entry.getResult(), entry.getReferences().size() + entry.getVoteValue());
 	}
 }

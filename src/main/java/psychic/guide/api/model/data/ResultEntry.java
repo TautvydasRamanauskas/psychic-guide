@@ -8,7 +8,6 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	private long id = System.currentTimeMillis();
 	private String result;
 	private Set<String> references;
-	private int count;
 	private boolean bookmark;
 	private int voteValue;
 	private int personalVote;
@@ -39,14 +38,6 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 
 	public void setReferences(Set<String> references) {
 		this.references = references;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
 	}
 
 	public boolean isBookmark() {
@@ -87,12 +78,15 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("%s$%d$%s", result, count, references.stream().collect(Collectors.joining("|")));
+		return String.format("%s$%d$%s", result, references.size(), references.stream().collect(Collectors.joining("|")));
 	}
 
 	@Override
 	public int compareTo(ResultEntry resultEntry) {
-		int voteCompareResult = Integer.compare(resultEntry.getCount() + resultEntry.getVoteValue(), count + voteValue);
+		int voteCompareResult = Integer.compare(
+				resultEntry.references.size() + resultEntry.voteValue,
+				references.size() + voteValue
+		);
 		if (voteCompareResult == 0) {
 			return resultEntry.getResult().compareTo(result);
 		}

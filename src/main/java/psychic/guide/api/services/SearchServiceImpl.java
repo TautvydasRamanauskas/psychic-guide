@@ -7,6 +7,8 @@ import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.repository.ReferenceRepository;
 import psychic.guide.api.repository.ResultsRepository;
 import psychic.guide.api.repository.SearchesRepository;
+import psychic.guide.api.services.internal.Searcher;
+import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,20 +42,19 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<ResultEntry> search(String keyword, User user) {
-		saveSearch(keyword);
-
 		if (user.getOptions().isUseCache() && searchesRepository.findByKeyword(keyword) != null) {
 			List<Result> results = resultsRepository.findResultsByKeyword(keyword);
 			return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
 		}
 
-//		Searcher searcher = new Searcher(new LoadBalancer(user.getOptions()), user.getOptions());
-//		List<ResultEntry> results = searcher.search(keyword);
+		Searcher searcher = new Searcher(new LoadBalancer(user.getOptions()), user.getOptions());
+		List<ResultEntry> results = searcher.search(keyword);
 
-		List<ResultEntry> results = readResults().stream()
-				.map(this::parseResultEntry)
-				.sorted()
-				.collect(Collectors.toList());
+//		List<ResultEntry> results = readResults().stream()
+//				.map(this::parseResultEntry)
+//				.sorted()
+//				.collect(Collectors.toList());
+		saveSearch(keyword);
 		saveResults(results, keyword, user);
 
 		return results;
@@ -108,7 +109,6 @@ public class SearchServiceImpl implements SearchService {
 		String[] splits = line.split("\\$");
 		ResultEntry resultEntry = new ResultEntry();
 		resultEntry.setResult(splits[0]);
-		resultEntry.setCount(Integer.valueOf(splits[1]));
 		resultEntry.setReferences(Arrays.stream(splits[2].split("\\|")).collect(Collectors.toSet()));
 		return resultEntry;
 	}
@@ -119,7 +119,7 @@ public class SearchServiceImpl implements SearchService {
 			Result result = new Result();
 			result.setResult(entry.getResult());
 			result.setKeyword(keyword);
-			result.setRating(entry.getCount());
+			result.setRating(entry.getReferences().size());
 
 			Result newResult = resultsRepository.save(result);
 			entry.getReferences().stream()
