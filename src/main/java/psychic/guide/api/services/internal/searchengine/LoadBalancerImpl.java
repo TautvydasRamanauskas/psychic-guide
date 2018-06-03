@@ -64,8 +64,8 @@ public class LoadBalancerImpl implements LoadBalancer {
 				limits.reset();
 			}
 		};
-		Date firstMidnight = new Date(LocalTime.MIDNIGHT.getLong(ChronoField.MILLI_OF_DAY));
-		timer.scheduleAtFixedRate(timerTask, firstMidnight, ChronoUnit.DAYS.getDuration().toMillis());
+		long delay = ChronoUnit.DAYS.getDuration().toMillis()-LocalTime.MIDNIGHT.getLong(ChronoField.MILLI_OF_DAY);
+		timer.scheduleAtFixedRate(timerTask, delay, ChronoUnit.DAYS.getDuration().toMillis());
 		return timer;
 	}
 

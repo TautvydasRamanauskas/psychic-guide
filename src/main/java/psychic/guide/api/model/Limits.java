@@ -1,8 +1,8 @@
 package psychic.guide.api.model;
 
 public class Limits {
-	private int google = 90;
-	private int yandex = 9;
+	private int google = 100;
+	private int yandex = 10;
 
 	public int getGoogle() {
 		return google;
