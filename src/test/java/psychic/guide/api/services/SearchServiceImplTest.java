@@ -22,7 +22,7 @@ public class SearchServiceImplTest {
 	private static final String SEARCH_ELEVEN = "SEARCH_ELEVEN";
 
 	private TestPersistenceService<HashMap<String, AtomicInteger>> persistenceService;
-	private SearchServiceImpl searchService;
+//	private SearchServiceImpl searchService;
 
 	@Before
 	public void setUp() throws Exception {
@@ -43,7 +43,7 @@ public class SearchServiceImplTest {
 		BookmarkService bookmarkService = new BookmarkServiceImpl(voteService, null,null,null, null);
 
 		persistenceService = new TestPersistenceService<>(data);
-		searchService = new SearchServiceImpl(bookmarkService, voteService, null, null, null);
+//		searchService = new SearchServiceImpl(bookmarkService, voteService, null, null, null);
 	}
 
 	@Test

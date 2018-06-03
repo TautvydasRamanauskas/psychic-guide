@@ -7,8 +7,7 @@ import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.repository.ReferenceRepository;
 import psychic.guide.api.repository.ResultsRepository;
 import psychic.guide.api.repository.SearchesRepository;
-import psychic.guide.api.services.internal.Searcher;
-import psychic.guide.api.services.internal.searchengine.LoadBalancer;
+import psychic.guide.api.services.internal.searchengine.SearchAPIService;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,16 +24,18 @@ public class SearchServiceImpl implements SearchService {
 
 	private final BookmarkService bookmarkService;
 	private final VoteService voteService;
+	private final SearchAPIService searchAPIService;
 	private final SearchesRepository searchesRepository;
 	private final ResultsRepository resultsRepository;
 	private final ReferenceRepository referenceRepository;
 
 	@Autowired
 	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService,
-							 SearchesRepository searchesRepository, ResultsRepository resultsRepository,
-							 ReferenceRepository referenceRepository) {
+							 SearchAPIService searchAPIService, SearchesRepository searchesRepository,
+							 ResultsRepository resultsRepository, ReferenceRepository referenceRepository) {
 		this.bookmarkService = bookmarkService;
 		this.voteService = voteService;
+		this.searchAPIService = searchAPIService;
 		this.searchesRepository = searchesRepository;
 		this.resultsRepository = resultsRepository;
 		this.referenceRepository = referenceRepository;
@@ -47,16 +48,16 @@ public class SearchServiceImpl implements SearchService {
 			return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
 		}
 
-		Searcher searcher = new Searcher(new LoadBalancer(user.getOptions()), user.getOptions());
-		List<ResultEntry> results = searcher.search(keyword);
+//		Searcher searcher = new Searcher(searchAPIService, user.getOptions());
+//		List<ResultEntry> results = searcher.search(keyword);
 
-//		List<ResultEntry> results = readResults().stream()
-//				.map(this::parseResultEntry)
-//				.sorted()
-//				.collect(Collectors.toList());
+		List<ResultEntry> results = readResults().stream()
+				.map(this::parseResultEntry)
+				.sorted()
+				.collect(Collectors.toList());
+
 		saveSearch(keyword);
 		saveResults(results, keyword, user);
-
 		return results;
 	}
 
