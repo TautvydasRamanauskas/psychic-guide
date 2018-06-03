@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import psychic.guide.api.model.Limits;
 import psychic.guide.api.model.User;
+import psychic.guide.api.model.data.UserIdLevel;
 import psychic.guide.api.repository.UserRepository;
 import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
@@ -28,5 +29,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<User> users() {
 		return (List<User>) userRepository.findAll();
+	}
+
+	@Override
+	public void level(UserIdLevel userIdLevel) {
+		User user = userRepository.findOne(userIdLevel.getUserId());
+		user.setLevel(userIdLevel.getLevel());
+		userRepository.save(user);
 	}
 }

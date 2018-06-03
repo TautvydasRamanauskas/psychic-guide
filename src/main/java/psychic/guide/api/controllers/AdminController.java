@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psychic.guide.api.model.Limits;
 import psychic.guide.api.model.User;
+import psychic.guide.api.model.data.UserIdLevel;
 import psychic.guide.api.services.AdminService;
 
 import java.util.List;
@@ -40,4 +41,13 @@ public class AdminController {
 		List<User> users = adminService.users();
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
+
+	@ResponseBody
+	@RequestMapping(path = "/level/", method = RequestMethod.POST)
+	public ResponseEntity<Object> changeLevel(@RequestBody UserIdLevel userIdLevel) {
+		logger.info("Updating user {} level to {}", userIdLevel.getUserId(), userIdLevel.getLevel());
+		adminService.level(userIdLevel);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
 }
