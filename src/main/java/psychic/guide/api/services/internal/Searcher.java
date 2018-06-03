@@ -23,7 +23,7 @@ public class Searcher {
 	public Searcher(SearchAPIService searchService, Options options) {
 		this.searchService = searchService;
 		this.options = options;
-		this.pageParser = new Parser(fetchBrandList());
+		this.pageParser = new Parser(fetchBrandList(), options);
 	}
 
 	public List<ResultEntry> search(String keyword) {

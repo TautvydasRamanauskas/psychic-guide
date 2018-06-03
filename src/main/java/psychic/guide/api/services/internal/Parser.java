@@ -2,6 +2,7 @@ package psychic.guide.api.services.internal;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import psychic.guide.api.model.Options;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.neuralnetwork.NeuralNetworkTrainer;
 import psychic.guide.api.services.internal.neuralnetwork.NeurophNetwork;
@@ -25,9 +26,9 @@ public class Parser {
 	private final TextRule ruleSet;
 	private final NeuralNetworkTrainer networkTrainer;
 
-	public Parser(Set<String> brandList) {
+	public Parser(Set<String> brandList, Options options) {
 		this.brandList = brandList;
-		this.ruleSet = new TextRuleSet();
+		this.ruleSet = new TextRuleSet(options);
 		this.networkTrainer = new NeuralNetworkTrainer(new NeurophNetwork());
 	}
 
