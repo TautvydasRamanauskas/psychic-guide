@@ -2,6 +2,7 @@ package psychic.guide.api.services.internal;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import psychic.guide.api.model.Options;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
@@ -13,7 +14,7 @@ public class SearcherTest {
 	@Test
 	@Ignore
 	public void testSearch() {
-		Searcher searcher = new Searcher(new LoadBalancer());
+		Searcher searcher = new Searcher(new LoadBalancer(), new Options());
 		List<ResultEntry> results = searcher.search("test");
 		assertFalse(results.isEmpty());
 	}

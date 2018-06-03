@@ -47,6 +47,9 @@ public class SearchServiceImpl implements SearchService {
 			return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
 		}
 
+//		Searcher searcher = new Searcher(new LoadBalancer(), user.getOptions());
+//		List<ResultEntry> results = searcher.search(keyword);
+
 		List<ResultEntry> results = readResults().stream()
 				.map(this::parseResultEntry)
 				.sorted()

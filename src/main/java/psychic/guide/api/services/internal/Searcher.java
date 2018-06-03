@@ -1,6 +1,7 @@
 package psychic.guide.api.services.internal;
 
 import org.jsoup.nodes.Document;
+import psychic.guide.api.model.Options;
 import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.model.SearchResult;
 import psychic.guide.api.services.internal.searchengine.SearchAPIService;
@@ -15,12 +16,13 @@ import java.util.stream.Collectors;
 public class Searcher {
 	private static final String BRANDS_LIST_PATH = "data/brands";
 	private static final String SEARCH_WORD = "Best";
-	private static final int MIN_VOTE_VALUE = 3;
 	private final SearchAPIService searchService;
+	private final Options options;
 	private final Parser pageParser;
 
-	public Searcher(SearchAPIService searchService) {
+	public Searcher(SearchAPIService searchService, Options options) {
 		this.searchService = searchService;
+		this.options = options;
 		this.pageParser = new Parser(fetchBrandList());
 	}
 
@@ -29,7 +31,7 @@ public class Searcher {
 		List<SearchResult> searchResults = searchService.search(searchText);
 		Collection<ResultEntry> parseResults = parseSearchResults(searchResults);
 		List<ResultEntry> results = parseResults.stream()
-				.filter(r -> r.getCount() >= MIN_VOTE_VALUE)
+				.filter(r -> r.getCount() >= options.getMinRating())
 				.sorted()
 				.collect(Collectors.toList());
 		results.forEach(System.out::println);
