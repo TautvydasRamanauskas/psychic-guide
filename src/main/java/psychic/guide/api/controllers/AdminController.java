@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psychic.guide.api.model.Limits;
+import psychic.guide.api.model.User;
 import psychic.guide.api.services.AdminService;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -28,5 +31,13 @@ public class AdminController {
 		logger.info("Retrieving search engines limits");
 		Limits limits = adminService.limits();
 		return new ResponseEntity<>(limits, HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(path = "/users/", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> users() {
+		logger.info("Retrieving users list");
+		List<User> users = adminService.users();
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 }

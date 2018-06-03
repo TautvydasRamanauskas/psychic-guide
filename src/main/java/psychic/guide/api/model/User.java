@@ -10,6 +10,9 @@ public class User {
 	private long id;
 	private long facebookId;
 	private int level;
+	private String name;
+	private String email;
+	private String picture;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "optionId", referencedColumnName = "id")
@@ -28,9 +31,8 @@ public class User {
 		return facebookId;
 	}
 
-	public User setFacebookId(long facebookId) {
+	public void setFacebookId(long facebookId) {
 		this.facebookId = facebookId;
-		return this;
 	}
 
 	public int getLevel() {
@@ -48,5 +50,29 @@ public class User {
 	public User setOptions(Options options) {
 		this.options = options;
 		return this;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 }
