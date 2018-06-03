@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psychic.guide.api.model.Limits;
+import psychic.guide.api.model.Search;
 import psychic.guide.api.model.User;
 import psychic.guide.api.model.data.UserIdLevel;
 import psychic.guide.api.services.AdminService;
@@ -40,6 +41,14 @@ public class AdminController {
 		logger.info("Retrieving users list");
 		List<User> users = adminService.users();
 		return new ResponseEntity<>(users, HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(path = "/searches/", method = RequestMethod.GET)
+	public ResponseEntity<List<Search>> searches() {
+		logger.info("Retrieving searches");
+		List<Search> searches = adminService.searches();
+		return new ResponseEntity<>(searches, HttpStatus.OK);
 	}
 
 	@ResponseBody
