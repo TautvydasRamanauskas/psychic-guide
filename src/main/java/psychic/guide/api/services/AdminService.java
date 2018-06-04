@@ -17,4 +17,8 @@ public interface AdminService {
 	void level(UserIdLevel userIdLevel);
 
 	void cleanCache(String keyword);
+
+	long linksCount();
+
+	long bookmarksCount();
 }

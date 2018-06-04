@@ -7,9 +7,7 @@ import psychic.guide.api.model.Search;
 import psychic.guide.api.model.User;
 import psychic.guide.api.model.data.CacheStatistic;
 import psychic.guide.api.model.data.UserIdLevel;
-import psychic.guide.api.repository.ResultsRepository;
-import psychic.guide.api.repository.SearchesRepository;
-import psychic.guide.api.repository.UserRepository;
+import psychic.guide.api.repository.*;
 import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
 import java.util.List;
@@ -21,16 +19,22 @@ public class AdminServiceImpl implements AdminService {
 	private final UserRepository userRepository;
 	private final SearchesRepository searchesRepository;
 	private final ResultsRepository resultsRepository;
+	private final LinksRepository linksRepository;
+	private final BookmarksRepository bookmarksRepository;
 
 	@Autowired
 	public AdminServiceImpl(LoadBalancer loadBalancer,
 							UserRepository userRepository,
 							SearchesRepository searchesRepository,
-							ResultsRepository resultsRepository) {
+							ResultsRepository resultsRepository,
+							LinksRepository linksRepository,
+							BookmarksRepository bookmarksRepository) {
 		this.loadBalancer = loadBalancer;
 		this.userRepository = userRepository;
 		this.searchesRepository = searchesRepository;
 		this.resultsRepository = resultsRepository;
+		this.linksRepository = linksRepository;
+		this.bookmarksRepository = bookmarksRepository;
 	}
 
 	@Override
@@ -62,5 +66,15 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void cleanCache(String keyword) {
 		resultsRepository.removeByKeyword(keyword);
+	}
+
+	@Override
+	public long linksCount() {
+		return linksRepository.count();
+	}
+
+	@Override
+	public long bookmarksCount() {
+		return bookmarksRepository.count();
 	}
 }

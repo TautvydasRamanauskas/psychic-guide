@@ -52,6 +52,22 @@ public class AdminController {
 	}
 
 	@ResponseBody
+	@RequestMapping(path = "/links/", method = RequestMethod.GET)
+	public ResponseEntity<Long> getLinksCount() {
+		logger.info("Retrieving links count");
+		long linksCount = adminService.linksCount();
+		return new ResponseEntity<>(linksCount, HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(path = "/bookmarks/", method = RequestMethod.GET)
+	public ResponseEntity<Long> getBookmarksCount() {
+		logger.info("Retrieving bookmarks count");
+		long bookmarksCount = adminService.bookmarksCount();
+		return new ResponseEntity<>(bookmarksCount, HttpStatus.OK);
+	}
+
+	@ResponseBody
 	@RequestMapping(path = "/level/", method = RequestMethod.POST)
 	public ResponseEntity<Object> changeLevel(@RequestBody UserIdLevel userIdLevel) {
 		logger.info("Updating user {} level to {}", userIdLevel.getUserId(), userIdLevel.getLevel());
