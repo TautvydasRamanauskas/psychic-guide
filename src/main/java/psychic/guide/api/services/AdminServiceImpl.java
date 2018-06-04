@@ -74,7 +74,17 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public void deleteLinks() {
+		linksRepository.deleteAll();
+	}
+
+	@Override
 	public long bookmarksCount() {
 		return bookmarksRepository.count();
+	}
+
+	@Override
+	public void deleteBookmarks() {
+		bookmarksRepository.deleteAll();
 	}
 }

@@ -52,11 +52,28 @@ public class AdminController {
 	}
 
 	@ResponseBody
+	@RequestMapping(path = "/searches/{keyword}", method = RequestMethod.DELETE)
+	public ResponseEntity<List<CacheStatistic>> cleanCache(@RequestParam("keyword") String keyword) {
+		logger.info("Cleaning cache for keyword - {}", keyword);
+		adminService.cleanCache(keyword);
+		List<CacheStatistic> searches = adminService.searches();
+		return new ResponseEntity<>(searches, HttpStatus.OK);
+	}
+
+	@ResponseBody
 	@RequestMapping(path = "/links/", method = RequestMethod.GET)
 	public ResponseEntity<Long> getLinksCount() {
 		logger.info("Retrieving links count");
 		long linksCount = adminService.linksCount();
 		return new ResponseEntity<>(linksCount, HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(path = "/links/", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteLinks() {
+		logger.info("Deleting links");
+		adminService.deleteLinks();
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@ResponseBody
@@ -68,20 +85,19 @@ public class AdminController {
 	}
 
 	@ResponseBody
+	@RequestMapping(path = "/bookmarks/", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteBookmarks() {
+		logger.info("Deleting bookmarks");
+		adminService.deleteBookmarks();
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@ResponseBody
 	@RequestMapping(path = "/level/", method = RequestMethod.POST)
 	public ResponseEntity<Object> changeLevel(@RequestBody UserIdLevel userIdLevel) {
 		logger.info("Updating user {} level to {}", userIdLevel.getUserId(), userIdLevel.getLevel());
 		adminService.level(userIdLevel);
 		return new ResponseEntity<>(HttpStatus.OK);
-	}
-
-	@ResponseBody
-	@RequestMapping(path = "/searches/{keyword}", method = RequestMethod.DELETE)
-	public ResponseEntity<List<CacheStatistic>> cleanCache(@RequestParam("keyword") String keyword) {
-		logger.info("Cleaning cache for keyword - {}", keyword);
-		adminService.cleanCache(keyword);
-		List<CacheStatistic> searches = adminService.searches();
-		return new ResponseEntity<>(searches, HttpStatus.OK);
 	}
 
 }

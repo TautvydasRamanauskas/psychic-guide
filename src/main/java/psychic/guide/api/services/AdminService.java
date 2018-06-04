@@ -20,5 +20,9 @@ public interface AdminService {
 
 	long linksCount();
 
+	void deleteLinks();
+
 	long bookmarksCount();
+
+	void deleteBookmarks();
 }
