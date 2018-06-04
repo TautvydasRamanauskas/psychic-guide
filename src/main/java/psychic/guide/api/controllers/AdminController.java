@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psychic.guide.api.model.Limits;
-import psychic.guide.api.model.Search;
 import psychic.guide.api.model.User;
+import psychic.guide.api.model.data.CacheStatistic;
 import psychic.guide.api.model.data.UserIdLevel;
 import psychic.guide.api.services.AdminService;
 
@@ -45,9 +45,9 @@ public class AdminController {
 
 	@ResponseBody
 	@RequestMapping(path = "/searches/", method = RequestMethod.GET)
-	public ResponseEntity<List<Search>> searches() {
+	public ResponseEntity<List<CacheStatistic>> searches() {
 		logger.info("Retrieving searches");
-		List<Search> searches = adminService.searches();
+		List<CacheStatistic> searches = adminService.searches();
 		return new ResponseEntity<>(searches, HttpStatus.OK);
 	}
 
@@ -57,6 +57,15 @@ public class AdminController {
 		logger.info("Updating user {} level to {}", userIdLevel.getUserId(), userIdLevel.getLevel());
 		adminService.level(userIdLevel);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(path = "/searches/{keyword}", method = RequestMethod.DELETE)
+	public ResponseEntity<List<CacheStatistic>> cleanCache(@RequestParam("keyword") String keyword) {
+		logger.info("Cleaning cache for keyword - {}", keyword);
+		adminService.cleanCache(keyword);
+		List<CacheStatistic> searches = adminService.searches();
+		return new ResponseEntity<>(searches, HttpStatus.OK);
 	}
 
 }

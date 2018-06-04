@@ -1,8 +1,8 @@
 package psychic.guide.api.services;
 
 import psychic.guide.api.model.Limits;
-import psychic.guide.api.model.Search;
 import psychic.guide.api.model.User;
+import psychic.guide.api.model.data.CacheStatistic;
 import psychic.guide.api.model.data.UserIdLevel;
 
 import java.util.List;
@@ -12,7 +12,9 @@ public interface AdminService {
 
 	List<User> users();
 
-	List<Search> searches();
+	List<CacheStatistic> searches();
 
 	void level(UserIdLevel userIdLevel);
+
+	void cleanCache(String keyword);
 }
