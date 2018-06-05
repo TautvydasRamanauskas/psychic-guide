@@ -52,6 +52,7 @@ public class LoadBalancerImpl implements LoadBalancer {
 		Map<SearchAPI, SearchAPIService> services = new HashMap<>();
 		services.put(SearchAPI.GOOGLE, new GoogleSearchApi());
 		services.put(SearchAPI.YANDEX, new YandexSearchApi());
+		services.put(SearchAPI.EMPTY, new EmptySearchApi());
 //		services.put(Limit.BING, new AzureDemoSearchApi());
 		return services;
 	}
@@ -64,19 +65,24 @@ public class LoadBalancerImpl implements LoadBalancer {
 				limits.reset();
 			}
 		};
-		long delay = ChronoUnit.DAYS.getDuration().toMillis()-LocalTime.MIDNIGHT.getLong(ChronoField.MILLI_OF_DAY);
+		long delay = ChronoUnit.DAYS.getDuration().toMillis() - LocalTime.MIDNIGHT.getLong(ChronoField.MILLI_OF_DAY);
 		timer.scheduleAtFixedRate(timerTask, delay, ChronoUnit.DAYS.getDuration().toMillis());
 		return timer;
 	}
 
 	private SearchAPIService selectService() {
+		if (limits.getGoogle() == 0 && limits.getYandex() == 0) {
+			return services.get(SearchAPI.EMPTY);
+		}
 		if (limits.getGoogle() > limits.getYandex()) {
+			limits.useGoogle();
 			return services.get(SearchAPI.GOOGLE);
 		}
+		limits.useYandex();
 		return services.get(SearchAPI.YANDEX);
 	}
 
 	private enum SearchAPI {
-		YANDEX, GOOGLE
+		YANDEX, GOOGLE, EMPTY,
 	}
 }

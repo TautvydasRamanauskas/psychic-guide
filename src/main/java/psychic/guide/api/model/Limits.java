@@ -1,8 +1,11 @@
 package psychic.guide.api.model;
 
 public class Limits {
-	private int google = 100;
-	private int yandex = 10;
+	private static final int DAILY_GOOGLE_LIMIT = 100;
+	private static final int DAILY_YANDEX_LIMIT = 10;
+
+	private int google = DAILY_GOOGLE_LIMIT;
+	private int yandex = DAILY_YANDEX_LIMIT;
 
 	public int getGoogle() {
 		return google;
@@ -21,7 +24,7 @@ public class Limits {
 	}
 
 	public void reset() {
-		google = 100;
-		yandex = 10;
+		google = DAILY_GOOGLE_LIMIT;
+		yandex = DAILY_YANDEX_LIMIT;
 	}
 }

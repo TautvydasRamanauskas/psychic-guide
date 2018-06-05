@@ -139,9 +139,9 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	private int compareSearches(Search searchOne, Search searchTwo) {
-		int compareSearchCount = Long.compare(searchOne.getSearchCount(), searchTwo.getSearchCount());
+		int compareSearchCount = Long.compare(searchTwo.getSearchCount(), searchOne.getSearchCount());
 		if (compareSearchCount == 0) {
-			return searchOne.getKeyword().compareToIgnoreCase(searchTwo.getKeyword());
+			return searchTwo.getKeyword().compareToIgnoreCase(searchOne.getKeyword());
 		}
 		return compareSearchCount;
 	}
