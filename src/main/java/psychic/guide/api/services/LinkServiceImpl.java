@@ -10,6 +10,7 @@ import psychic.guide.api.repository.LinksRepository;
 import psychic.guide.api.repository.ReferenceRepository;
 import psychic.guide.api.repository.ResultsRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,7 +38,11 @@ public class LinkServiceImpl implements LinkService {
 
 	@Override
 	public List<ResultEntry> get(String link, User user) {
-		List<Result> results = linksRepository.getLinkByLink(link).getResults();
+		Link linkObject = linksRepository.getLinkByLink(link);
+		if (linkObject == null) {
+			return new ArrayList<>();
+		}
+		List<Result> results = linkObject.getResults();
 		return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
 	}
 
