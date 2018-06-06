@@ -11,6 +11,10 @@ import psychic.guide.api.services.internal.neuralnetwork.NeurophNetwork;
 import psychic.guide.api.services.internal.textrule.TextRule;
 import psychic.guide.api.services.internal.textrule.TextRuleSet;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,19 +24,23 @@ import java.util.stream.Collectors;
 import static psychic.guide.api.services.internal.Tags.*;
 
 public class Parser {
+	private static final String BRANDS_LIST_PATH = "data/brands";
+	private static final String BLACKLIST_PATH = "data/blacklist";
 	private static final String ELEMENTS_BRANDS_SELECTOR = ":containsOwn(%s)";
 	private static final int DEFAULT_TAG_LEVEL = 3;
 	private static final Set<String> TAGS = Set.of(TAG_A, TAG_B, TAG_H1, TAG_H2, TAG_H3, TAG_H4, TAG_H5);
 
-	private final Set<String> brandList;
 	private final Options options;
+	private final Set<String> brandList;
+	private final Set<String> blackList;
 	private final TextRule ruleSet;
 	private final NeuralNetworkManager networkManager;
 	private final Logger logger;
 
-	public Parser(Set<String> brandList, Options options) {
-		this.brandList = brandList;
+	public Parser(Options options) {
 		this.options = options;
+		this.brandList = fetchBrandList();
+		this.blackList = fetchBlacklist();
 		this.ruleSet = new TextRuleSet(options);
 		this.networkManager = new NeuralNetworkManager(new NeurophNetwork());
 		this.logger = LoggerFactory.getLogger(Parser.class);
@@ -64,7 +72,7 @@ public class Parser {
 	}
 
 	private boolean isResult(Element element) {
-		return isResult(element, DEFAULT_TAG_LEVEL);
+		return !blackList.contains(element.text()) && isResult(element, DEFAULT_TAG_LEVEL);
 	}
 
 	private boolean isResult(Element element, int level) {
@@ -83,5 +91,25 @@ public class Parser {
 		resultEntry.setResult(ruleSet.modify(element.text()));
 		resultEntry.setReferences(new HashSet<>(Collections.singleton(url)));
 		return resultEntry;
+	}
+
+	private static Set<String> fetchBrandList() {
+		Path path = new File(BRANDS_LIST_PATH).toPath();
+		try {
+			return Files.lines(path).collect(Collectors.toSet());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptySet();
+	}
+
+	private static Set<String> fetchBlacklist() {
+		Path path = new File(BLACKLIST_PATH).toPath();
+		try {
+			return Files.lines(path).collect(Collectors.toSet());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptySet();
 	}
 }

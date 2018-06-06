@@ -8,15 +8,13 @@ import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.services.internal.model.SearchResult;
 import psychic.guide.api.services.internal.searchengine.SearchAPIService;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Searcher {
-	private static final String BRANDS_LIST_PATH = "data/brands";
 	private static final String SEARCH_WORD = "Best";
 	private final SearchAPIService searchService;
 	private final Options options;
@@ -26,7 +24,7 @@ public class Searcher {
 	public Searcher(SearchAPIService searchService, Options options) {
 		this.searchService = searchService;
 		this.options = options;
-		this.pageParser = new Parser(fetchBrandList(), options);
+		this.pageParser = new Parser(options);
 		this.logger = LoggerFactory.getLogger(Searcher.class);
 	}
 
@@ -84,15 +82,5 @@ public class Searcher {
 		String resultOne = resultEntryTwo.getResult();
 		String resultTwo = resultEntryOne.getResult();
 		return resultOne.contains(resultTwo) || resultTwo.contains(resultOne);
-	}
-
-	private static Set<String> fetchBrandList() {
-		Path path = new File(BRANDS_LIST_PATH).toPath();
-		try {
-			return Files.lines(path).collect(Collectors.toSet());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return Collections.emptySet();
 	}
 }
