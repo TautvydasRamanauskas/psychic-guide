@@ -20,6 +20,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path = "/api/user/")
 public class UsersController {
+	private static final int ADMIN_LEVEL = 1;
 	private final UserRepository userRepository;
 	private final OptionsRepository optionsRepository;
 	private final Logger logger;
@@ -52,18 +53,20 @@ public class UsersController {
 	}
 
 	private User getUser(long facebookId, FacebookResponse facebookResponse) {
-		return ((List<User>) userRepository.findAll()).stream()
+		List<User> allUsers = (List<User>) userRepository.findAll();
+		return allUsers.stream()
 				.filter(u -> facebookId == u.getFacebookId())
 				.findAny()
-				.orElseGet(() -> createUser(facebookId, facebookResponse));
+				.orElseGet(() -> createUser(facebookId, facebookResponse, allUsers.isEmpty()));
 	}
 
-	private User createUser(long facebookId, FacebookResponse facebookResponse) {
+	private User createUser(long facebookId, FacebookResponse facebookResponse, boolean firstUser) {
 		User newUser = new User();
 		newUser.setFacebookId(facebookId);
 		newUser.setName(facebookResponse.getName());
 		newUser.setEmail(facebookResponse.getEmail());
 		newUser.setPicture(facebookResponse.getPicture());
+		newUser.setLevel(firstUser ? ADMIN_LEVEL : 0);
 		userRepository.save(newUser);
 		return newUser;
 	}
