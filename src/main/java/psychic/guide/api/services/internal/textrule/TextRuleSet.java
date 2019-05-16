@@ -1,24 +1,18 @@
 package psychic.guide.api.services.internal.textrule;
 
-import psychic.guide.api.model.Options;
-
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class TextRuleSet implements TextRule {
-	private final List<TextRule> ruleSet;
+	private final Collection<TextRule> ruleSet;
 
-	public TextRuleSet(Options options) {
+	// TODO: replace similar meaning words
+	public TextRuleSet() { // TODO: create rule for blacklisted words removal
 		ruleSet = new ArrayList<>();
-		if (options.isUseTextRuleParenthesis()) {
-			ruleSet.add(new TextRuleParenthesis());
-		}
-		if (options.isUseTextRuleReview()) {
-			ruleSet.add(new TextRuleReview());
-		}
-		if (options.isUseTextRuleNumber()) {
-			ruleSet.add(new TextRuleNumber());
-		}
+		ruleSet.add(new TextRuleParenthesis());
+		ruleSet.add(new TextRuleReview());
+		ruleSet.add(new TextRuleNumber());
+//		ruleSet.add(new TextRuleColon()); // TODO: tests and options
 		ruleSet.add(new TextRuleTrim());
 	}
 
@@ -31,3 +25,11 @@ public class TextRuleSet implements TextRule {
 		return newText;
 	}
 }
+
+//Ticwatch Pro on Amazon – Black/Silver
+//Where to buy the Samsung Galaxy Watch:
+//Today's best Google Pixel XL deals
+//Casio Pro Trek Smart WSD-F20 at Amazon,
+//Best Budget: Ticwatch E
+//Runner-Up, Best for Fitness Tracking: Fitbit Versa
+//Best Shows on Amazon Prime
