@@ -9,7 +9,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private long facebookId;
-	private int level;
+	private int level; // TODO: constants
 	private String name;
 	private String email;
 	private String picture;

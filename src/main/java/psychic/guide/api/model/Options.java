@@ -1,5 +1,7 @@
 package psychic.guide.api.model;
 
+import psychic.guide.api.services.internal.matchers.MatcherType;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,12 +11,9 @@ public class Options {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private boolean useNeuralNetwork = false;
-	private boolean useGoogle = true;
-	private boolean useYandex = true;
 	private boolean useCache = true;
-	private boolean useTextRuleReview = true;
-	private boolean useTextRuleNumber = true;
-	private boolean useTextRuleParenthesis = true;
+	private String matcher = MatcherType.CONTAINS.name();
+	private int searchApi = Integer.MAX_VALUE;
 	private long minRating = 3;
 
 	public long getId() {
@@ -33,22 +32,6 @@ public class Options {
 		this.useNeuralNetwork = useNeuralNetwork;
 	}
 
-	public boolean isUseGoogle() {
-		return useGoogle;
-	}
-
-	public void setUseGoogle(boolean useGoogle) {
-		this.useGoogle = useGoogle;
-	}
-
-	public boolean isUseYandex() {
-		return useYandex;
-	}
-
-	public void setUseYandex(boolean useYandex) {
-		this.useYandex = useYandex;
-	}
-
 	public boolean isUseCache() {
 		return useCache;
 	}
@@ -57,28 +40,20 @@ public class Options {
 		this.useCache = useCache;
 	}
 
-	public boolean isUseTextRuleReview() {
-		return useTextRuleReview;
+	public String getMatcher() {
+		return matcher;
 	}
 
-	public void setUseTextRuleReview(boolean useTextRuleReview) {
-		this.useTextRuleReview = useTextRuleReview;
+	public void setMatcher(String matcher) {
+		this.matcher = matcher;
 	}
 
-	public boolean isUseTextRuleNumber() {
-		return useTextRuleNumber;
-	}
+	public int getSearchApi() {
+		return searchApi;
+	} // TODO: delete
 
-	public void setUseTextRuleNumber(boolean useTextRuleNumber) {
-		this.useTextRuleNumber = useTextRuleNumber;
-	}
-
-	public boolean isUseTextRuleParenthesis() {
-		return useTextRuleParenthesis;
-	}
-
-	public void setUseTextRuleParenthesis(boolean useTextRuleParenthesis) {
-		this.useTextRuleParenthesis = useTextRuleParenthesis;
+	public void setSearchApi(int searchApi) {
+		this.searchApi = searchApi;
 	}
 
 	public long getMinRating() {
@@ -90,20 +65,4 @@ public class Options {
 	}
 }
 
-//    options: {
-//			neuralNetwork: true,
-//			searchEngine: {
-//			google: true,
-//			yandex: true,
-//			cache: true,
-//			},
-//			textRules: {
-//			parenthesis: true,
-//			review: true,
-//			numbers: true,
-//			},
-//			rating: {
-//			minRating: 2,
-//			ratingDialogOpen: false,
-//			},
-//			},
+//https://medium.com/@appaloosastore/string-similarity-algorithms-compared-3f7b4d12f0ff // TODO: compare

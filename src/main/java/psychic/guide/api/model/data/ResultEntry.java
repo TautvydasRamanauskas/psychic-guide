@@ -1,8 +1,8 @@
 package psychic.guide.api.model.data;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 	private long id = System.currentTimeMillis();
@@ -66,19 +66,24 @@ public class ResultEntry implements Comparable<ResultEntry>, Serializable {
 
 	@Override
 	public boolean equals(Object o) {
-		return this == o ||
-				o != null && getClass() == o.getClass() && id == ((ResultEntry) o).id;
-
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ResultEntry that = (ResultEntry) o;
+		return bookmark == that.bookmark &&
+				voteValue == that.voteValue &&
+				personalVote == that.personalVote &&
+				Objects.equals(result, that.result) &&
+				Objects.equals(references, that.references);
 	}
 
 	@Override
 	public int hashCode() {
-		return (int) id;
+		return Objects.hash(result, references, bookmark, voteValue, personalVote);
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%s$%d$%s", result, references.size(), references.stream().collect(Collectors.joining("|")));
+		return String.format("%s$%d$%s", result, references.size(), String.join("|", references));
 	}
 
 	@Override
