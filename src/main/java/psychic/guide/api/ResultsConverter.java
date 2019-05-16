@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultsConverter {
-	public static List<Result> entriesToResults(List<ResultEntry> results,
+	public static List<Result> entriesToResults(List<ResultEntry> entries,
 										  ResultsRepository resultsRepository) {
-		return results.stream()
+		return entries.stream()
 				.map(ResultEntry::getId)
 				.map(resultsRepository::findOne)
 				.collect(Collectors.toList());

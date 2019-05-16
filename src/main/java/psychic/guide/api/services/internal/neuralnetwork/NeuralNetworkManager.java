@@ -51,11 +51,11 @@ public class NeuralNetworkManager {
 
 	private boolean[] createInputsArray(Element element, Collection<Element> brandedElements) {
 		boolean isBrand = brandedElements.contains(element);
-		boolean isLink = Objects.equals(element.tagName(), TAG_A);
-		boolean isBold = Objects.equals(element.tagName(), TAG_B);
-		boolean isH3 = Objects.equals(element.tagName(), TAG_H3);
-		boolean isH4 = Objects.equals(element.tagName(), TAG_H4);
-		boolean isH5 = Objects.equals(element.tagName(), TAG_H5);
+		boolean isLink = Objects.equals(element.tagName(), A);
+		boolean isBold = Objects.equals(element.tagName(), B);
+		boolean isH3 = Objects.equals(element.tagName(), H3);
+		boolean isH4 = Objects.equals(element.tagName(), H4);
+		boolean isH5 = Objects.equals(element.tagName(), H5);
 		return new boolean[]{isBrand, isLink, isBold, isH3, isH4, isH5};
 	}
 
