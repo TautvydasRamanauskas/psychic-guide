@@ -3,86 +3,54 @@ package psychic.guide.api.services.internal.searchengine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import psychic.guide.api.model.Limits;
 import psychic.guide.api.services.internal.model.SearchResult;
+import psychic.guide.api.services.internal.searchengine.limiters.Limiter;
 
-import java.time.LocalTime;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static psychic.guide.api.services.internal.Globals.USE_AZURE_DEMO;
+import static psychic.guide.api.services.internal.Globals.USE_LOCAL_SEARCH_API;
 
 @Component
 public class LoadBalancerImpl implements LoadBalancer {
-	private final Map<SearchAPI, SearchAPIService> services;
-	private final Limits limits;
-	private final Timer timer;
 	private final Logger logger;
 
 	public LoadBalancerImpl() {
-		this.services = createServicesMap();
-		this.limits = new Limits();
-		this.timer = createAndStartTimer();
-		this.logger = LoggerFactory.getLogger(SearchAPIService.class);
+		this.logger = LoggerFactory.getLogger(LoadBalancer.class);
 	}
 
 	@Override
 	public List<SearchResult> search(String keyword) {
-		SearchAPIService service = selectService();
-		if (service != null) {
-			logger.info("Using {} as search engine", service.getClass().getSimpleName());
-			return service.search(keyword);
+		if (USE_LOCAL_SEARCH_API) {
+			return SearchApi.LOCAL.getService().search(keyword);
 		}
-		return new ArrayList<>();
+		if (USE_AZURE_DEMO) {
+			List<SearchResult> results = SearchApi.AZURE_DEMO.getService().search(keyword);
+			Collections.shuffle(results);
+			return results;
+		}
+//		if (USE_GOOGLE_SCRAPE) {
+//			return SearchApi.GOOGLE_SCRAPE.getService().search(keyword);
+//		}
 
-//		List<SearchResult> results = services.get(Limit.BING).search(keyword);
-//		Collections.shuffle(results);
-//		return results;
+		SearchApi searchApi = selectSearchApi();
+		Limiter limiter = searchApi.getLimiter();
+		SearchApiService service = searchApi.getService();
+		logger.info("Using {} as search engine", service.getClass().getSimpleName());
+		limiter.useLimit();
+		return service.search(keyword);
 	}
 
 	@Override
-	public Limits getLimits() {
-		return limits;
+	public Map<String, Integer> getLimits() {
+		return Arrays.stream(SearchApi.values())
+				.collect(Collectors.toMap(SearchApi::getDisplayName, v -> v.getLimiter().getScore()));
 	}
 
-	public void stopTimer() {
-		timer.cancel();
-	}
-
-	private Map<SearchAPI, SearchAPIService> createServicesMap() {
-		Map<SearchAPI, SearchAPIService> services = new HashMap<>();
-		services.put(SearchAPI.GOOGLE, new GoogleSearchApi());
-		services.put(SearchAPI.YANDEX, new YandexSearchApi());
-		services.put(SearchAPI.EMPTY, new EmptySearchApi());
-//		services.put(Limit.BING, new AzureDemoSearchApi());
-		return services;
-	}
-
-	private Timer createAndStartTimer() {
-		Timer timer = new Timer();
-		TimerTask timerTask = new TimerTask() {
-			@Override
-			public void run() {
-				limits.reset();
-			}
-		};
-		long delay = ChronoUnit.DAYS.getDuration().toMillis() - LocalTime.MIDNIGHT.getLong(ChronoField.MILLI_OF_DAY);
-		timer.scheduleAtFixedRate(timerTask, delay, ChronoUnit.DAYS.getDuration().toMillis());
-		return timer;
-	}
-
-	private SearchAPIService selectService() {
-		if (limits.getGoogle() == 0 && limits.getYandex() == 0) {
-			return services.get(SearchAPI.EMPTY);
-		}
-		if (limits.getGoogle() > limits.getYandex()) {
-			limits.useGoogle();
-			return services.get(SearchAPI.GOOGLE);
-		}
-		limits.useYandex();
-		return services.get(SearchAPI.YANDEX);
-	}
-
-	private enum SearchAPI {
-		YANDEX, GOOGLE, EMPTY,
+	private SearchApi selectSearchApi() {
+		return Arrays.stream(SearchApi.values())
+				.max(Comparator.comparing(v -> v.getLimiter().getScore()))
+				.orElse(SearchApi.EMPTY);
 	}
 }

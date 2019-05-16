@@ -1,7 +1,7 @@
 package psychic.guide.api.services.internal.searchengine;
 
-import psychic.guide.api.model.Limits;
+import java.util.Map;
 
-public interface LoadBalancer extends SearchAPIService {
-	Limits getLimits();
+public interface LoadBalancer extends SearchApiService {
+	Map<String, Integer> getLimits();
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class AzureDemoSearchApi implements SearchAPIService {
+public class AzureDemoSearchApi implements SearchApiService {
 	private static final String DEMO_FILE = "data/azure-demo";
 	private static final String KEY_DEMO = "Demo";
 	private static final String KEY_WEB_PAGES = "webPages";

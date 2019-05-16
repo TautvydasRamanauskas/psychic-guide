@@ -13,13 +13,14 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static psychic.guide.api.services.internal.PercentEncoder.encode;
 
-public class YandexSearchApi implements SearchAPIService {
+public class YandexSearchApi implements SearchApiService {
 	private static final String DEMO_FILE = "data/yandex-demo.xml";
 	private static final String API_URL_TEMPLATE = "https://yandex.com/search/xml?" +
 			"user=" + SearchProperties.getInstance().get("yandex.user.id") +
@@ -40,12 +41,15 @@ public class YandexSearchApi implements SearchAPIService {
 	@Override
 	public List<SearchResult> search(String keyword) {
 		Document document = fetchResults(keyword);
-		NodeList groups = getGroups(document);
-		return IntStream.range(0, groups.getLength())
-				.mapToObj(groups::item)
-				.map(this::getUrl)
-				.map(SearchResult::new)
-				.collect(Collectors.toList());
+		if (document != null) {
+			NodeList groups = getGroups(document);
+			return IntStream.range(0, groups.getLength())
+					.mapToObj(groups::item)
+					.map(this::getUrl)
+					.map(SearchResult::new)
+					.collect(Collectors.toList());
+		}
+		return Collections.emptyList();
 	}
 
 	private Document readDemoFile() {
