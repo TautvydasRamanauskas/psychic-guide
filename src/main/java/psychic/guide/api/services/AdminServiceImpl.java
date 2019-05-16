@@ -2,7 +2,6 @@ package psychic.guide.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import psychic.guide.api.model.Limits;
 import psychic.guide.api.model.Search;
 import psychic.guide.api.model.User;
 import psychic.guide.api.model.data.CacheStatistic;
@@ -11,6 +10,7 @@ import psychic.guide.api.repository.*;
 import psychic.guide.api.services.internal.searchengine.LoadBalancer;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -38,7 +38,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Limits limits() {
+	public Map<String, Integer> limits() {
 		return loadBalancer.getLimits();
 	}
 

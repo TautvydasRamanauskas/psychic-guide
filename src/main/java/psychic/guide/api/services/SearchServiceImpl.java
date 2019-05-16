@@ -7,7 +7,8 @@ import psychic.guide.api.model.data.ResultEntry;
 import psychic.guide.api.repository.ReferenceRepository;
 import psychic.guide.api.repository.ResultsRepository;
 import psychic.guide.api.repository.SearchesRepository;
-import psychic.guide.api.services.internal.searchengine.SearchAPIService;
+import psychic.guide.api.services.internal.searchengine.SearchApiService;
+import psychic.guide.api.services.internal.searcher.SearcherImpl;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,23 +16,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static psychic.guide.api.ResultsConverter.resultsToEntries;
+import static psychic.guide.api.services.internal.Globals.*;
 
 @Service
 public class SearchServiceImpl implements SearchService {
 	private static final int SHOWN_MOST_POPULAR_SEARCHES = 10;
+	private static int searchCount = 0;
 
 	private final BookmarkService bookmarkService;
 	private final VoteService voteService;
-	private final SearchAPIService searchAPIService;
+	private final SearchApiService searchAPIService;
 	private final SearchesRepository searchesRepository;
 	private final ResultsRepository resultsRepository;
 	private final ReferenceRepository referenceRepository;
 
 	@Autowired
 	public SearchServiceImpl(BookmarkService bookmarkService, VoteService voteService,
-							 SearchAPIService searchAPIService, SearchesRepository searchesRepository,
+							 SearchApiService searchAPIService, SearchesRepository searchesRepository,
 							 ResultsRepository resultsRepository, ReferenceRepository referenceRepository) {
 		this.bookmarkService = bookmarkService;
 		this.voteService = voteService;
@@ -43,18 +47,25 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<ResultEntry> search(String keyword, User user) {
-		if (user.getOptions().isUseCache() && searchesRepository.findByKeyword(keyword) != null) {
+		if (user.getOptions().isUseCache() && searchesRepository.findByKeyword(keyword) != null && USE_SEARCHES_CACHE) {
 			List<Result> results = resultsRepository.findResultsByKeyword(keyword);
-			return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
+			if (!results.isEmpty()) {
+				return resultsToEntries(results, user, voteService, bookmarkService, referenceRepository);
+			}
 		}
 
-//		Searcher searcher = new Searcher(searchAPIService, user.getOptions());
-//		List<ResultEntry> results = searcher.search(keyword);
-
-		List<ResultEntry> results = readResults().stream()
-				.map(this::parseResultEntry)
-				.sorted()
-				.collect(Collectors.toList());
+		List<ResultEntry> results;
+		if (MOCK_SEARCH_FINAL_RESULTS_FILE) {
+			results = readMockResults().stream()
+					.map(this::parseResultEntry)
+					.sorted()
+					.collect(Collectors.toList());
+		} else if (MOCK_SEARCH_FINAL_RESULTS_GENERATE) {
+			results = createMockResultsEntries();
+			searchCount++;
+		} else {
+			results = new SearcherImpl(searchAPIService, user.getOptions()).search(keyword);
+		}
 
 		saveSearch(keyword);
 		saveResults(results, keyword, user);
@@ -96,7 +107,7 @@ public class SearchServiceImpl implements SearchService {
 		});
 	}
 
-	private static Set<String> readResults() {
+	private static Set<String> readMockResults() {
 		Path path = new File("data/results").toPath();
 		try {
 			return Files.lines(path).collect(Collectors.toSet());
@@ -112,6 +123,28 @@ public class SearchServiceImpl implements SearchService {
 		resultEntry.setResult(splits[0]);
 		resultEntry.setReferences(Arrays.stream(splits[2].split("\\|")).collect(Collectors.toSet()));
 		return resultEntry;
+	}
+
+	private static List<ResultEntry> createMockResultsEntries() {
+		int resultsCount = (int) (Math.random() * 10) + 1;
+		return IntStream.range(0, resultsCount)
+				.mapToObj(SearchServiceImpl::createMockEntry)
+				.collect(Collectors.toList());
+	}
+
+	private static ResultEntry createMockEntry(int i) {
+		int id = 10 * searchCount + i;
+
+		int referencesCount = (int) (Math.random() * 5) + 1;
+		Set<String> references = IntStream.range(0, referencesCount)
+				.mapToObj(ri -> "http://www.reference-url.com/" + id + "/" + ri)
+				.collect(Collectors.toSet());
+
+		ResultEntry entry = new ResultEntry();
+		entry.setId(id);
+		entry.setResult("Item #" + id);
+		entry.setReferences(references);
+		return entry;
 	}
 
 	private Result getResult(ResultEntry entry, String keyword) {

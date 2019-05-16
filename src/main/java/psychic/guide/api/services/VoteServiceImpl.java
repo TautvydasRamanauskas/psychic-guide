@@ -23,7 +23,7 @@ public class VoteServiceImpl implements VoteService {
 		List<Vote> votes = votesRepository.getVotesByResult(result);
 		return votes.stream()
 				.map(Vote::getValue)
-				.reduce((vOne, vTwo) -> vOne + vTwo)
+				.reduce(Integer::sum)
 				.orElse(0);
 	}
 
