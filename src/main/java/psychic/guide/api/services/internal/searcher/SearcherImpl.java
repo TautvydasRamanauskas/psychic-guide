@@ -1,12 +1,16 @@
-package psychic.guide.api.services.internal;
+package psychic.guide.api.services.internal.searcher;
 
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import psychic.guide.api.model.Options;
 import psychic.guide.api.model.data.ResultEntry;
+import psychic.guide.api.services.internal.PageFetcher;
+import psychic.guide.api.services.internal.matchers.MatcherSelector;
+import psychic.guide.api.services.internal.matchers.StringMatcher;
 import psychic.guide.api.services.internal.model.SearchResult;
-import psychic.guide.api.services.internal.searchengine.SearchAPIService;
+import psychic.guide.api.services.internal.parser.Parser;
+import psychic.guide.api.services.internal.searchengine.SearchApiService;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,17 +18,21 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Searcher {
+import static psychic.guide.api.services.internal.Globals.USE_LOCAL_SEARCH_API;
+
+public class SearcherImpl implements Searcher {
 	private static final String SEARCH_WORD = "Best";
-	private final SearchAPIService searchService;
+	private final SearchApiService searchService;
 	private final Options options;
 	private final Parser pageParser;
+	private final StringMatcher stringMatcher;
 	private final Logger logger;
 
-	public Searcher(SearchAPIService searchService, Options options) {
+	public SearcherImpl(SearchApiService searchService, Options options) {
 		this.searchService = searchService;
 		this.options = options;
 		this.pageParser = new Parser(options);
+		this.stringMatcher = new MatcherSelector().select(options);
 		this.logger = LoggerFactory.getLogger(Searcher.class);
 	}
 
@@ -43,7 +51,7 @@ public class Searcher {
 	}
 
 	private String createSearchText(String keyword) {
-		if (keyword.contains(SEARCH_WORD) || keyword.contains(SEARCH_WORD.toLowerCase())) {
+		if (keyword.toLowerCase().contains(SEARCH_WORD.toLowerCase() + " ")) {
 			return keyword;
 		}
 		return SEARCH_WORD + " " + keyword;
@@ -51,36 +59,26 @@ public class Searcher {
 
 	private Set<ResultEntry> parseSearchResults(List<SearchResult> searchResults) {
 		Set<ResultEntry> parseResults = new HashSet<>();
-		for (SearchResult searchResult : searchResults) {
-			Set<ResultEntry> parseResult = parsePage(searchResult);
-			for (ResultEntry resultEntry : parseResult) {
-				updateParseResults(parseResults, resultEntry);
-			}
-		}
+		searchResults.stream()
+				.map(this::parsePage)
+				.flatMap(Collection::stream)
+				.forEach(resultEntry -> updateParseResults(parseResults, resultEntry));
 		return parseResults;
 	}
 
 	private Set<ResultEntry> parsePage(SearchResult searchResult) {
 		String url = searchResult.url;
-		Document page = PageFetcher.fetch(url);
+		Document page = USE_LOCAL_SEARCH_API ? PageFetcher.loadLocal(url) : PageFetcher.fetch(url);
 		return page == null ? new HashSet<>() : pageParser.parse(page, url);
 	}
 
 	private void updateParseResults(Set<ResultEntry> parseResults, ResultEntry resultEntry) {
-		ResultEntry existingEntry = parseResults.stream()
-				.filter(r -> resultsMatch(resultEntry, r))
+		parseResults.stream()
+				.filter(r -> stringMatcher.match(r.getResult(), resultEntry.getResult()))
 				.findAny()
-				.orElse(null);
-		if (existingEntry != null) {
-			existingEntry.getReferences().addAll(resultEntry.getReferences());
-		} else {
-			parseResults.add(resultEntry);
-		}
-	}
-
-	private boolean resultsMatch(ResultEntry resultEntryOne, ResultEntry resultEntryTwo) {
-		String resultOne = resultEntryTwo.getResult();
-		String resultTwo = resultEntryOne.getResult();
-		return resultOne.contains(resultTwo) || resultTwo.contains(resultOne);
+				.ifPresentOrElse(
+						e -> e.getReferences().addAll(resultEntry.getReferences()), // TODO: choose longer text | merge
+						() -> parseResults.add(resultEntry) // TODO: alias
+				);
 	}
 }

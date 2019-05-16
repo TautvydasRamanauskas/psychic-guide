@@ -1,4 +1,4 @@
-package psychic.guide.api.services.internal;
+package psychic.guide.api.services.internal.parser;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static psychic.guide.api.services.internal.Globals.USE_NEURAL_NETWORK;
 import static psychic.guide.api.services.internal.Tags.*;
 
 public class Parser {
@@ -28,7 +29,7 @@ public class Parser {
 	private static final String BLACKLIST_PATH = "data/blacklist";
 	private static final String ELEMENTS_BRANDS_SELECTOR = ":containsOwn(%s)";
 	private static final int DEFAULT_TAG_LEVEL = 3;
-	private static final Set<String> TAGS = Set.of(TAG_A, TAG_B, TAG_H1, TAG_H2, TAG_H3, TAG_H4, TAG_H5);
+	private static final Set<String> TAGS = Set.of(A, B, H1, H2, H3, H4, H5);
 
 	private final Options options;
 	private final Set<String> brandList;
@@ -41,7 +42,7 @@ public class Parser {
 		this.options = options;
 		this.brandList = fetchBrandList();
 		this.blackList = fetchBlacklist();
-		this.ruleSet = new TextRuleSet(options);
+		this.ruleSet = new TextRuleSet();
 		this.networkManager = new NeuralNetworkManager(new NeurophNetwork());
 		this.logger = LoggerFactory.getLogger(Parser.class);
 	}
@@ -53,13 +54,13 @@ public class Parser {
 				.collect(Collectors.toSet());
 		Collection<Element> filteredElements = filter(page, brandedElements);
 		trainNeuralNetwork(page, brandedElements, filteredElements);
-		return filteredElements.stream()
-				.map(e -> createResultEntry(e, url))
-				.collect(Collectors.toSet());
+		return filteredElements.stream().map(e -> createResultEntry(e, url)).collect(Collectors.toSet());
 	}
 
 	public void persist() {
-		networkManager.persist();
+		if (USE_NEURAL_NETWORK) {
+			networkManager.persist();
+		}
 	}
 
 	private Collection<Element> filter(Document page, Collection<Element> brandedElements) {
@@ -81,7 +82,7 @@ public class Parser {
 	}
 
 	private void trainNeuralNetwork(Document page, Collection<Element> brandedElements, Collection<Element> filteredElements) {
-		if (!options.isUseNeuralNetwork()) {
+		if (!options.isUseNeuralNetwork() && USE_NEURAL_NETWORK) {
 			networkManager.trainOnThread(page.children(), brandedElements, filteredElements);
 		}
 	}
