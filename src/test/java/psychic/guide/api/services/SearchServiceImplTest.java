@@ -2,66 +2,91 @@ package psychic.guide.api.services;
 
 import org.junit.Before;
 import org.junit.Test;
+import psychic.guide.api.model.Options;
+import psychic.guide.api.model.Result;
+import psychic.guide.api.model.Search;
+import psychic.guide.api.model.User;
+import psychic.guide.api.model.data.ResultEntry;
+import psychic.guide.api.repository.ReferenceRepository;
+import psychic.guide.api.repository.ResultsRepository;
+import psychic.guide.api.repository.SearchesRepository;
+import psychic.guide.api.services.internal.searchengine.SearchApiService;
 
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static psychic.guide.api.services.ServiceModelUtils.*;
 
 public class SearchServiceImplTest {
-	private static final String SEARCH_ONE = "SEARCH_ONE";
-	private static final String SEARCH_TWO = "SEARCH_TWO";
-	private static final String SEARCH_THREE = "SEARCH_THREE";
-	private static final String SEARCH_FOUR = "SEARCH_FOUR";
-	private static final String SEARCH_FIVE = "SEARCH_FIVE";
-	private static final String SEARCH_SIX = "SEARCH_SIX";
-	private static final String SEARCH_SEVEN = "SEARCH_SEVEN";
-	private static final String SEARCH_EIGHT = "SEARCH_EIGHT";
-	private static final String SEARCH_NINE = "SEARCH_NINE";
-	private static final String SEARCH_TEN = "SEARCH_TEN";
-	private static final String SEARCH_ELEVEN = "SEARCH_ELEVEN";
-
-	private TestPersistenceService<HashMap<String, AtomicInteger>> persistenceService;
-//	private SearchServiceImpl searchService;
+	private SearchesRepository searchesRepository;
+	private ResultsRepository resultsRepository;
+	private SearchService searchService;
 
 	@Before
-	public void setUp() throws Exception {
-		HashMap<String, AtomicInteger> data = new HashMap<>();
-		data.put(SEARCH_ONE, new AtomicInteger(100));
-		data.put(SEARCH_TWO, new AtomicInteger(99));
-		data.put(SEARCH_THREE, new AtomicInteger(98));
-		data.put(SEARCH_FOUR, new AtomicInteger(97));
-		data.put(SEARCH_FIVE, new AtomicInteger(96));
-		data.put(SEARCH_SIX, new AtomicInteger(95));
-		data.put(SEARCH_SEVEN, new AtomicInteger(94));
-		data.put(SEARCH_EIGHT, new AtomicInteger(93));
-		data.put(SEARCH_NINE, new AtomicInteger(92));
-		data.put(SEARCH_TEN, new AtomicInteger(91));
-		data.put(SEARCH_ELEVEN, new AtomicInteger(90));
+	public void setUp() {
+		BookmarkService bookmarkService = mock(BookmarkService.class);
+		VoteService voteService = mock(VoteService.class);
+		SearchApiService searchAPIService = mock(SearchApiService.class);
+		ReferenceRepository referenceRepository = mock(ReferenceRepository.class);
 
-		VoteService voteService = new VoteServiceImpl(null);
-		BookmarkService bookmarkService = new BookmarkServiceImpl(voteService, null,null,null, null);
-
-		persistenceService = new TestPersistenceService<>(data);
-//		searchService = new SearchServiceImpl(bookmarkService, voteService, null, null, null);
+		searchesRepository = mock(SearchesRepository.class);
+		resultsRepository = mock(ResultsRepository.class);
+		searchService = new SearchServiceImpl(
+				bookmarkService,
+				voteService,
+				searchAPIService,
+				searchesRepository,
+				resultsRepository,
+				referenceRepository
+		);
 	}
 
 	@Test
-	public void search() throws Exception {
-		// not tested because of limit usage
+	public void searchCached() {
+		final long searchId = 1;
+		final String keyword = "keyword";
+		final long userId = 1;
+		final boolean useCache = true;
+		final long resultIdOne = 1;
+		final long resultIdTwo = 2;
+
+		Search search = createSearch(searchId);
+		Options options = createOptions(useCache);
+		User user = createUser(userId);
+		user.setOptions(options);
+		when(searchesRepository.findByKeyword(keyword)).thenReturn(search);
+
+		Result resultOne = createResult(resultIdOne);
+		Result resultTwo = createResult(resultIdTwo);
+		List<Result> results = List.of(resultOne, resultTwo);
+		when(resultsRepository.findResultsByKeyword(keyword)).thenReturn(results);
+
+		List<ResultEntry> serviceResults = searchService.search(keyword, user);
+		assertEquals(results.size(), serviceResults.size());
+		assertEquals(resultIdOne, serviceResults.get(0).getId());
+		assertEquals(resultIdTwo, serviceResults.get(1).getId());
 	}
 
 	@Test
-	public void mostPopular() throws Exception {
-//		List<String> mostPopular = searchService.mostPopular();
-//		assertEquals(10, mostPopular.size());
-//		assertFalse(mostPopular.contains(SEARCH_ELEVEN));
-//		assertTrue(mostPopular.contains(SEARCH_SIX));
+	public void mostPopular() {
+		final long searchIdOne = 1;
+		final long searchIdTwo = 2;
+
+		Search searchOne = createSearch(searchIdOne);
+		Search searchTwo = createSearch(searchIdTwo);
+		List<Search> searches = List.of(searchOne, searchTwo);
+		when(searchesRepository.findAll()).thenReturn(searches);
+		List<Search> serviceSearches = searchService.mostPopular();
+
+		assertEquals(searches.size(), serviceSearches.size());
+		assertEquals(searchIdOne, serviceSearches.get(0).getId());
+		assertEquals(searchIdTwo, serviceSearches.get(1).getId());
 	}
 
 	@Test
-	public void clear() throws Exception {
-		HashMap<String, AtomicInteger> data = persistenceService.getData();
-		assertTrue(data.isEmpty());
+	public void search() {
+		// not tested because of search limits
 	}
 }

@@ -3,77 +3,66 @@ package psychic.guide.api.services;
 import org.junit.Before;
 import org.junit.Test;
 import psychic.guide.api.model.Result;
-import psychic.guide.api.model.User;
 import psychic.guide.api.model.Vote;
+import psychic.guide.api.repository.VotesRepository;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
+import static psychic.guide.api.services.ServiceModelUtils.createResult;
+import static psychic.guide.api.services.ServiceModelUtils.createVote;
 
 public class VoteServiceImplTest {
-	private final static String TITLE_ONE = "TITLE_ONE";
-	private final static String TITLE_TWO = "TITLE_TWO";
-	private final static String TITLE_THREE = "TITLE_THREE";
-	private final static String IP_ONE = "IP_ONE";
-	private final static String IP_TWO = "IP_TWO";
-	private final static int VALUE_ONE = 1;
-	private final static int VALUE_TWO = 2;
+	private final static String RESULT_ONE = "RESULT_ONE";
+	private final static String RESULT_TWO = "RESULT_TWO";
+	private final static int VOTE_VALUE_ONE = 1;
+	private final static int VOTE_VALUE_TWO = 2;
+	private final static int RESULT_ID = 1;
+	private final static int USER_ID = 1;
 
-	private TestPersistenceService<HashMap<String, Map<String, Vote>>> persistenceService;
-	private VoteServiceImpl voteService;
+	private VotesRepository votesRepository;
+	private VoteService voteService;
 
 	@Before
-	public void setUp() throws Exception {
-		HashMap<String, Map<String, Vote>> data = new HashMap<>();
-
-		Map<String, Vote> titleOneMap = new HashMap<>();
-		titleOneMap.put(IP_ONE, createVote(TITLE_ONE, IP_ONE, VALUE_ONE));
-		titleOneMap.put(IP_TWO, createVote(TITLE_ONE, IP_TWO, VALUE_TWO));
-		data.put(TITLE_ONE, titleOneMap);
-
-		Map<String, Vote> titleTwoMap = new HashMap<>();
-		titleTwoMap.put(IP_ONE, createVote(TITLE_TWO, IP_ONE, VALUE_ONE));
-		titleTwoMap.put(IP_TWO, createVote(TITLE_TWO, IP_TWO, VALUE_TWO));
-		data.put(TITLE_TWO, titleTwoMap);
-
-		persistenceService = new TestPersistenceService<>(data);
-		voteService = new VoteServiceImpl(null);
+	public void setUp() {
+		votesRepository = mock(VotesRepository.class);
+		voteService = new VoteServiceImpl(votesRepository);
 	}
 
 	@Test
-	public void testCalculateVoteValue() throws Exception {
-		int voteValue = voteService.calculateVoteValue(null);
-		assertEquals(3, voteValue);
+	public void calculateVoteValue() {
+		Vote voteOne = createVote(VOTE_VALUE_ONE, RESULT_ONE, RESULT_ID, USER_ID);
+		Vote voteTwo = createVote(VOTE_VALUE_TWO, RESULT_ONE, RESULT_ID, USER_ID);
+		Vote voteThree = createVote(VOTE_VALUE_ONE, RESULT_TWO, RESULT_ID, USER_ID);
+		List<Vote> votes = List.of(voteOne, voteTwo, voteThree);
+		when(votesRepository.getVotesByResult(any())).thenReturn(votes);
+
+		Result result = createResult(RESULT_ID, "");
+		int voteValue = voteService.calculateVoteValue(result);
+		assertEquals(4, voteValue);
 	}
 
 	@Test
-	public void testAddVote() throws Exception {
-		voteService.addVote(createVote(TITLE_THREE, IP_ONE, VALUE_ONE));
-		HashMap<String, Map<String, Vote>> data = persistenceService.getData();
-		assertTrue(data.containsKey(TITLE_THREE));
+	public void addVote() {
+		Vote vote = createVote(VOTE_VALUE_ONE, RESULT_ONE, RESULT_ID, USER_ID);
+		voteService.addVote(vote);
+		verify(votesRepository, times(1)).save(vote);
 	}
 
 	@Test
-	public void testRemoveVote() throws Exception {
-		voteService.removeVote(createVote(TITLE_ONE, IP_ONE, VALUE_ONE));
-		HashMap<String, Map<String, Vote>> data = persistenceService.getData();
-		assertFalse(data.get(TITLE_ONE).containsKey(IP_ONE));
+	public void removeVote() {
+		Vote vote = createVote(VOTE_VALUE_ONE, RESULT_ONE, RESULT_ID, USER_ID);
+		voteService.removeVote(vote);
+		verify(votesRepository, times(1)).deleteVoteByResultAndUser(vote.getResult(), vote.getUser());
 	}
 
 	@Test
-	public void testGetVote() throws Exception {
-		Vote vote = voteService.getVote(null, new User());
-		assertEquals(TITLE_TWO, vote.getResult().getResult());
-		assertEquals(IP_TWO, vote.getUser().getId());
-		assertEquals(VALUE_TWO, vote.getValue());
-	}
+	public void getVote() {
+		Vote vote = createVote(VOTE_VALUE_ONE, RESULT_ONE, RESULT_ID, USER_ID);
+		when(votesRepository.getVoteByResultAndUser(vote.getResult(), vote.getUser())).thenReturn(vote);
 
-	private static Vote createVote(String title, String ip, int value) {
-		Vote vote = new Vote();
-		vote.setResult(new Result().setResult(title));
-		vote.setUser(new User().setId(Long.parseLong(ip)));
-		vote.setValue(value);
-		return vote;
+		Vote serviceVote = voteService.getVote(vote.getResult(), vote.getUser());
+		assertEquals(vote, serviceVote);
 	}
 }
