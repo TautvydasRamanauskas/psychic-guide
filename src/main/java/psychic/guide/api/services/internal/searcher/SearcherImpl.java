@@ -77,8 +77,8 @@ public class SearcherImpl implements Searcher {
 				.filter(r -> stringMatcher.match(r.getResult(), resultEntry.getResult()))
 				.findAny()
 				.ifPresentOrElse(
-						e -> e.getReferences().addAll(resultEntry.getReferences()), // TODO: choose longer text | merge
-						() -> parseResults.add(resultEntry) // TODO: alias
+						e -> e.getReferences().addAll(resultEntry.getReferences()),
+						() -> parseResults.add(resultEntry) // aliases
 				);
 	}
 }

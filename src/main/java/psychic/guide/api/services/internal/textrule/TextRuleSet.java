@@ -6,13 +6,11 @@ import java.util.Collection;
 public class TextRuleSet implements TextRule {
 	private final Collection<TextRule> ruleSet;
 
-	// TODO: replace similar meaning words
 	public TextRuleSet() { // TODO: create rule for blacklisted words removal
 		ruleSet = new ArrayList<>();
 		ruleSet.add(new TextRuleParenthesis());
 		ruleSet.add(new TextRuleReview());
 		ruleSet.add(new TextRuleNumber());
-//		ruleSet.add(new TextRuleColon()); // TODO: tests and options
 		ruleSet.add(new TextRuleTrim());
 	}
 

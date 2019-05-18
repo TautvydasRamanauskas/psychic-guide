@@ -29,7 +29,7 @@ class ShingleWordsMatcher implements StringMatcher {
 				.filter(w -> containsIgnoreCase(stringTwo, w))
 				.count();
 
-		if (wordsCount > MATCHES_OFFSET_TWO) { // TODO: offset 3?
+		if (wordsCount > MATCHES_OFFSET_TWO) { // offset 3?
 			return wordsCount <= wordsMatched + 2;
 		}
 		if (wordsCount > MATCHES_OFFSET_ONE) {

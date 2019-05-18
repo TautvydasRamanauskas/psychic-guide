@@ -23,10 +23,11 @@ public class SearcherImplTest {
 		searcher = new SearcherImpl(searchApiService, options);
 	}
 
-	// TODO
 	@Ignore
 	@Test
 	public void search() {
+		// TODO
+
 		final String keyword = "keyword";
 
 		List<ResultEntry> resultEntries = searcher.search(keyword);

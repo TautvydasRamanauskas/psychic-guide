@@ -50,7 +50,7 @@ public class Options {
 
 	public int getSearchApi() {
 		return searchApi;
-	} // TODO: delete
+	}
 
 	public void setSearchApi(int searchApi) {
 		this.searchApi = searchApi;
@@ -64,5 +64,3 @@ public class Options {
 		this.minRating = minRating;
 	}
 }
-
-//https://medium.com/@appaloosastore/string-similarity-algorithms-compared-3f7b4d12f0ff // TODO: compare
